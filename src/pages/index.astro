@@ -1,0 +1,842 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Header from '@/components/Header.astro';
+import Hero from '@/components/Hero.astro';
+import Footer from '@/components/Footer.astro';
+
+const services = [
+  {
+    image: '../images/services/LipFiller.png',
+    title: 'Lip Filler',
+    description: 'Description Lip Filler.. precision, .. facial symetry, medical-grade technology and pharmaceutical skincare formulations...',
+    link: '/services/facial',
+    price: 'From $180',
+    popular: true,
+    features: ['Lip Artistry', 'Advanced Anti-Aging', 'Intensive Hydration']
+  },
+  {
+    image: '../images/services/BoutalinToxin.png',
+    title: 'Boutalin Toxin',
+    description: 'Description Boutalin Toxin treatment.. precision, .. facial symetry, medical-grade technology and pharmaceutical skincare formulations...',
+    link: '/services/facial',
+    price: 'From $250',
+    popular: false,
+    features: ['Precision ..', 'Advanced Anti-Aging', 'Facial Architecture']
+  },
+  {
+    image: '../images/services/NasolabilFolds.png',
+    title: 'Nasolabil Folds',
+    description: 'Description Nasolabil Folds treatment.. precision, .. facial symetry, medical-grade technology and pharmaceutical skincare formulations..., precision.',
+    link: '/services/facial',
+    price: 'From $180',
+    popular: false,
+    features: ['precision injectables', 'Precision', 'Advanced Technology']
+  },
+  {
+    image: '../images/services/MarionetteLines.png',
+    title: 'Marionette Lines',
+    description: 'Description Marionette Lines treatment.. precision, .. facial symetry, medical-grade technology and pharmaceutical skincare formulations..., age-defying precision injectables, dermal volumizers, ',
+    link: '/services/anti-aging',
+    price: 'From $180',
+    popular: true,
+    features: ['Precision Injectables', 'dermal volumizers', 'PRP Regeneration']
+  },
+  {
+    image: '../images/services/PRP.png',
+    title: 'PRP',
+    description: 'Description PRP treatment.. precision, .. facial symetry, medical-grade technology and pharmaceutical skincare formulations..., age-defying precision injectables, dermal volumizers, and advanced cellular rejuvenation..',
+    link: '/services/cosmetic',
+    price: 'From $180',
+    popular: false,
+    features: ['Intensive Hydration', 'advanced cellular rejuvenation', 'PRP Regenerations']
+  },
+  {
+    image: '../images/services/RhinoplastyFiller.png',
+    title: 'Rhinoplasty Filler',
+    description: 'Comprehensive wellness protocols combining precision nutrition, IV optimization, and lifestyle transformation for total body excellence.',
+    link: '/services/wellness',
+    price: 'From $250',
+    popular: false,
+    features: ['Skin protectect', 'Precision', ' Facial Architecture']
+  }
+];
+
+const testimonials = [
+  {
+    name: 'Lili',
+    role: '',
+    treatment: 'Anti-Aging Treatment',
+    avatar: '../images/testimonials/review_1.png',
+    rating: 5,
+    verified: true,
+    text: 'The anti-aging treatment exceeded all my expectations. My skin looks younger. Gya made me feel like royalty throughout the entire process.'
+  },
+  {
+    name: 'Emily Rodriguez',
+    role: 'Fashion Designer',
+    treatment: 'Laser Skin Resurfacing',
+    avatar: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=400&h=400&fit=crop&crop=faces',
+    rating: 5,
+    verified: true,
+    text: 'I\'ve been coming here for 3 years and the results speak for themselves. The laser treatments have completely transformed my skin texture. Professional, caring, and truly expert care.'
+  },
+  {
+    name: 'Michael Chen',
+    role: 'Business Owner',
+    treatment: 'Body Contouring',
+    avatar: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=400&h=400&fit=crop&crop=faces',
+    rating: 5,
+    verified: true,
+    text: 'Outstanding service and incredible results! The body contouring program helped me achieve the physique I\'ve always wanted. The team is knowledgeable, professional, and genuinely cares about results.'
+  }
+];
+
+const doctors = [
+  {
+    name: 'Gya',
+    specialty: 'Medical Director',
+    credentials: 'Board Certified',
+    avatar: '../images/gya/gya_profile.png',
+    experience: '10+ years experience'
+  }/*,
+  {
+    name: 'Dr. James Chen',
+    specialty: 'Laser Specialist',
+    credentials: 'MD, Dermatology',
+    avatar: 'https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?w=400&h=400&fit=crop&crop=faces',
+    experience: '15+ years'
+  },
+  {
+    name: 'Dr. Lisa Thompson',
+    specialty: 'Aesthetic Medicine',
+    credentials: 'MD, Cosmetic Surgery',
+    avatar: 'https://images.unsplash.com/photo-1594824476967-48c8b964273f?w=400&h=400&fit=crop&crop=faces',
+    experience: '12+ years'
+  }*/
+];
+
+const pricingPackages = [
+  {
+    name: 'Essential Glow',
+    price: '$299',
+    period: 'per session',
+    description: 'Perfect for first-time clients',
+    features: [
+      'Deep Cleansing Facial',
+      'Skin Analysis',
+      'Custom Skincare Plan',
+      'Follow-up Consultation'
+    ],
+    popular: false
+  },
+  {
+    name: 'Premium Radiance',
+    price: '$599',
+    period: 'per month',
+    description: 'Most popular choice',
+    features: [
+      '2 Advanced Facial Treatments',
+      'Laser Hair Removal Session',
+      'Body Contouring Treatment',
+      'Priority Booking',
+      '15% Product Discount'
+    ],
+    popular: true
+  },
+  {
+    name: 'Ultimate Transformation',
+    price: '$1,299',
+    period: 'per month',
+    description: 'Complete beauty solution',
+    features: [
+      'Unlimited Facial Treatments',
+      'All Laser Treatments',
+      'Anti-Aging Procedures',
+      'Personal Beauty Consultant',
+      '25% Product Discount',
+      'VIP Lounge Access'
+    ],
+    popular: false
+  }
+];
+
+const faqs = [
+  {
+    question: 'Are your treatments safe and FDA-approved?',
+    answer: 'Yes, all our treatments use FDA-approved equipment and medical-grade products. Our procedures are performed by licensed medical professionals with extensive training and certification.'
+  },
+  {
+    question: 'How long do results typically last?',
+    answer: 'Results vary by treatment type. Facial treatments show immediate results lasting 4-6 weeks. Laser treatments offer permanent results after completing the recommended sessions. Anti-aging treatments like Botox last 3-6 months.'
+  },
+  {
+    question: 'Is there any downtime after treatments?',
+    answer: 'Most treatments have minimal to no downtime. Facial treatments allow immediate return to normal activities. Laser treatments may require 24-48 hours. Our specialists will provide detailed aftercare instructions.'
+  },
+  {
+    question: 'Do you offer payment plans?',
+    answer: 'Yes, we offer flexible payment plans and financing options for treatments over $500. We also accept all major credit cards and offer package discounts for multiple sessions.'
+  },
+  {
+    question: 'What should I expect during my first visit?',
+    answer: 'Your first visit includes a comprehensive consultation, skin analysis, and personalized treatment plan. We\'ll discuss your goals, medical history, and recommend the best treatments for your needs.'
+  }
+];
+
+const awards = [
+  { icon: '🏆', title: 'Best Beauty Clinic 2025', org: 'Beauty Excellence Awards' },
+  { icon: '⭐', title: 'Top Rated Aesthetic Center', org: 'Medical Spa Association' },
+  { icon: '🎖️', title: 'ISO 9001 Certified', org: 'International Standards' },
+  { icon: '✨', title: 'Customer Choice Award', org: 'Beauty Industry Awards' }
+];
+---
+
+<BaseLayout 
+  title="Beauty Clinic - Premium Beauty & Wellness Treatments | Transform Your Natural Beauty"
+  description="Experience world-class beauty treatments with our expert team. FDA-approved procedures, 18+ years experience, 12,500+ satisfied clients. Book your free consultation today."
+>
+  <style>
+    @import '../styles/homepage.css';
+  </style>
+  
+  <Header />
+  
+  <main>
+    <Hero 
+      title="Nottinghamshire Aesthetic Clinic "
+      subtitle="For Precision Injectables & Signature Facial Enhancements... Personalized care. Certified specialist..."
+    />
+
+    
+    <!-- Services Section -->
+    <section class="services-section">
+      <div class="container">
+        <div class="section-header reveal">
+          <span class="section-badge">Our Expertise</span>
+          <h2 class="section-title">Premium Treatment Services</h2>
+          <p class="section-subtitle">
+            Discover our beauty treatments, .
+          </p>
+        </div>
+        
+        <div class="services-grid">
+          {services.map((service, index) => (
+            <div class={`service-card card hover-lift reveal stagger-${(index % 6) + 1}`}>
+              {service.popular && (
+                <div class="popular-badge">
+                  <span class="badge-icon">⭐</span>
+                  <span>Most Popular</span>
+                </div>
+              )}
+              
+              <div class="service-image-wrapper">
+                <img src={service.image} alt={service.title} class="service-image" loading="lazy" />
+                <div class="service-overlay"></div>
+              </div>
+              
+              <h3 class="service-title">{service.title}</h3>
+              <p class="service-description">{service.description}</p>
+              
+              <div class="service-features">
+                {service.features.map(feature => (
+                  <span class="feature-tag">{feature}</span>
+                ))}
+              </div>
+              
+              <div class="service-footer">
+                <div class="service-price">
+                  <span class="price-label">Starting at</span>
+                  <span class="price-value">{service.price}</span>
+                </div>
+                <a href={service.link} class="service-link">
+                  <span>Learn More</span>
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                    <polyline points="12 5 19 12 12 19"></polyline>
+                  </svg>
+                </a>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Why Choose Us Section -->
+    <section class="why-choose-section">
+      <div class="container">
+        <div class="section-header reveal">
+          <span class="section-badge">Why Choose Us</span>
+          <h2 class="section-title">Excellence in Every Treatment</h2>
+          <p class="section-subtitle">
+            Discover why hundreds of clients trust us with their beauty transformation journey.
+          </p>
+        </div>
+        
+        <div class="why-choose-grid">
+          <div class="why-choose-content reveal">
+            <p class="section-text">
+              With over 7 years of experience in aesthetic medicine, our clinic combines cutting-edge technology with personalized care to deliver exceptional results. Our board-certified specialists are dedicated to enhancing your natural beauty while maintaining the highest standards of safety and professionalism.
+            </p>
+            
+            <div class="why-features">
+              <div class="why-feature-item hover-lift">
+                <div class="feature-icon">
+                  <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                    <polyline points="9 22 9 12 15 12 15 22"></polyline>
+                    <path d="M9 2v4"></path>
+                    <path d="M15 2v4"></path>
+                  </svg>
+                </div>
+                <div class="feature-content">
+                  <h4>Medical-Grade Excellence</h4>
+                  <p>FDA-approved equipment and pharmaceutical-grade products used in all treatments.</p>
+                </div>
+              </div>
+              
+              <div class="why-feature-item hover-lift">
+                <div class="feature-icon">
+                  <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                    <circle cx="12" cy="7" r="4"></circle>
+                    <path d="M12 14v-2"></path>
+                    <path d="M12 8V6"></path>
+                  </svg>
+                </div>
+                <div class="feature-content">
+                  <h4>Expert Medical Team</h4>
+                  <p>Board-certified doctors and licensed specialists with extensive training and experience.</p>
+                </div>
+              </div>
+              
+              <div class="why-feature-item hover-lift">
+                <div class="feature-icon">
+                  <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="12" cy="12" r="10"></circle>
+                    <path d="M12 6v6l4 2"></path>
+                    <path d="M16.24 7.76l-1.41 1.41"></path>
+                    <path d="M7.76 16.24l1.41-1.41"></path>
+                  </svg>
+                </div>
+                <div class="feature-content">
+                  <h4>Advanced Technology</h4>
+                  <p>State-of-the-art equipment and latest treatment techniques for optimal results.</p>
+                </div>
+              </div>
+              
+              <div class="why-feature-item hover-lift">
+                <div class="feature-icon">
+                  <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
+                  </svg>
+                </div>
+                <div class="feature-content">
+                  <h4>Personalized Care</h4>
+                  <p>Customized treatment plans tailored to your unique needs and beauty goals.</p>
+                </div>
+              </div>
+            </div>
+            
+            <a href="/about" class="btn btn-primary hover-lift">
+              <span>Learn More About Us</span>
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <line x1="5" y1="12" x2="19" y2="12"></line>
+                <polyline points="12 5 19 12 12 19"></polyline>
+              </svg>
+            </a>
+          </div>
+          
+          <div class="why-choose-visual reveal">
+            <div class="why-stats">
+              <div class="why-stat">
+                <span class="stat-number counter" data-target="7">7+</span>
+                <span class="stat-label">Years Experience</span>
+              </div>
+              <div class="why-stat">
+                <span class="stat-number counter" data-target="200">200</span>
+                <span >+</span>
+                <span class="stat-label">Happy Clients</span>
+              </div>
+              <div class="why-stat">
+                <span class="stat-number counter" data-target="98">98</span>
+                <span class="stat-label">Satisfaction Rate</span>
+              </div>
+            </div>
+            
+            <div class="visual-card card" style="margin-top: 2rem;">
+              <div class="visual-image-wrapper">
+                <img 
+                  src="../images/clinic/care_shows_4.png" 
+                  alt="Professional beauty clinic consultation" 
+                  class="visual-image"
+                  loading="lazy"
+                />
+                <div class="visual-overlay"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Before & After Section -->
+    <section class="before-after-section">
+      <div class="container">
+        <div class="section-header reveal">
+          <span class="section-badge">Client Results</span>
+          <h2 class="section-title">Before & After</h2>
+          <p class="section-subtitle">
+            See the remarkable transformations our clients have achieved with our expert treatments.
+          </p>
+        </div>
+        
+        <div class="before-after-slider reveal">
+          <div class="comparison-card card">
+            <div class="comparison-header">
+              <h3>Deep Wrinkles and Fine Lines</h3>
+              <span class="treatment-badge">lasts up to 5 months</span>
+            </div>
+            
+            <div class="comparison-images">
+              <div class="image-side">
+                <span class="image-label">Before</span>
+                <div class="image-placeholder">
+                  <img src="../images/before-after/before_1.png" alt="Before Treatment" loading="lazy" />
+                </div>
+              </div>
+              
+              <div class="divider-line"></div>
+              
+              <div class="image-side">
+                <span class="image-label after">After</span>
+                <div class="image-placeholder">
+                  <img src="../images/before-after/after_1.png" alt="After Treatment" loading="lazy" />
+                </div>
+              </div>
+            </div>
+            
+            <div class="comparison-footer">
+              <p>
+                <strong>Treatment:</strong> Advanced Deep Wrinkles and Fine Lines • 
+                <strong>Duration:</strong> lasts up to 5 months • 
+                <strong>Sessions:</strong> 1 treatment
+              </p>
+            </div>
+          </div>
+        </div>
+        
+        <div class="before-after-cta">
+          <a href="/gallery" class="btn btn-primary btn-large hover-lift">
+            <span>View Full Gallery</span>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+              <polyline points="12 5 19 12 12 19"></polyline>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Meet Our Doctors Section -->
+    <section class="doctors-preview-section">
+      <div class="container">
+        <div class="section-header reveal">
+          <span class="section-badge">Gya</span>
+          <h2 class="section-title">Meet Gya</h2>
+          <p class="section-subtitle">
+            Board-certified specialist dedicated to delivering exceptional results with personalized care.
+          </p>
+        </div>
+        
+        <div class="doctors-preview-grid">
+          {doctors.map((doctor, index) => (
+            <div class={`doctor-preview-card card hover-lift reveal stagger-${(index % 3) + 1}`}>
+              <span class="doctor-badge">{doctor.experience}</span>
+              <div class="doctor-avatar-large">
+                <img src={doctor.avatar} alt={doctor.name} loading="lazy" />
+              </div>
+              <h3 class="doctor-name">{doctor.name}</h3>
+              <p class="doctor-specialty">{doctor.specialty}</p>
+              <p class="doctor-credentials">{doctor.credentials}</p>
+            </div>
+          ))}
+        </div>
+        
+        <div class="doctors-cta">
+          <!--<a href="/doctors" class="btn btn-primary btn-large hover-lift"> -->
+          <a href="#" class="btn btn-primary btn-large hover-lift">
+            <span>Find more about Gya</span>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+              <polyline points="12 5 19 12 12 19"></polyline>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials-section">
+      <div class="container">
+        <div class="section-header reveal">
+          <span class="section-badge">Client Stories</span>
+          <h2 class="section-title">What Our Clients Say</h2>
+          <p class="section-subtitle">
+            Real experiences from real people who have transformed their lives with our treatments.
+          </p>
+        </div>
+        
+        <div class="testimonials-grid">
+          {testimonials.map((testimonial, index) => (
+            <div class={`testimonial-card card hover-lift reveal stagger-${(index % 3) + 1}`}>
+              <div class="testimonial-header">
+                <div class="testimonial-rating">
+                  {Array.from({ length: testimonial.rating }).map(() => (
+                    <span class="star">⭐</span>
+                  ))}
+                </div>
+                {testimonial.verified && (
+                  <div class="verified-badge">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <polyline points="20 6 9 17 4 12"></polyline>
+                    </svg>
+                    <span>Verified</span>
+                  </div>
+                )}
+              </div>
+              
+              <p class="testimonial-text">{testimonial.text}</p>
+              
+              <div class="testimonial-author">
+                <div class="author-avatar">
+                  <img src={testimonial.avatar} alt={testimonial.name} loading="lazy" />
+                </div>
+                <div class="author-info">
+                  <div class="author-name">{testimonial.name}</div>
+                  <div class="author-role">{testimonial.role}</div>
+                  <div class="author-treatment">{testimonial.treatment}</div>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Pricing Packages Section -->
+    <section class="pricing-section">
+      <div class="container">
+        <div class="section-header reveal">
+          <span class="section-badge">Investment</span>
+          <h2 class="section-title">Flexible Pricing Packages</h2>
+          <p class="section-subtitle">
+            Choose the perfect package that fits your beauty goals and budget. All packages include expert consultation.
+          </p>
+        </div>
+        
+        <div class="pricing-grid">
+          {pricingPackages.map((pkg, index) => (
+            <div class={`pricing-card card hover-lift reveal stagger-${(index % 3) + 1} ${pkg.popular ? 'popular' : ''}`}>
+              {pkg.popular && (
+                <div class="popular-ribbon">Most Popular</div>
+              )}
+              
+              <div class="pricing-visual">
+                <svg viewBox="0 0 300 120" xmlns="http://www.w3.org/2000/svg">
+                  <defs>
+                    <linearGradient id={`pricingGrad${index}`} x1="0%" y1="0%" x2="100%" y2="100%">
+                      <stop offset="0%" style={`stop-color:${index === 0 ? '#ec4899' : index === 1 ? '#8b5cf6' : '#f97316'};stop-opacity:0.2`} />
+                      <stop offset="100%" style={`stop-color:${index === 0 ? '#f97316' : index === 1 ? '#ec4899' : '#8b5cf6'};stop-opacity:0.2`} />
+                    </linearGradient>
+                  </defs>
+                  <rect width="300" height="120" fill={`url(#pricingGrad${index})`} rx="12"/>
+                  <circle cx="60" cy="60" r="30" fill={`url(#pricingGrad${index})`} opacity="0.5"/>
+                  <circle cx="150" cy="60" r="35" fill={`url(#pricingGrad${index})`} opacity="0.6"/>
+                  <circle cx="240" cy="60" r="30" fill={`url(#pricingGrad${index})`} opacity="0.5"/>
+                  <text x="150" y="70" text-anchor="middle" font-size="48" fill={index === 0 ? '#ec4899' : index === 1 ? '#8b5cf6' : '#f97316'} opacity="0.6">
+                    {index === 0 ? '✨' : index === 1 ? '💎' : '👑'}
+                  </text>
+                </svg>
+              </div>
+              
+              <div class="pricing-header">
+                <h3 class="package-name">{pkg.name}</h3>
+                <p class="package-description">{pkg.description}</p>
+              </div>
+              
+              <div class="pricing-price">
+                <span class="price-amount">{pkg.price}</span>
+                <span class="price-period">{pkg.period}</span>
+              </div>
+              
+              <ul class="pricing-features">
+                {pkg.features.map(feature => (
+                  <li class="pricing-feature">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <polyline points="20 6 9 17 4 12"></polyline>
+                    </svg>
+                    <span>{feature}</span>
+                  </li>
+                ))}
+              </ul>
+              
+              <a href="/booking" class={`btn ${pkg.popular ? 'btn-primary' : 'btn-secondary'} btn-large hover-lift`} style="width: 100%;">
+                <span>Choose Package</span>
+              </a>
+            </div>
+          ))}
+        </div>
+        
+        <div class="pricing-note reveal">
+          <p>
+            All packages include complimentary consultation and personalized treatment planning. 
+            Flexible payment plans available for packages over $500. Contact us for custom packages.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq-section">
+      <div class="container">
+        <div class="section-header reveal">
+          <span class="section-badge">Questions</span>
+          <h2 class="section-title">Frequently Asked Questions</h2>
+          <p class="section-subtitle">
+            Find answers to common questions about our treatments, procedures, and services.
+          </p>
+        </div>
+        
+        <div class="faq-container">
+          {faqs.map((faq, index) => (
+            <div class={`faq-item card reveal stagger-${(index % 5) + 1}`}>
+              <button class="faq-question">
+                <span>{faq.question}</span>
+                <svg class="faq-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <polyline points="6 9 12 15 18 9"></polyline>
+                </svg>
+              </button>
+              <div class="faq-answer">
+                <p>{faq.answer}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+        
+        <div class="faq-cta reveal">
+          <p>Still have questions? We're here to help!</p>
+          <a href="/contact" class="btn btn-primary btn-large hover-lift">
+            <span>Contact Us</span>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+              <polyline points="12 5 19 12 12 19"></polyline>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Awards & Certifications Section -->
+    <section class="awards-section">
+      <div class="container">
+        <div class="section-header reveal">
+          <span class="section-badge">Recognition</span>
+          <h2 class="section-title">Awards & Certifications</h2>
+          <p class="section-subtitle">
+            Recognized for excellence in aesthetic medicine and client satisfaction.
+          </p>
+        </div>
+        
+        <div class="awards-grid">
+          {awards.map((award, index) => (
+            <div class={`award-card card hover-lift reveal stagger-${(index % 4) + 1}`}>
+              <div class="award-icon-wrapper">
+                <svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+                  <defs>
+                    <linearGradient id={`awardGrad${index}`} x1="0%" y1="0%" x2="100%" y2="100%">
+                      <stop offset="0%" style="stop-color:#fbbf24;stop-opacity:1" />
+                      <stop offset="100%" style="stop-color:#f59e0b;stop-opacity:1" />
+                    </linearGradient>
+                    <filter id={`awardGlow${index}`}>
+                      <feGaussianBlur stdDeviation="2" result="coloredBlur"/>
+                      <feMerge>
+                        <feMergeNode in="coloredBlur"/>
+                        <feMergeNode in="SourceGraphic"/>
+                      </feMerge>
+                    </filter>
+                  </defs>
+                  {index === 0 ? (
+                    /* Trophy */
+                    <>
+                      <circle cx="60" cy="40" r="25" fill={`url(#awardGrad${index})`} filter={`url(#awardGlow${index})`}/>
+                      <rect x="50" y="65" width="20" height="30" fill={`url(#awardGrad${index})`}/>
+                      <rect x="40" y="95" width="40" height="8" fill={`url(#awardGrad${index})`}/>
+                      <path d="M 35 40 L 35 55 L 45 60" stroke={`url(#awardGrad${index})`} stroke-width="4" fill="none"/>
+                      <path d="M 85 40 L 85 55 L 75 60" stroke={`url(#awardGrad${index})`} stroke-width="4" fill="none"/>
+                      <text x="60" y="45" text-anchor="middle" font-size="20" fill="white" font-weight="bold">1</text>
+                    </>
+                  ) : index === 1 ? (
+                    /* Star Badge */
+                    <>
+                      <circle cx="60" cy="60" r="35" fill={`url(#awardGrad${index})`} filter={`url(#awardGlow${index})`}/>
+                      <path d="M 60 30 L 67 50 L 88 50 L 71 63 L 78 83 L 60 70 L 42 83 L 49 63 L 32 50 L 53 50 Z" fill="white"/>
+                      <circle cx="60" cy="60" r="15" fill={`url(#awardGrad${index})`}/>
+                      <text x="60" y="67" text-anchor="middle" font-size="16" fill="white" font-weight="bold">★</text>
+                    </>
+                  ) : index === 2 ? (
+                    /* Certificate */
+                    <>
+                      <rect x="25" y="25" width="70" height="70" rx="5" fill={`url(#awardGrad${index})`} filter={`url(#awardGlow${index})`}/>
+                      <rect x="30" y="30" width="60" height="60" rx="3" fill="white"/>
+                      <circle cx="60" cy="50" r="15" fill={`url(#awardGrad${index})`}/>
+                      <text x="60" y="57" text-anchor="middle" font-size="16" fill="white" font-weight="bold">✓</text>
+                      <rect x="40" y="72" width="40" height="3" fill={`url(#awardGrad${index})`}/>
+                      <rect x="45" y="80" width="30" height="2" fill={`url(#awardGrad${index})`}/>
+                    </>
+                  ) : (
+                    /* Medal */
+                    <>
+                      <circle cx="60" cy="65" r="30" fill={`url(#awardGrad${index})`} filter={`url(#awardGlow${index})`}/>
+                      <path d="M 50 35 L 60 20 L 70 35" stroke={`url(#awardGrad${index})`} stroke-width="8" fill="none"/>
+                      <circle cx="60" cy="65" r="20" fill="white"/>
+                      <text x="60" y="73" text-anchor="middle" font-size="20" fill={`url(#awardGrad${index})`} font-weight="bold">★</text>
+                    </>
+                  )}
+                </svg>
+              </div>
+              <h3 class="award-title">{award.title}</h3>
+              <p class="award-org">{award.org}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Final CTA Section -->
+    <section class="cta-section">
+      <div class="container">
+        <div class="cta-content reveal">
+          <h2 class="cta-title">Ready to Begin Your Transformation?</h2>
+          <p class="cta-text">
+            Book your complimentary consultation today and discover how we can help you achieve your beauty goals with personalized treatment plans and expert care.
+          </p>
+          <div class="cta-buttons">
+            <a href="/booking" class="btn btn-primary btn-large hover-lift">
+              <span>Book Free Consultation</span>
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <line x1="5" y1="12" x2="19" y2="12"></line>
+                <polyline points="12 5 19 12 12 19"></polyline>
+              </svg>
+            </a>
+            <a href="/contact" class="btn btn-secondary btn-large hover-lift">
+              <span>Contact Us</span>
+            </a>
+          </div>
+          <p class="cta-microcopy">Free consultation available • No credit card required</p>
+          <div class="cta-trust">
+            <div class="trust-item">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="20 6 9 17 4 12"></polyline>
+              </svg>
+              <span>No Obligation</span>
+            </div>
+            <div class="trust-item">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="20 6 9 17 4 12"></polyline>
+              </svg>
+              <span>Free Consultation</span>
+            </div>
+            <div class="trust-item">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="20 6 9 17 4 12"></polyline>
+              </svg>
+              <span>Expert Advice</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+  
+  <Footer />
+</BaseLayout>
+
+<script>
+  // FAQ Accordion
+  document.addEventListener('DOMContentLoaded', () => {
+    const faqItems = document.querySelectorAll('.faq-item');
+    
+    faqItems.forEach(item => {
+      const question = item.querySelector('.faq-question');
+      
+      question?.addEventListener('click', () => {
+        const isActive = item.classList.contains('active');
+        
+        // Close all other items
+        faqItems.forEach(otherItem => {
+          if (otherItem !== item) {
+            otherItem.classList.remove('active');
+          }
+        });
+        
+        // Toggle current item
+        item.classList.toggle('active', !isActive);
+      });
+    });
+  });
+
+  // Counter Animation
+  const observerOptions: IntersectionObserverInit = {
+    threshold: 0.5,
+    rootMargin: '0px'
+  };
+
+  const animateCounter = (element: Element) => {
+    const target = parseInt(element.getAttribute('data-target') || '0');
+    const duration = 2000;
+    const increment = target / (duration / 16);
+    let current = 0;
+
+    const updateCounter = () => {
+      current += increment;
+      if (current < target) {
+        element.textContent = Math.floor(current).toString();
+        requestAnimationFrame(updateCounter);
+      } else {
+        element.textContent = target.toString();
+      }
+    };
+
+    updateCounter();
+  };
+
+  const counterObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting && !entry.target.classList.contains('counted')) {
+        entry.target.classList.add('counted');
+        animateCounter(entry.target);
+      }
+    });
+  }, observerOptions);
+
+  document.querySelectorAll('.counter').forEach(counter => {
+    counterObserver.observe(counter);
+  });
+
+  // Scroll Reveal Animation
+  const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('revealed');
+      }
+    });
+  }, {
+    threshold: 0.1,
+    rootMargin: '0px 0px -50px 0px'
+  });
+
+  document.querySelectorAll('.reveal').forEach(element => {
+    revealObserver.observe(element);
+  });
+</script>

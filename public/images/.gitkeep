@@ -1,0 +1,16 @@
+# Image Assets Folder
+
+This folder contains all image assets for the Beauty Clinic theme.
+
+## Setup Instructions
+
+Please refer to `/public/images/README.md` for detailed specifications and setup guide.
+
+## Quick Start
+
+1. Download high-quality photos from Unsplash, Pexels, or Pixabay
+2. Rename according to specifications
+3. Optimize using TinyPNG or Squoosh
+4. Place in appropriate subfolders
+
+For complete guide, see: `IMAGE-SETUP-GUIDE.md` in the root directory.

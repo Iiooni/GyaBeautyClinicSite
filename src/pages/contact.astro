@@ -1,0 +1,919 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Header from '@/components/Header.astro';
+import Footer from '@/components/Footer.astro';
+
+const contactInfo = [
+  {
+    icon: 'location',
+    title: 'Visit Us',
+    details: ['123 Beauty Street', 'City, State 12345', 'United States']
+  },
+  {
+    icon: 'phone',
+    title: 'Call Us',
+    details: ['+1 (234) 567-8900', 'Mon-Fri: 9AM - 6PM', 'Sat: 10AM - 4PM']
+  },
+  {
+    icon: 'email',
+    title: 'Email Us',
+    details: ['info@beautyclinic.com', 'support@beautyclinic.com', 'Response within 24h']
+  }
+];
+---
+
+<BaseLayout 
+  title="Contact Us - Beauty Clinic"
+  description="Get in touch with our team. Visit our clinic, call us, or send a message. We're here to answer your questions and help you book your appointment."
+>
+  <Header />
+  
+  <main>
+    <!-- Page Header -->
+    <section class="page-header">
+      <div class="container">
+        <h1 class="page-title animate-fade-in-up">Contact Us</h1>
+        <p class="page-subtitle animate-fade-in-up stagger-1">
+          We'd love to hear from you. Reach out to us anytime!
+        </p>
+      </div>
+    </section>
+    
+    <!-- Contact Info Section -->
+    <section class="contact-info-section">
+      <div class="container">
+        <div class="contact-info-grid">
+          {contactInfo.map((info, index) => (
+            <div class={`info-card card reveal stagger-${index + 1}`}>
+              <div class="info-icon">
+                {info.icon === 'location' && (
+                  <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                    <circle cx="12" cy="10" r="3"></circle>
+                  </svg>
+                )}
+                {info.icon === 'phone' && (
+                  <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                    <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+                  </svg>
+                )}
+                {info.icon === 'email' && (
+                  <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                    <polyline points="22,6 12,13 2,6"></polyline>
+                  </svg>
+                )}
+              </div>
+              <h3 class="info-title">{info.title}</h3>
+              <div class="info-details">
+                {info.details.map(detail => (
+                  <p>{detail}</p>
+                ))}
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+    
+    <!-- Contact Form Section -->
+    <section class="contact-form-section">
+      <div class="container">
+        <div class="contact-grid">
+          <div class="form-content reveal-left">
+            <h2 class="form-title">Send Us a Message</h2>
+            <p class="form-description">
+              Fill out the form below and we'll get back to you as soon as possible.
+            </p>
+            
+            <form class="contact-form" id="contactForm">
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="firstName">First Name</label>
+                  <input 
+                    type="text" 
+                    id="firstName" 
+                    name="firstName" 
+                    required
+                    placeholder="John"
+                  />
+                </div>
+                
+                <div class="form-group">
+                  <label for="lastName">Last Name</label>
+                  <input 
+                    type="text" 
+                    id="lastName" 
+                    name="lastName" 
+                    required
+                    placeholder="Doe"
+                  />
+                </div>
+              </div>
+              
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="email">Email</label>
+                  <input 
+                    type="email" 
+                    id="email" 
+                    name="email" 
+                    required
+                    placeholder="john@example.com"
+                  />
+                </div>
+                
+                <div class="form-group">
+                  <label for="phone">Phone</label>
+                  <input 
+                    type="tel" 
+                    id="phone" 
+                    name="phone"
+                    placeholder="+1 (234) 567-8900"
+                  />
+                </div>
+              </div>
+              
+              <div class="form-group">
+                <label for="subject">Subject</label>
+                <select id="subject" name="subject" required>
+                  <option value="">Select a subject</option>
+                  <option value="appointment">Book Appointment</option>
+                  <option value="inquiry">General Inquiry</option>
+                  <option value="services">Services Information</option>
+                  <option value="feedback">Feedback</option>
+                  <option value="other">Other</option>
+                </select>
+              </div>
+              
+              <div class="form-group">
+                <label for="message">Message</label>
+                <textarea 
+                  id="message" 
+                  name="message" 
+                  rows="6" 
+                  required
+                  placeholder="Tell us how we can help you..."
+                ></textarea>
+              </div>
+              
+              <button type="submit" class="btn btn-primary btn-large hover-lift">
+                Send Message
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <line x1="22" y1="2" x2="11" y2="13"></line>
+                  <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+                </svg>
+              </button>
+              
+              <p class="form-helper">We typically respond within 24 hours</p>
+            </form>
+          </div>
+          
+          <div class="map-content reveal-right">
+            <h3 class="map-title">Find Us</h3>
+            <div class="map-container">
+              <iframe 
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3022.2412648750455!2d-73.98823492346458!3d40.74844097138558!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c259a9b3117469%3A0xd134e199a405a163!2sEmpire%20State%20Building!5e0!3m2!1sen!2sus!4v1710417600000!5m2!1sen!2sus"
+                width="100%" 
+                height="400" 
+                style="border:0;" 
+                allowfullscreen="" 
+                loading="lazy" 
+                referrerpolicy="no-referrer-when-downgrade"
+                title="Beauty Clinic Location"
+                class="google-map"
+              ></iframe>
+            </div>
+            
+            <div class="hours-card card">
+              <h4 class="hours-title">Opening Hours</h4>
+              <div class="hours-list">
+                <div class="hours-item">
+                  <span class="day">Monday - Friday</span>
+                  <span class="time">9:00 AM - 6:00 PM</span>
+                </div>
+                <div class="hours-item">
+                  <span class="day">Saturday</span>
+                  <span class="time">10:00 AM - 4:00 PM</span>
+                </div>
+                <div class="hours-item">
+                  <span class="day">Sunday</span>
+                  <span class="time">Closed</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+  
+  <Footer />
+</BaseLayout>
+
+<style>
+  /* Page Header - Enhanced with Better Transition */
+  .page-header {
+    padding: calc(80px + 7rem) 0 8.5rem;
+    background: linear-gradient(135deg, 
+      rgba(168, 85, 247, 0.15) 0%,
+      rgba(219, 39, 119, 0.15) 50%,
+      rgba(249, 115, 22, 0.12) 100%
+    );
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .page-header::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at 50% 50%, rgba(236, 72, 153, 0.15) 0%, transparent 70%);
+    pointer-events: none;
+    animation: pulse 4s ease-in-out infinite;
+  }
+  
+  .page-header::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, 
+      transparent 0%,
+      rgba(236, 72, 153, 0.3) 50%,
+      transparent 100%
+    );
+    box-shadow: 0 4px 12px rgba(236, 72, 153, 0.15);
+  }
+  
+  @keyframes pulse {
+    0%, 100% {
+      opacity: 0.5;
+    }
+    50% {
+      opacity: 1;
+    }
+  }
+  
+  [data-theme="dark"] .page-header {
+    background: linear-gradient(135deg, 
+      rgba(88, 28, 135, 0.4) 0%,
+      rgba(136, 19, 55, 0.4) 50%,
+      rgba(154, 52, 18, 0.3) 100%
+    );
+  }
+  
+  [data-theme="dark"] .page-header::before {
+    background: radial-gradient(circle at 50% 50%, rgba(236, 72, 153, 0.2) 0%, transparent 70%);
+  }
+  
+  [data-theme="dark"] .page-header::after {
+    background: linear-gradient(90deg, 
+      transparent 0%,
+      rgba(236, 72, 153, 0.4) 50%,
+      transparent 100%
+    );
+    box-shadow: 0 4px 12px rgba(236, 72, 153, 0.2);
+  }
+  
+  .page-title {
+    font-size: clamp(2.5rem, 5vw, 4.5rem);
+    margin-bottom: 2rem;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    position: relative;
+    z-index: 1;
+    animation: fadeInUp 0.6s ease-out;
+  }
+  
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  .page-subtitle {
+    font-size: clamp(1.125rem, 2vw, 1.5rem);
+    color: var(--text-primary);
+    opacity: 0.85;
+    max-width: 700px;
+    margin: 0 auto;
+    line-height: 1.6;
+    position: relative;
+    z-index: 1;
+    animation: fadeInUp 0.6s ease-out 0.1s both;
+    font-weight: 500;
+  }
+  
+  [data-theme="dark"] .page-subtitle {
+    opacity: 0.9;
+  }
+  
+  /* Contact Info Section - Enhanced Depth */
+  .contact-info-section {
+    background: var(--bg-primary);
+    padding: 6rem 0;
+  }
+  
+  .contact-info-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+  }
+  
+  .info-card {
+    text-align: center;
+    padding: 3rem 2rem;
+    background: var(--bg-secondary);
+    border-radius: var(--radius-xl);
+    border: 1.5px solid rgba(236, 72, 153, 0.12);
+    box-shadow: 
+      var(--shadow-sm),
+      0 0 20px rgba(236, 72, 153, 0.05);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .info-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, 
+      rgba(236, 72, 153, 0.04),
+      rgba(139, 92, 246, 0.04)
+    );
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+  
+  .info-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 
+      var(--shadow-lg),
+      0 0 40px rgba(236, 72, 153, 0.18);
+    border-color: rgba(236, 72, 153, 0.3);
+  }
+  
+  .info-card:hover::before {
+    opacity: 1;
+  }
+  
+  [data-theme="dark"] .info-card {
+    background: rgba(18, 18, 26, 0.8);
+    backdrop-filter: blur(8px);
+    border-color: rgba(236, 72, 153, 0.18);
+    box-shadow: 
+      var(--shadow-sm),
+      0 0 20px rgba(236, 72, 153, 0.08);
+  }
+  
+  [data-theme="dark"] .info-card:hover {
+    box-shadow: 
+      var(--shadow-lg),
+      0 0 50px rgba(236, 72, 153, 0.25);
+    border-color: rgba(236, 72, 153, 0.4);
+  }
+  
+  .info-icon {
+    width: 80px;
+    height: 80px;
+    margin: 0 auto 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, 
+      rgba(236, 72, 153, 0.12),
+      rgba(139, 92, 246, 0.12)
+    );
+    border-radius: 50%;
+    border: 2px solid rgba(236, 72, 153, 0.25);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    z-index: 1;
+    box-shadow: 
+      0 4px 16px rgba(236, 72, 153, 0.2),
+      0 0 30px rgba(236, 72, 153, 0.1);
+  }
+  
+  .info-icon::before {
+    content: '';
+    position: absolute;
+    inset: -10px;
+    background: radial-gradient(circle, 
+      rgba(236, 72, 153, 0.15) 0%,
+      transparent 70%
+    );
+    z-index: -1;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+  }
+  
+  .info-icon svg {
+    color: var(--color-primary-500);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    filter: drop-shadow(0 2px 8px rgba(236, 72, 153, 0.3));
+  }
+  
+  .info-card:hover .info-icon {
+    transform: scale(1.1) rotate(5deg);
+    background: linear-gradient(135deg, 
+      rgba(236, 72, 153, 0.2),
+      rgba(139, 92, 246, 0.2)
+    );
+    border-color: rgba(236, 72, 153, 0.4);
+    box-shadow: 
+      0 6px 24px rgba(236, 72, 153, 0.35),
+      0 0 40px rgba(236, 72, 153, 0.2);
+  }
+  
+  .info-card:hover .info-icon::before {
+    opacity: 1;
+  }
+  
+  .info-card:hover .info-icon svg {
+    transform: scale(1.05);
+    filter: drop-shadow(0 4px 12px rgba(236, 72, 153, 0.5));
+  }
+  
+  [data-theme="dark"] .info-icon {
+    background: linear-gradient(135deg, 
+      rgba(236, 72, 153, 0.18),
+      rgba(139, 92, 246, 0.18)
+    );
+    border-color: rgba(236, 72, 153, 0.3);
+    box-shadow: 
+      0 4px 16px rgba(236, 72, 153, 0.25),
+      0 0 30px rgba(236, 72, 153, 0.15);
+  }
+  
+  [data-theme="dark"] .info-card:hover .info-icon {
+    background: linear-gradient(135deg, 
+      rgba(236, 72, 153, 0.25),
+      rgba(139, 92, 246, 0.25)
+    );
+    border-color: rgba(236, 72, 153, 0.5);
+    box-shadow: 
+      0 6px 24px rgba(236, 72, 153, 0.4),
+      0 0 50px rgba(236, 72, 153, 0.25);
+  }
+  
+  .info-title {
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+    font-weight: 700;
+    position: relative;
+    z-index: 1;
+  }
+  
+  .info-details {
+    position: relative;
+    z-index: 1;
+  }
+  
+  .info-details p {
+    color: var(--text-secondary);
+    opacity: 0.9;
+    margin-bottom: 0.75rem;
+    line-height: 1.6;
+    font-size: 0.9375rem;
+  }
+  
+  /* Contact Form Section - Enhanced */
+  .contact-form-section {
+    background: var(--bg-secondary);
+    padding: 6rem 0;
+  }
+  
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 4rem;
+  }
+  
+  @media (min-width: 1024px) {
+    .contact-grid {
+      grid-template-columns: 1.2fr 1fr;
+      gap: 5rem;
+    }
+  }
+  
+  .form-title {
+    font-size: clamp(2rem, 4vw, 3rem);
+    margin-bottom: 1.5rem;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+  }
+  
+  .form-description {
+    font-size: 1.125rem;
+    color: var(--text-secondary);
+    opacity: 0.9;
+    margin-bottom: 3rem;
+    line-height: 1.7;
+  }
+  
+  .contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+  
+  .form-row {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+  
+  @media (min-width: 640px) {
+    .form-row {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+  
+  .form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+  
+  .form-group label {
+    font-weight: 600;
+    color: var(--text-primary);
+    font-size: 0.9375rem;
+    opacity: 0.95;
+  }
+  
+  .form-group input,
+  .form-group select,
+  .form-group textarea {
+    padding: 1rem 1.25rem;
+    border: 1.5px solid rgba(236, 72, 153, 0.18);
+    border-radius: var(--radius-lg);
+    background: var(--bg-primary);
+    color: var(--text-primary);
+    font-size: 1rem;
+    font-family: var(--font-primary);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+  }
+  
+  .form-group input::placeholder,
+  .form-group textarea::placeholder {
+    color: var(--text-tertiary);
+    opacity: 0.6;
+  }
+  
+  .form-group input:hover,
+  .form-group select:hover,
+  .form-group textarea:hover {
+    border-color: rgba(236, 72, 153, 0.3);
+    box-shadow: 0 2px 12px rgba(236, 72, 153, 0.08);
+  }
+  
+  .form-group input:focus,
+  .form-group select:focus,
+  .form-group textarea:focus {
+    outline: none;
+    border-color: rgba(236, 72, 153, 0.6);
+    box-shadow: 
+      0 0 0 4px rgba(236, 72, 153, 0.12),
+      0 4px 16px rgba(236, 72, 153, 0.2);
+    transform: translateY(-2px);
+  }
+  
+  [data-theme="dark"] .form-group input,
+  [data-theme="dark"] .form-group select,
+  [data-theme="dark"] .form-group textarea {
+    background: rgba(10, 10, 15, 0.8);
+    border-color: rgba(236, 72, 153, 0.25);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  }
+  
+  [data-theme="dark"] .form-group input:hover,
+  [data-theme="dark"] .form-group select:hover,
+  [data-theme="dark"] .form-group textarea:hover {
+    border-color: rgba(236, 72, 153, 0.35);
+    box-shadow: 0 2px 12px rgba(236, 72, 153, 0.12);
+  }
+  
+  [data-theme="dark"] .form-group input:focus,
+  [data-theme="dark"] .form-group select:focus,
+  [data-theme="dark"] .form-group textarea:focus {
+    border-color: rgba(236, 72, 153, 0.7);
+    box-shadow: 
+      0 0 0 4px rgba(236, 72, 153, 0.18),
+      0 4px 16px rgba(236, 72, 153, 0.25);
+  }
+  
+  .form-group textarea {
+    resize: vertical;
+    min-height: 150px;
+  }
+  
+  .form-group select {
+    cursor: pointer;
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23ec4899' d='M6 9L1 4h10z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 1rem center;
+    padding-right: 3rem;
+  }
+  
+  .form-helper {
+    font-size: 0.875rem;
+    color: var(--text-tertiary);
+    margin-top: 1.5rem;
+    text-align: center;
+    opacity: 0.8;
+  }
+  
+  .btn-large {
+    padding: 1.125rem 2.5rem;
+    font-size: 1.0625rem;
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    background: linear-gradient(135deg, 
+      rgba(236, 72, 153, 0.95),
+      rgba(219, 39, 119, 0.95)
+    );
+    border: none;
+    border-radius: var(--radius-lg);
+    color: white;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 
+      0 4px 16px rgba(236, 72, 153, 0.35),
+      0 0 24px rgba(236, 72, 153, 0.2);
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .btn-large::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, 
+      rgba(255, 255, 255, 0.15),
+      transparent
+    );
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+  
+  .btn-large:hover {
+    transform: translateY(-3px);
+    box-shadow: 
+      0 6px 24px rgba(236, 72, 153, 0.45),
+      0 0 35px rgba(236, 72, 153, 0.3);
+  }
+  
+  .btn-large:hover::before {
+    opacity: 1;
+  }
+  
+  .btn-large:active {
+    transform: translateY(-1px);
+    box-shadow: 
+      0 4px 16px rgba(236, 72, 153, 0.4),
+      0 0 24px rgba(236, 72, 153, 0.25);
+  }
+  
+  .btn-large:focus-visible {
+    outline: 3px solid rgba(236, 72, 153, 0.4);
+    outline-offset: 3px;
+  }
+  
+  .btn-large svg {
+    transition: transform 0.3s ease;
+  }
+  
+  .btn-large:hover svg {
+    transform: translateX(3px);
+  }
+  
+  /* Map Content - Enhanced with Real Google Maps */
+  .map-title {
+    font-size: 1.75rem;
+    margin-bottom: 2rem;
+    font-weight: 700;
+  }
+  
+  .map-container {
+    position: relative;
+    border-radius: var(--radius-xl);
+    overflow: hidden;
+    margin-bottom: 2rem;
+    box-shadow: 
+      var(--shadow-lg),
+      0 0 30px rgba(236, 72, 153, 0.12);
+    border: 2px solid rgba(236, 72, 153, 0.15);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    background: var(--bg-tertiary);
+  }
+  
+  .map-container::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      to bottom,
+      transparent 0%,
+      rgba(236, 72, 153, 0.03) 100%
+    );
+    pointer-events: none;
+    z-index: 1;
+  }
+  
+  .map-container:hover {
+    box-shadow: 
+      var(--shadow-xl),
+      0 0 50px rgba(236, 72, 153, 0.2);
+    border-color: rgba(236, 72, 153, 0.3);
+    transform: translateY(-2px);
+  }
+  
+  [data-theme="dark"] .map-container {
+    border-color: rgba(236, 72, 153, 0.25);
+    box-shadow: 
+      var(--shadow-lg),
+      0 0 30px rgba(236, 72, 153, 0.15);
+  }
+  
+  [data-theme="dark"] .map-container:hover {
+    box-shadow: 
+      var(--shadow-xl),
+      0 0 60px rgba(236, 72, 153, 0.25);
+    border-color: rgba(236, 72, 153, 0.4);
+  }
+  
+  .google-map {
+    display: block;
+    width: 100%;
+    height: 400px;
+    border: none;
+    filter: grayscale(0.1) contrast(1.05);
+    transition: filter 0.3s ease;
+  }
+  
+  .map-container:hover .google-map {
+    filter: grayscale(0) contrast(1.1);
+  }
+  
+  [data-theme="dark"] .google-map {
+    filter: grayscale(0.2) contrast(0.95) brightness(0.9);
+  }
+  
+  [data-theme="dark"] .map-container:hover .google-map {
+    filter: grayscale(0.1) contrast(1) brightness(0.95);
+  }
+  
+  .hours-card {
+    padding: 2rem;
+    background: var(--bg-primary);
+    border-radius: var(--radius-xl);
+    border: 1.5px solid rgba(236, 72, 153, 0.12);
+    box-shadow: 
+      var(--shadow-sm),
+      0 0 20px rgba(236, 72, 153, 0.05);
+    transition: all 0.3s ease;
+  }
+  
+  .hours-card:hover {
+    box-shadow: 
+      var(--shadow-md),
+      0 0 30px rgba(236, 72, 153, 0.1);
+    border-color: rgba(236, 72, 153, 0.2);
+  }
+  
+  [data-theme="dark"] .hours-card {
+    background: rgba(18, 18, 26, 0.8);
+    backdrop-filter: blur(8px);
+    border-color: rgba(236, 72, 153, 0.18);
+  }
+  
+  .hours-title {
+    font-size: 1.25rem;
+    margin-bottom: 1.5rem;
+    font-weight: 700;
+    padding-bottom: 1rem;
+    border-bottom: 2px solid rgba(236, 72, 153, 0.15);
+    position: relative;
+  }
+  
+  .hours-title::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 50px;
+    height: 2px;
+    background: linear-gradient(90deg, 
+      var(--color-primary-500),
+      transparent
+    );
+  }
+  
+  .hours-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+  
+  .hours-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 0.75rem;
+    border-radius: var(--radius-lg);
+    border-bottom: 1px solid rgba(236, 72, 153, 0.08);
+    transition: all 0.3s ease;
+  }
+  
+  .hours-item:hover {
+    background: linear-gradient(135deg, 
+      rgba(236, 72, 153, 0.06),
+      rgba(139, 92, 246, 0.06)
+    );
+    border-bottom-color: rgba(236, 72, 153, 0.15);
+    padding-left: 1.25rem;
+  }
+  
+  .hours-item:last-child {
+    border-bottom: none;
+  }
+  
+  .day {
+    font-weight: 600;
+    color: var(--text-primary);
+    font-size: 0.9375rem;
+  }
+  
+  .time {
+    color: var(--text-secondary);
+    font-size: 0.9375rem;
+    font-weight: 500;
+    text-align: right;
+  }
+  
+  .hours-item:last-child .time {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.25rem 0.75rem;
+    background: rgba(236, 72, 153, 0.1);
+    border-radius: 999px;
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--color-primary-600);
+  }
+  
+  /* Responsive */
+  @media (max-width: 768px) {
+    .page-header {
+      padding: calc(80px + 4rem) 0 5rem;
+    }
+    
+    .contact-info-section,
+    .contact-form-section {
+      padding: 4rem 0;
+    }
+    
+    .contact-info-grid {
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+    }
+    
+    .info-card {
+      padding: 2rem 1.5rem;
+    }
+    
+    .form-row {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
+
+<script>
+  const form = document.getElementById('contactForm') as HTMLFormElement;
+  
+  form?.addEventListener('submit', (e) => {
+    e.preventDefault();
+    
+    // Here you would typically send the form data to your backend
+    // For now, we'll just show a success message
+    
+    alert('Thank you for your message! We will get back to you soon.');
+    form.reset();
+  });
+</script>

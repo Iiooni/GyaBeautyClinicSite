@@ -1,0 +1,355 @@
+---
+// Mockup content for beauty clinic dashboard/app preview
+---
+
+<div class="mockup-dashboard">
+  <!-- Header Bar -->
+  <div class="mockup-header">
+    <div class="mockup-logo">
+      <div class="logo-icon">✨</div>
+      <!--<span class="logo-text">Beauty Clinic</span> -->
+    </div>
+    <div class="mockup-nav">
+      <div class="nav-item active">Gya Aesthetic Style</div>
+      <!--<div class="nav-item">Appointments</div>
+      <div class="nav-item">Treatments</div> -->
+    </div>
+    <div class="mockup-user">
+      <div class="user-avatar">logo</div>
+    </div>
+  </div>
+  
+  <!-- Main Content -->
+  <div class="mockup-body">
+    <!-- Stats Cards -->
+    <div class="stats-grid">
+      <div class="stat-card">
+        <!--<div class="stat-icon">📅</div>-->
+        <div class="stat-info">
+          <div class="stat-label">Text</div>
+          <div class="stat-value">Text</div>
+        </div>
+      </div>
+      
+      <div class="stat-card">
+        <!-- <div class="stat-icon">✨</div>-->
+        <div class="stat-info">
+          <div class="stat-label">Treatments Done</div>
+          <div class="stat-value">12 Sessions</div>
+        </div>
+      </div>
+      
+      <div class="stat-card highlight">
+        <!--<div class="stat-icon">🎯</div> -->
+        <div class="stat-info">
+          <div class="stat-label">Text</div>
+          <div class="stat-value">Text</div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Treatment Progress -->
+     <!--
+    <div class="treatment-section">
+      <div class="section-title">Your Treatment Journey</div>
+      <div class="progress-card">
+        <div class="progress-header">
+          <span>Facial Rejuvenation Program</span>
+          <span class="progress-badge">In Progress</span>
+        </div>
+        <div class="progress-bar">
+          <div class="progress-fill" style="width: 85%"></div>
+        </div>
+        <div class="progress-details">
+          <span>Session 8 of 10</span>
+          <span>85%</span>
+        </div>
+      </div>
+    </div>
+  -->
+    
+    <!-- Before/After Preview -->
+    <div class="results-section">
+      <div class="section-title">Your Results</div>
+      <div class="results-grid">
+        <div class="result-card">
+          <div class="result-label">Before</div>
+          <div class="result-image before"></div>
+        </div>
+        <div class="result-arrow">→</div>
+        <div class="result-card">
+          <div class="result-label">Current</div>
+          <div class="result-image after"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  .mockup-dashboard {
+    background: #0a0a0f;
+    width: 100%;
+    height: 100%;
+    min-height: 500px;
+    display: flex;
+    flex-direction: column;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  }
+  
+  /* Header */
+  .mockup-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem 1.5rem;
+    background: #12121a;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  }
+  
+  .mockup-logo {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-weight: 700;
+    color: #ffffff;
+  }
+  
+  .logo-icon {
+    font-size: 1.5rem;
+  }
+  
+  .logo-text {
+    font-size: 1rem;
+  }
+  
+  .mockup-nav {
+    display: flex;
+    gap: 1.5rem;
+  }
+  
+  .nav-item {
+    color: #9ca3af;
+    font-size: 0.875rem;
+    cursor: pointer;
+    transition: color 0.2s;
+  }
+  
+  .nav-item.active {
+    color: #ec4899;
+    font-weight: 600;
+  }
+  
+  .user-avatar {
+    background-image:"../images/hero/logo.png";
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    /*background: linear-gradient(135deg, #ec4899, #8b5cf6);*/
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 0.75rem;
+    font-weight: 700;
+  }
+  
+  /* Body */
+  .mockup-body {
+    flex: 1;
+    padding: 1.5rem;
+    overflow-y: auto;
+  }
+  
+  /* Stats Grid */
+  .stats-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .stat-card {
+    background: #12121a;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 12px;
+    padding: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    transition: all 0.3s;
+  }
+  
+  .stat-card:hover {
+    border-color: rgba(236, 72, 153, 0.3);
+    transform: translateY(-2px);
+  }
+  
+  .stat-card.highlight {
+    background: linear-gradient(135deg, rgba(236, 72, 153, 0.1), rgba(139, 92, 246, 0.1));
+    border-color: rgba(236, 72, 153, 0.3);
+  }
+  
+  .stat-icon {
+    font-size: 1.5rem;
+  }
+  
+  .stat-info {
+    flex: 1;
+  }
+  
+  .stat-label {
+    font-size: 0.75rem;
+    color: #9ca3af;
+    margin-bottom: 0.25rem;
+  }
+  
+  .stat-value {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: #ffffff;
+  }
+  
+  /* Treatment Section */
+  .treatment-section {
+    margin-bottom: 1.5rem;
+  }
+  
+  .section-title {
+    font-size: 1rem;
+    font-weight: 700;
+    color: #ffffff;
+    margin-bottom: 1rem;
+  }
+  
+  .progress-card {
+    background: #12121a;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 12px;
+    padding: 1.25rem;
+  }
+  
+  .progress-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+    color: #ffffff;
+    font-size: 0.875rem;
+    font-weight: 600;
+  }
+  
+  .progress-badge {
+    background: rgba(236, 72, 153, 0.2);
+    color: #ec4899;
+    padding: 0.25rem 0.75rem;
+    border-radius: 999px;
+    font-size: 0.75rem;
+    font-weight: 700;
+  }
+  
+  .progress-bar {
+    height: 8px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 999px;
+    overflow: hidden;
+    margin-bottom: 0.75rem;
+  }
+  
+  .progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #ec4899, #8b5cf6);
+    border-radius: 999px;
+    transition: width 0.5s ease;
+  }
+  
+  .progress-details {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.75rem;
+    color: #9ca3af;
+  }
+  
+  /* Results Section */
+  .results-section {
+    margin-bottom: 1.5rem;
+  }
+  
+  .results-grid {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    gap: 1rem;
+    align-items: center;
+  }
+  
+  .result-card {
+    background: #12121a;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 12px;
+    padding: 1rem;
+  }
+  
+  .result-label {
+    font-size: 0.75rem;
+    color: #9ca3af;
+    margin-bottom: 0.75rem;
+    text-align: center;
+  }
+  
+  .result-image {
+    width: 100%;
+    aspect-ratio: 1;
+    border-radius: 8px;
+    background: linear-gradient(135deg, rgba(236, 72, 153, 0.1), rgba(139, 92, 246, 0.1));
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .result-image::before {
+    content: '👤';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 3rem;
+    opacity: 0.3;
+  }
+  
+  .result-image.after {
+    background: linear-gradient(135deg, rgba(236, 72, 153, 0.2), rgba(139, 92, 246, 0.2));
+  }
+  
+  .result-image.after::before {
+    content: '✨';
+  }
+  
+  .result-arrow {
+    color: #ec4899;
+    font-size: 1.5rem;
+    font-weight: 700;
+  }
+  
+  /* Responsive */
+  @media (max-width: 768px) {
+    .mockup-nav {
+      display: none;
+    }
+    
+    .stats-grid {
+      grid-template-columns: 1fr;
+    }
+    
+    .stat-card {
+      padding: 0.75rem;
+    }
+    
+    .results-grid {
+      grid-template-columns: 1fr;
+    }
+    
+    .result-arrow {
+      transform: rotate(90deg);
+      text-align: center;
+    }
+  }
+</style>

@@ -1,0 +1,1295 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Header from '@/components/Header.astro';
+import Footer from '@/components/Footer.astro';
+
+const pressReleases = [
+  {
+    id: 1,
+    date: '2024-03-15',
+    category: 'Company News',
+    title: 'Beauty Clinic Expands Services with New Advanced Laser Technology',
+    excerpt: 'We are excited to announce the addition of state-of-the-art laser technology to our treatment offerings, providing even more effective solutions for our clients.',
+    placeholder: false,
+    image: 'https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?w=1200&h=675&fit=crop&q=95&auto=format'
+  },
+  {
+    id: 2,
+    date: '2024-02-28',
+    category: 'Awards',
+    title: 'Recognized as Best Beauty Clinic 2024 by Healthcare Excellence Awards',
+    excerpt: 'Our commitment to excellence and patient care has been recognized with the prestigious Best Beauty Clinic award for the third consecutive year.',
+    placeholder: false,
+    image: 'https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=1200&h=675&fit=crop&q=95&auto=format'
+  },
+  {
+    id: 3,
+    date: '2024-02-10',
+    category: 'Partnership',
+    title: 'Strategic Partnership with Leading Skincare Brand',
+    excerpt: 'Beauty Clinic announces exclusive partnership with internationally renowned skincare brand to bring premium products to our clients.',
+    placeholder: false,
+    image: 'https://images.unsplash.com/photo-1556228578-0d85b1a4d571?w=1200&h=675&fit=crop&q=95&auto=format'
+  },
+  {
+    id: 4,
+    date: '2024-01-20',
+    category: 'Community',
+    title: 'Free Consultation Program for Underserved Communities',
+    excerpt: 'Launching our community outreach initiative to provide free skincare consultations and education to underserved populations.',
+    placeholder: false,
+    image: 'https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=1200&h=675&fit=crop&q=95&auto=format'
+  },
+  {
+    id: 5,
+    date: '2023-12-15',
+    category: 'Innovation',
+    title: 'Introducing AI-Powered Skin Analysis Technology',
+    excerpt: 'Revolutionary AI technology now available for personalized skin analysis and treatment recommendations.',
+    placeholder: false,
+    image: 'https://images.unsplash.com/photo-1576086213369-97a306d36557?w=1200&h=675&fit=crop&q=95&auto=format'
+  },
+  {
+    id: 6,
+    date: '2023-11-30',
+    category: 'Expansion',
+    title: 'Opening Second Location in Downtown District',
+    excerpt: 'Due to overwhelming demand, we are thrilled to announce the opening of our second clinic location.',
+    placeholder: false,
+    image: 'https://images.unsplash.com/photo-1629909613654-28e377c37b09?w=1200&h=675&fit=crop&q=95&auto=format'
+  }
+];
+
+const mediaKit = [
+  {
+    icon: 'press-kit',
+    title: 'Press Kit',
+    description: 'Company overview, fact sheet, and key information',
+    fileSize: '2.5 MB',
+    format: 'PDF',
+    preview: 'https://images.unsplash.com/photo-1586281380349-632531db7ed4?w=400&h=300&fit=crop&q=95&auto=format'
+  },
+  {
+    icon: 'brand-assets',
+    title: 'Brand Assets',
+    description: 'Logos, brand guidelines, and visual identity',
+    fileSize: '15 MB',
+    format: 'ZIP',
+    preview: 'https://images.unsplash.com/photo-1561070791-2526d30994b5?w=400&h=300&fit=crop&q=95&auto=format'
+  },
+  {
+    icon: 'photos',
+    title: 'High-Res Photos',
+    description: 'Professional photography and facility images',
+    fileSize: '45 MB',
+    format: 'ZIP',
+    preview: 'https://images.unsplash.com/photo-1560066984-138dadb4c035?w=400&h=300&fit=crop&q=95&auto=format'
+  },
+  {
+    icon: 'statistics',
+    title: 'Statistics & Data',
+    description: 'Company statistics and performance data',
+    fileSize: '1.2 MB',
+    format: 'PDF',
+    preview: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=400&h=300&fit=crop&q=95&auto=format'
+  }
+];
+
+const contactInfo = {
+  name: 'Sarah Johnson',
+  title: 'Media Relations Manager',
+  email: 'press@beautyclinic.com',
+  phone: '+1 (234) 567-8901',
+  avatar: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=200&h=200&fit=crop&q=95&auto=format'
+};
+---
+
+<BaseLayout 
+  title="Press & Media - Beauty Clinic"
+  description="Latest news, press releases, and media resources from Beauty Clinic. Download our media kit and get in touch with our press team."
+>
+  <Header />
+  
+  <main>
+    <!-- Hero Section -->
+    <section class="press-hero">
+      <div class="container">
+        <div class="hero-content">
+          <div class="hero-badge">Press & Media</div>
+          <h1 class="hero-title">Newsroom</h1>
+          <p class="hero-description">
+            Stay updated with the latest news, announcements, and stories from Beauty Clinic
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Press Releases Section -->
+    <section class="press-releases-section">
+      <div class="container">
+        <div class="section-header">
+          <h2 class="section-title">Latest Press Releases</h2>
+          <p class="section-description">
+            Recent announcements and news from our clinic
+          </p>
+        </div>
+        
+        <div class="press-grid">
+          {pressReleases.map((release, index) => (
+            <article class={`press-card card reveal stagger-${(index % 3) + 1}`}>
+              <div class="press-image">
+                <img 
+                  src={release.image} 
+                  alt={release.title}
+                  loading="lazy"
+                  class="press-cover-image"
+                />
+                <div class="press-category">{release.category}</div>
+              </div>
+              <div class="press-content">
+                <time class="press-date">{new Date(release.date).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</time>
+                <h3 class="press-title">{release.title}</h3>
+                <p class="press-excerpt">{release.excerpt}</p>
+                <a href={`/press/${release.id}`} class="press-cta-btn">
+                  <span>Read Full Release</span>
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                    <polyline points="12 5 19 12 12 19"></polyline>
+                  </svg>
+                </a>
+              </div>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Media Kit Section -->
+    <section class="media-kit-section">
+      <div class="container">
+        <div class="media-kit-content">
+          <div class="media-kit-header">
+            <h2 class="section-title">Media Kit</h2>
+            <p class="section-description">
+              Download our comprehensive media resources for press and publication use
+            </p>
+          </div>
+          
+          <div class="media-kit-grid">
+            {mediaKit.map((item, index) => (
+              <div class={`media-kit-card card reveal stagger-${(index % 2) + 1}`}>
+                <div class="kit-preview">
+                  <img 
+                    src={item.preview} 
+                    alt={item.title}
+                    loading="lazy"
+                    class="kit-preview-image"
+                  />
+                  <div class="kit-overlay">
+                    <div class="kit-icon-svg">
+                      {item.icon === 'press-kit' && (
+                        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                          <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                          <polyline points="14 2 14 8 20 8"></polyline>
+                          <line x1="16" y1="13" x2="8" y2="13"></line>
+                          <line x1="16" y1="17" x2="8" y2="17"></line>
+                          <polyline points="10 9 9 9 8 9"></polyline>
+                        </svg>
+                      )}
+                      {item.icon === 'brand-assets' && (
+                        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                          <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+                          <circle cx="8.5" cy="8.5" r="1.5"></circle>
+                          <polyline points="21 15 16 10 5 21"></polyline>
+                        </svg>
+                      )}
+                      {item.icon === 'photos' && (
+                        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                          <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"></path>
+                          <circle cx="12" cy="13" r="4"></circle>
+                        </svg>
+                      )}
+                      {item.icon === 'statistics' && (
+                        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                          <line x1="18" y1="20" x2="18" y2="10"></line>
+                          <line x1="12" y1="20" x2="12" y2="4"></line>
+                          <line x1="6" y1="20" x2="6" y2="14"></line>
+                        </svg>
+                      )}
+                    </div>
+                  </div>
+                </div>
+                <div class="kit-content">
+                  <h3 class="kit-title">{item.title}</h3>
+                  <p class="kit-description">{item.description}</p>
+                  <div class="kit-meta">
+                    <span class="kit-size">{item.fileSize}</span>
+                    <span class="kit-divider">•</span>
+                    <span class="kit-format">{item.format}</span>
+                  </div>
+                </div>
+                <button class="kit-download-btn">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                    <polyline points="7 10 12 15 17 10"></polyline>
+                    <line x1="12" y1="15" x2="12" y2="3"></line>
+                  </svg>
+                  Download
+                </button>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Press Contact Section -->
+    <section class="press-contact-section">
+      <div class="container">
+        <div class="press-contact-grid">
+          <div class="contact-content reveal-left">
+            <h2 class="section-title">Media Inquiries</h2>
+            <p class="section-description">
+              For press inquiries, interview requests, or additional information, please contact our media relations team.
+            </p>
+            
+            <div class="contact-card card">
+              <div class="contact-person">
+                <div class="person-avatar">
+                  <img 
+                    src={contactInfo.avatar} 
+                    alt={contactInfo.name}
+                    class="avatar-image"
+                  />
+                </div>
+                <div class="person-info">
+                  <h3 class="person-name">{contactInfo.name}</h3>
+                  <p class="person-title">{contactInfo.title}</p>
+                </div>
+              </div>
+              
+              <div class="contact-details">
+                <a href={`mailto:${contactInfo.email}`} class="contact-item">
+                  <div class="contact-icon-wrapper">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                      <polyline points="22,6 12,13 2,6"></polyline>
+                    </svg>
+                  </div>
+                  <span>{contactInfo.email}</span>
+                </a>
+                <a href={`tel:${contactInfo.phone}`} class="contact-item">
+                  <div class="contact-icon-wrapper">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+                    </svg>
+                  </div>
+                  <span>{contactInfo.phone}</span>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <div class="guidelines-content reveal-right">
+            <div class="guidelines-card card">
+              <h3 class="guidelines-title">Press Guidelines</h3>
+              <div class="guidelines-list">
+                <div class="guideline-item">
+                  <div class="guideline-icon">✓</div>
+                  <div class="guideline-text">
+                    <h4>Brand Usage</h4>
+                    <p>Please follow our brand guidelines when using our logo and materials</p>
+                  </div>
+                </div>
+                <div class="guideline-item">
+                  <div class="guideline-icon">✓</div>
+                  <div class="guideline-text">
+                    <h4>Image Rights</h4>
+                    <p>All images are for editorial use only and require proper attribution</p>
+                  </div>
+                </div>
+                <div class="guideline-item">
+                  <div class="guideline-icon">✓</div>
+                  <div class="guideline-text">
+                    <h4>Fact Checking</h4>
+                    <p>We encourage fact-checking with our media team before publication</p>
+                  </div>
+                </div>
+                <div class="guideline-item">
+                  <div class="guideline-icon">✓</div>
+                  <div class="guideline-text">
+                    <h4>Response Time</h4>
+                    <p>We typically respond to media inquiries within 24 hours</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+  
+  <Footer />
+</BaseLayout>
+
+
+<style>
+  /* ===== HERO SECTION ===== */
+  .press-hero {
+    padding: calc(80px + 5rem) 0 4rem;
+    background: 
+      linear-gradient(to bottom, 
+        transparent 0%,
+        transparent 70%,
+        rgba(0, 0, 0, 0.03) 100%
+      ),
+      linear-gradient(135deg, 
+        rgba(168, 85, 247, 0.15) 0%,
+        rgba(219, 39, 119, 0.15) 50%,
+        rgba(249, 115, 22, 0.12) 100%
+      );
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .press-hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: 
+      radial-gradient(ellipse at 50% 20%, rgba(236, 72, 153, 0.12) 0%, transparent 40%),
+      radial-gradient(ellipse at 50% 100%, rgba(236, 72, 153, 0.08) 0%, transparent 50%),
+      radial-gradient(circle at 50% 50%, rgba(236, 72, 153, 0.15) 0%, transparent 70%),
+      url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ec4899' fill-opacity='0.015'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    pointer-events: none;
+    animation: pulse 4s ease-in-out infinite;
+  }
+  
+  @keyframes pulse {
+    0%, 100% { opacity: 0.5; }
+    50% { opacity: 1; }
+  }
+  
+  .press-hero::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, 
+      transparent 0%,
+      rgba(236, 72, 153, 0.3) 50%,
+      transparent 100%
+    );
+    box-shadow: 0 4px 12px rgba(236, 72, 153, 0.15);
+  }
+
+  [data-theme="dark"] .press-hero {
+    background: 
+      linear-gradient(to bottom, 
+        transparent 0%,
+        transparent 70%,
+        rgba(0, 0, 0, 0.2) 100%
+      ),
+      linear-gradient(135deg, 
+        rgba(88, 28, 135, 0.4) 0%,
+        rgba(136, 19, 55, 0.4) 50%,
+        rgba(154, 52, 18, 0.3) 100%
+      );
+  }
+  
+  [data-theme="dark"] .press-hero::before {
+    background: 
+      radial-gradient(ellipse at 50% 20%, rgba(236, 72, 153, 0.18) 0%, transparent 40%),
+      radial-gradient(ellipse at 50% 100%, rgba(236, 72, 153, 0.12) 0%, transparent 50%),
+      radial-gradient(circle at 50% 50%, rgba(236, 72, 153, 0.2) 0%, transparent 70%),
+      url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ec4899' fill-opacity='0.02'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  }
+  
+  [data-theme="dark"] .press-hero::after {
+    background: linear-gradient(90deg, 
+      transparent 0%,
+      rgba(236, 72, 153, 0.4) 50%,
+      transparent 100%
+    );
+    box-shadow: 0 4px 12px rgba(236, 72, 153, 0.2);
+  }
+  
+  .hero-content {
+    max-width: 900px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+  }
+  
+  .hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.625rem 1.25rem;
+    background: linear-gradient(135deg, rgba(236, 72, 153, 0.15), rgba(219, 39, 119, 0.15));
+    border: 1.5px solid rgba(236, 72, 153, 0.3);
+    border-radius: 999px;
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--color-primary-600);
+    margin-bottom: 2rem;
+    box-shadow: 0 4px 12px rgba(236, 72, 153, 0.2);
+  }
+
+  [data-theme="dark"] .hero-badge {
+    background: linear-gradient(135deg, rgba(236, 72, 153, 0.25), rgba(219, 39, 119, 0.25));
+    border-color: rgba(236, 72, 153, 0.4);
+    color: rgba(236, 72, 153, 0.95);
+  }
+  
+  .hero-title {
+    font-size: clamp(2.5rem, 5vw, 4.5rem);
+    margin-bottom: 1.5rem;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    line-height: 1.1;
+  }
+  
+  .hero-description {
+    font-size: clamp(1.125rem, 2vw, 1.375rem);
+    color: var(--text-secondary);
+    opacity: 0.9;
+    max-width: 700px;
+    margin: 0 auto;
+    line-height: 1.6;
+  }
+  
+  /* ===== PRESS RELEASES SECTION ===== */
+  .press-releases-section {
+    background: var(--bg-primary);
+    padding: 6rem 0;
+    position: relative;
+  }
+  
+  .press-releases-section::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: 
+      radial-gradient(ellipse at 30% 50%, rgba(236, 72, 153, 0.03) 0%, transparent 50%),
+      radial-gradient(ellipse at 70% 50%, rgba(139, 92, 246, 0.03) 0%, transparent 50%),
+      url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ec4899' fill-opacity='0.015'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    pointer-events: none;
+  }
+  
+  [data-theme="dark"] .press-releases-section::before {
+    background: 
+      radial-gradient(ellipse at 30% 50%, rgba(236, 72, 153, 0.05) 0%, transparent 50%),
+      radial-gradient(ellipse at 70% 50%, rgba(139, 92, 246, 0.05) 0%, transparent 50%),
+      url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ec4899' fill-opacity='0.02'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  }
+
+  .section-header {
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto 4rem;
+    position: relative;
+    z-index: 1;
+  }
+  
+  .section-title {
+    font-size: clamp(2rem, 4vw, 3rem);
+    margin-bottom: 1rem;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+  }
+  
+  .section-description {
+    font-size: 1.125rem;
+    color: var(--text-secondary);
+    opacity: 0.9;
+    line-height: 1.7;
+  }
+  
+  .press-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    gap: 2.5rem;
+    position: relative;
+    z-index: 1;
+  }
+  
+  .press-card {
+    display: flex;
+    flex-direction: column;
+    background: var(--bg-secondary);
+    border-radius: var(--radius-xl);
+    border: 1.5px solid rgba(236, 72, 153, 0.12);
+    overflow: hidden;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 
+      var(--shadow-sm),
+      0 0 20px rgba(236, 72, 153, 0.05);
+  }
+  
+  .press-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 
+      var(--shadow-lg),
+      0 0 40px rgba(236, 72, 153, 0.18);
+    border-color: rgba(236, 72, 153, 0.3);
+  }
+  
+  [data-theme="dark"] .press-card {
+    background: rgba(18, 18, 26, 0.8);
+    backdrop-filter: blur(8px);
+    border-color: rgba(236, 72, 153, 0.18);
+  }
+  
+  [data-theme="dark"] .press-card:hover {
+    box-shadow: 
+      var(--shadow-lg),
+      0 0 50px rgba(236, 72, 153, 0.25);
+    border-color: rgba(236, 72, 153, 0.4);
+  }
+
+  .press-image {
+    position: relative;
+    aspect-ratio: 16 / 9;
+    overflow: hidden;
+    background: linear-gradient(135deg, 
+      rgba(236, 72, 153, 0.1),
+      rgba(139, 92, 246, 0.1)
+    );
+  }
+  
+  .press-cover-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    display: block;
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  .press-card:hover .press-cover-image {
+    transform: scale(1.08);
+  }
+  
+  .press-category {
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    padding: 0.5rem 1rem;
+    background: rgba(18, 18, 26, 0.95);
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(236, 72, 153, 0.3);
+    border-radius: 999px;
+    font-size: 0.8125rem;
+    font-weight: 600;
+    color: rgba(236, 72, 153, 0.95);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  }
+  
+  .press-content {
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    flex: 1;
+  }
+  
+  .press-date {
+    font-size: 0.875rem;
+    color: var(--text-tertiary);
+    font-weight: 500;
+  }
+  
+  .press-title {
+    font-size: 1.25rem;
+    font-weight: 700;
+    line-height: 1.4;
+    color: var(--text-primary);
+    transition: color 0.3s ease;
+  }
+  
+  .press-card:hover .press-title {
+    color: var(--color-primary-600);
+  }
+  
+  .press-excerpt {
+    font-size: 0.9375rem;
+    color: var(--text-secondary);
+    opacity: 0.9;
+    line-height: 1.7;
+    flex: 1;
+  }
+
+  /* Premium CTA Button */
+  .press-cta-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.625rem;
+    padding: 0.875rem 1.5rem;
+    background: transparent;
+    border: 1px solid rgba(236, 72, 153, 0.25);
+    border-radius: var(--radius-lg);
+    color: var(--color-primary-600);
+    font-weight: 600;
+    font-size: 0.9375rem;
+    text-decoration: none;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(236, 72, 153, 0.08);
+  }
+  
+  .press-cta-btn::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, 
+      rgba(236, 72, 153, 0.08),
+      rgba(219, 39, 119, 0.08)
+    );
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+  
+  .press-cta-btn span {
+    position: relative;
+    z-index: 1;
+    transition: color 0.3s ease;
+  }
+  
+  .press-cta-btn svg {
+    position: relative;
+    z-index: 1;
+    transition: transform 0.3s ease;
+  }
+  
+  /* Hover State */
+  .press-cta-btn:hover {
+    background: linear-gradient(135deg, 
+      rgba(236, 72, 153, 0.15),
+      rgba(219, 39, 119, 0.15)
+    );
+    border-color: rgba(236, 72, 153, 0.4);
+    transform: translateY(-1px);
+    box-shadow: 
+      0 4px 16px rgba(236, 72, 153, 0.2),
+      0 0 20px rgba(236, 72, 153, 0.1);
+    color: rgba(236, 72, 153, 0.95);
+  }
+  
+  .press-cta-btn:hover::before {
+    opacity: 1;
+  }
+  
+  .press-cta-btn:hover svg {
+    transform: translateX(4px);
+  }
+  
+  /* Active State */
+  .press-cta-btn:active {
+    transform: translateY(1px);
+    box-shadow: 
+      0 2px 8px rgba(236, 72, 153, 0.15),
+      0 0 12px rgba(236, 72, 153, 0.08);
+  }
+  
+  /* Focus State (Accessibility) */
+  .press-cta-btn:focus-visible {
+    outline: none;
+    border-color: rgba(236, 72, 153, 0.6);
+    box-shadow: 
+      0 0 0 3px rgba(236, 72, 153, 0.15),
+      0 4px 16px rgba(236, 72, 153, 0.25);
+  }
+  
+  /* Dark Mode */
+  [data-theme="dark"] .press-cta-btn {
+    border-color: rgba(236, 72, 153, 0.3);
+    color: rgba(236, 72, 153, 0.95);
+    box-shadow: 0 2px 8px rgba(236, 72, 153, 0.12);
+  }
+  
+  [data-theme="dark"] .press-cta-btn:hover {
+    background: linear-gradient(135deg, 
+      rgba(236, 72, 153, 0.2),
+      rgba(219, 39, 119, 0.2)
+    );
+    border-color: rgba(236, 72, 153, 0.5);
+    box-shadow: 
+      0 4px 16px rgba(236, 72, 153, 0.25),
+      0 0 24px rgba(236, 72, 153, 0.15);
+    color: white;
+  }
+  
+  /* Coordinated Card Hover Interaction */
+  .press-card:hover .press-cta-btn {
+    border-color: rgba(236, 72, 153, 0.35);
+    background: rgba(236, 72, 153, 0.05);
+  }
+  
+  [data-theme="dark"] .press-card:hover .press-cta-btn {
+    border-color: rgba(236, 72, 153, 0.4);
+    background: rgba(236, 72, 153, 0.1);
+  }
+  
+  /* ===== MEDIA KIT SECTION ===== */
+  .media-kit-section {
+    background: var(--bg-secondary);
+    padding: 6rem 0;
+    position: relative;
+  }
+  
+  .media-kit-header {
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto 4rem;
+  }
+  
+  .media-kit-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 2rem;
+  }
+  
+  .media-kit-card {
+    padding: 0;
+    background: var(--bg-primary);
+    border-radius: var(--radius-xl);
+    border: 1.5px solid rgba(236, 72, 153, 0.12);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 
+      var(--shadow-sm),
+      0 0 20px rgba(236, 72, 153, 0.05);
+  }
+
+  .media-kit-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 
+      var(--shadow-lg),
+      0 0 40px rgba(236, 72, 153, 0.18);
+    border-color: rgba(236, 72, 153, 0.3);
+  }
+  
+  [data-theme="dark"] .media-kit-card {
+    background: rgba(18, 18, 26, 0.8);
+    backdrop-filter: blur(8px);
+    border-color: rgba(236, 72, 153, 0.18);
+  }
+  
+  .kit-preview {
+    position: relative;
+    aspect-ratio: 4 / 3;
+    overflow: hidden;
+    background: linear-gradient(135deg, 
+      rgba(236, 72, 153, 0.1),
+      rgba(139, 92, 246, 0.1)
+    );
+  }
+  
+  .kit-preview-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    display: block;
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  .media-kit-card:hover .kit-preview-image {
+    transform: scale(1.08);
+  }
+  
+  .kit-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      to bottom,
+      transparent 0%,
+      rgba(0, 0, 0, 0.7) 100%
+    );
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+  
+  .media-kit-card:hover .kit-overlay {
+    opacity: 1;
+  }
+  
+  .kit-icon-svg {
+    color: white;
+    filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.5));
+    transition: transform 0.3s ease;
+  }
+  
+  .media-kit-card:hover .kit-icon-svg {
+    transform: scale(1.15);
+  }
+  
+  .kit-content {
+    flex: 1;
+    padding: 2rem 2rem 1.5rem;
+  }
+  
+  .kit-title {
+    font-size: 1.25rem;
+    font-weight: 700;
+    margin-bottom: 0.75rem;
+    color: var(--text-primary);
+  }
+  
+  .kit-description {
+    font-size: 0.9375rem;
+    color: var(--text-secondary);
+    opacity: 0.9;
+    line-height: 1.6;
+    margin-bottom: 1rem;
+  }
+  
+  .kit-meta {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-size: 0.875rem;
+    color: var(--text-tertiary);
+  }
+  
+  .kit-divider {
+    opacity: 0.5;
+  }
+  
+  .kit-download-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0.875rem 1.75rem;
+    margin: 0 2rem 2rem;
+    background: linear-gradient(135deg, 
+      rgba(236, 72, 153, 0.95),
+      rgba(219, 39, 119, 0.95)
+    );
+    border: none;
+    border-radius: var(--radius-lg);
+    color: white;
+    font-weight: 600;
+    font-size: 0.9375rem;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 
+      0 4px 12px rgba(236, 72, 153, 0.35),
+      0 0 20px rgba(236, 72, 153, 0.2);
+  }
+
+  .kit-download-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 
+      0 6px 20px rgba(236, 72, 153, 0.45),
+      0 0 30px rgba(236, 72, 153, 0.3);
+  }
+  
+  .kit-download-btn:active {
+    transform: translateY(-1px);
+  }
+  
+  .kit-download-btn svg {
+    transition: transform 0.3s ease;
+  }
+  
+  .kit-download-btn:hover svg {
+    transform: translateY(2px);
+  }
+  
+  /* ===== PRESS CONTACT SECTION ===== */
+  .press-contact-section {
+    background: var(--bg-primary);
+    padding: 6rem 0 8rem;
+    position: relative;
+  }
+  
+  .press-contact-section::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: 
+      radial-gradient(ellipse at 30% 50%, rgba(236, 72, 153, 0.03) 0%, transparent 50%),
+      radial-gradient(ellipse at 70% 50%, rgba(139, 92, 246, 0.03) 0%, transparent 50%);
+    pointer-events: none;
+  }
+  
+  /* Subtle fade overlay at bottom for smooth transition to footer */
+  .press-contact-section::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 100px;
+    background: linear-gradient(to bottom, 
+      transparent 0%,
+      rgba(0, 0, 0, 0.02) 100%
+    );
+    pointer-events: none;
+  }
+  
+  [data-theme="dark"] .press-contact-section::before {
+    background: 
+      radial-gradient(ellipse at 30% 50%, rgba(236, 72, 153, 0.05) 0%, transparent 50%),
+      radial-gradient(ellipse at 70% 50%, rgba(139, 92, 246, 0.05) 0%, transparent 50%);
+  }
+  
+  [data-theme="dark"] .press-contact-section::after {
+    background: linear-gradient(to bottom, 
+      transparent 0%,
+      rgba(0, 0, 0, 0.15) 100%
+    );
+  }
+  
+  .press-contact-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 3rem;
+    position: relative;
+    z-index: 1;
+    align-items: start;
+  }
+  
+  @media (min-width: 1024px) {
+    .press-contact-grid {
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+    }
+  }
+  
+  .contact-content .section-title {
+    text-align: left;
+    margin-bottom: 1rem;
+  }
+  
+  .contact-content .section-description {
+    text-align: left;
+    margin-bottom: 2rem;
+  }
+
+  .contact-card {
+    padding: 2.5rem 2rem;
+    background: var(--bg-secondary);
+    border-radius: var(--radius-xl);
+    border: 1.5px solid rgba(236, 72, 153, 0.12);
+    box-shadow: 
+      var(--shadow-sm),
+      0 0 20px rgba(236, 72, 153, 0.05);
+    transition: all 0.3s ease;
+  }
+  
+  .contact-card:hover {
+    box-shadow: 
+      var(--shadow-md),
+      0 0 30px rgba(236, 72, 153, 0.1);
+    border-color: rgba(236, 72, 153, 0.2);
+  }
+  
+  [data-theme="dark"] .contact-card {
+    background: rgba(18, 18, 26, 0.8);
+    backdrop-filter: blur(8px);
+    border-color: rgba(236, 72, 153, 0.18);
+  }
+  
+  .contact-person {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    padding-bottom: 2rem;
+    margin-bottom: 2rem;
+    border-bottom: 2px solid rgba(236, 72, 153, 0.15);
+    position: relative;
+  }
+  
+  .contact-person::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 50px;
+    height: 2px;
+    background: linear-gradient(90deg, 
+      var(--color-primary-500),
+      transparent
+    );
+  }
+  
+  .person-avatar {
+    width: 72px;
+    height: 72px;
+    border-radius: var(--radius-full);
+    background: linear-gradient(135deg, 
+      rgba(236, 72, 153, 0.15),
+      rgba(139, 92, 246, 0.15)
+    );
+    border: 2px solid rgba(236, 72, 153, 0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    box-shadow: 0 4px 12px rgba(236, 72, 153, 0.2);
+    overflow: hidden;
+    position: relative;
+  }
+  
+  .avatar-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    display: block;
+  }
+  
+  .person-avatar svg {
+    color: var(--color-primary-500);
+  }
+
+  .person-name {
+    font-size: 1.25rem;
+    font-weight: 700;
+    margin-bottom: 0.25rem;
+    color: var(--text-primary);
+  }
+  
+  .person-title {
+    font-size: 0.9375rem;
+    color: var(--text-secondary);
+    opacity: 0.9;
+  }
+  
+  .contact-details {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  
+  .contact-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    color: var(--text-secondary);
+    padding: 0.875rem;
+    border-radius: var(--radius-lg);
+    transition: all var(--transition-base);
+    text-decoration: none;
+  }
+  
+  .contact-item:hover {
+    background: linear-gradient(135deg, 
+      rgba(236, 72, 153, 0.06),
+      rgba(139, 92, 246, 0.06)
+    );
+    color: var(--text-primary);
+    transform: translateX(4px);
+  }
+  
+  .contact-icon-wrapper {
+    width: 40px;
+    height: 40px;
+    border-radius: var(--radius-lg);
+    background: linear-gradient(135deg, 
+      rgba(236, 72, 153, 0.12),
+      rgba(139, 92, 246, 0.12)
+    );
+    border: 1px solid rgba(236, 72, 153, 0.25);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    transition: all var(--transition-base);
+  }
+  
+  .contact-icon-wrapper svg {
+    color: var(--color-primary-500);
+    transition: transform var(--transition-base);
+  }
+  
+  .contact-item:hover .contact-icon-wrapper {
+    background: linear-gradient(135deg, 
+      rgba(236, 72, 153, 0.2),
+      rgba(139, 92, 246, 0.2)
+    );
+    border-color: rgba(236, 72, 153, 0.4);
+    transform: scale(1.1);
+  }
+  
+  .contact-item:hover .contact-icon-wrapper svg {
+    transform: scale(1.1);
+  }
+  
+  .contact-item span:last-child {
+    font-weight: 500;
+    font-size: 0.9375rem;
+    transition: all var(--transition-base);
+  }
+  
+  /* Guidelines Card */
+  .guidelines-card {
+    padding: 2.5rem 2rem;
+    background: var(--bg-secondary);
+    border-radius: var(--radius-xl);
+    border: 1.5px solid rgba(236, 72, 153, 0.12);
+    box-shadow: 
+      var(--shadow-sm),
+      0 0 20px rgba(236, 72, 153, 0.05);
+    transition: all 0.3s ease;
+  }
+
+  .guidelines-card:hover {
+    box-shadow: 
+      var(--shadow-md),
+      0 0 30px rgba(236, 72, 153, 0.1);
+    border-color: rgba(236, 72, 153, 0.2);
+  }
+  
+  [data-theme="dark"] .guidelines-card {
+    background: rgba(18, 18, 26, 0.8);
+    backdrop-filter: blur(8px);
+    border-color: rgba(236, 72, 153, 0.18);
+  }
+  
+  .guidelines-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 2rem;
+    color: var(--text-primary);
+    padding-bottom: 1rem;
+    border-bottom: 2px solid rgba(236, 72, 153, 0.15);
+    position: relative;
+  }
+  
+  .guidelines-title::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 50px;
+    height: 2px;
+    background: linear-gradient(90deg, 
+      var(--color-primary-500),
+      transparent
+    );
+  }
+  
+  .guidelines-list {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+  
+  .guideline-item {
+    display: flex;
+    gap: 1.25rem;
+    transition: transform var(--transition-base);
+  }
+  
+  .guideline-item:hover {
+    transform: translateX(4px);
+  }
+  
+  .guideline-icon {
+    width: 32px;
+    height: 32px;
+    border-radius: var(--radius-full);
+    background: linear-gradient(135deg, 
+      rgba(236, 72, 153, 0.15),
+      rgba(139, 92, 246, 0.15)
+    );
+    border: 1.5px solid rgba(236, 72, 153, 0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    font-size: 0.875rem;
+    font-weight: 700;
+    color: var(--color-primary-600);
+    box-shadow: 0 2px 8px rgba(236, 72, 153, 0.2);
+    transition: transform 0.3s ease;
+  }
+  
+  .guideline-item:hover .guideline-icon {
+    transform: scale(1.15);
+  }
+
+  .guideline-text h4 {
+    font-size: 1rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    color: var(--text-primary);
+  }
+  
+  .guideline-text p {
+    font-size: 0.9375rem;
+    color: var(--text-secondary);
+    opacity: 0.9;
+    line-height: 1.6;
+    margin: 0;
+  }
+  
+  /* Responsive */
+  @media (max-width: 768px) {
+    .press-hero {
+      padding: calc(80px + 4rem) 0 3rem;
+    }
+    
+    .press-releases-section,
+    .media-kit-section,
+    .press-contact-section {
+      padding: 4rem 0;
+    }
+    
+    .section-header {
+      margin-bottom: 3rem;
+    }
+    
+    .press-grid {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+    
+    .media-kit-grid {
+      grid-template-columns: 1fr;
+    }
+    
+    .press-contact-grid {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+    
+    .contact-person {
+      flex-direction: column;
+      text-align: center;
+    }
+    
+    .person-info {
+      text-align: center;
+    }
+  }
+</style>
+
+<script>
+  // Download button handlers
+  const downloadButtons = document.querySelectorAll('.kit-download-btn');
+  
+  downloadButtons.forEach(button => {
+    button.addEventListener('click', () => {
+      // Here you would typically trigger the actual download
+      // For now, we'll just show a message
+      alert('Download will start shortly. Thank you for your interest!');
+    });
+  });
+</script>

@@ -1,0 +1,236 @@
+---
+interface Stat {
+  number: string;
+  label: string;
+  suffix?: string;
+  icon?: string;
+}
+
+interface Props {
+  title?: string;
+  subtitle?: string;
+  stats: Stat[];
+  background?: 'primary' | 'secondary' | 'gradient';
+}
+
+const {
+  title,
+  subtitle,
+  stats,
+  background = 'gradient'
+} = Astro.props;
+---
+
+<section class={`stats-section stats-${background}`}>
+  <div class="container">
+    {(title || subtitle) && (
+      <div class="stats-header reveal">
+        {title && <h2 class="stats-title">{title}</h2>}
+        {subtitle && <p class="stats-subtitle">{subtitle}</p>}
+      </div>
+    )}
+    
+    <div class="stats-grid">
+      {stats.map((stat, index) => (
+        <div class={`stat-item reveal stagger-${(index % 4) + 1}`}>
+          {stat.icon && (
+            <div class="stat-icon" set:html={stat.icon}></div>
+          )}
+          <div class="stat-number-wrapper">
+            <span class="stat-number text-gradient-full counter" data-target={stat.number}>
+              0
+            </span>
+            {stat.suffix && <span class="stat-suffix">{stat.suffix}</span>}
+          </div>
+          <div class="stat-label">{stat.label}</div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<script>
+  // Counter Animation
+  function animateCounter(element: HTMLElement) {
+    const target = parseInt(element.dataset.target || '0');
+    const duration = 2000;
+    const step = target / (duration / 16);
+    let current = 0;
+    
+    const timer = setInterval(() => {
+      current += step;
+      if (current >= target) {
+        element.textContent = target.toLocaleString();
+        clearInterval(timer);
+      } else {
+        element.textContent = Math.floor(current).toLocaleString();
+      }
+    }, 16);
+  }
+
+  // Trigger counter animation when stats are visible
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const counters = entry.target.querySelectorAll('.counter');
+        counters.forEach((counter) => {
+          if (!counter.classList.contains('counted')) {
+            counter.classList.add('counted');
+            animateCounter(counter as HTMLElement);
+          }
+        });
+      }
+    });
+  }, { threshold: 0.5 });
+
+  const statsSection = document.querySelector('.stats-section');
+  if (statsSection) {
+    observer.observe(statsSection);
+  }
+</script>
+
+<style>
+  .stats-section {
+    padding: 6rem 0;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .stats-primary {
+    background: var(--bg-primary);
+  }
+  
+  .stats-secondary {
+    background: var(--bg-secondary);
+  }
+  
+  .stats-gradient {
+    background: linear-gradient(135deg, 
+      rgba(236, 72, 153, 0.1) 0%,
+      rgba(139, 92, 246, 0.1) 50%,
+      rgba(249, 115, 22, 0.1) 100%
+    );
+    position: relative;
+  }
+  
+  [data-theme="dark"] .stats-gradient {
+    background: linear-gradient(135deg, 
+      rgba(236, 72, 153, 0.05) 0%,
+      rgba(139, 92, 246, 0.05) 50%,
+      rgba(249, 115, 22, 0.05) 100%
+    );
+  }
+  
+  .stats-gradient::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at 30% 50%, rgba(236, 72, 153, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 70% 50%, rgba(139, 92, 246, 0.1) 0%, transparent 50%);
+    pointer-events: none;
+  }
+  
+  .stats-header {
+    text-align: center;
+    margin-bottom: 4rem;
+  }
+  
+  .stats-title {
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    font-weight: var(--font-extrabold);
+    margin-bottom: 1rem;
+    line-height: 1.1;
+  }
+  
+  .stats-subtitle {
+    font-size: 1.25rem;
+    color: var(--text-secondary);
+    max-width: 700px;
+    margin: 0 auto;
+  }
+  
+  .stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 3rem;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  @media (min-width: 768px) {
+    .stats-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  
+  @media (min-width: 1024px) {
+    .stats-grid {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+  
+  .stat-item {
+    text-align: center;
+    padding: 2rem 1rem;
+  }
+  
+  .stat-icon {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-primary-500);
+  }
+  
+  .stat-icon svg {
+    width: 48px;
+    height: 48px;
+    stroke: var(--color-primary-500);
+  }
+  
+  .stat-number-wrapper {
+    display: flex;
+    align-items: baseline;
+    justify-content: center;
+    gap: 0.25rem;
+    margin-bottom: 0.75rem;
+  }
+  
+  .stat-number {
+    font-size: clamp(3rem, 6vw, 5rem);
+    font-weight: var(--font-extrabold);
+    font-family: var(--font-heading);
+    line-height: 1;
+    display: inline-block;
+  }
+  
+  .stat-suffix {
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: var(--font-extrabold);
+    color: var(--color-primary-500);
+  }
+  
+  .stat-label {
+    font-size: 1rem;
+    color: var(--text-secondary);
+    font-weight: var(--font-medium);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+  
+  @media (max-width: 768px) {
+    .stats-section {
+      padding: 4rem 0;
+    }
+    
+    .stats-grid {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+    
+    .stats-header {
+      margin-bottom: 3rem;
+    }
+  }
+</style>

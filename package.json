@@ -1,0 +1,44 @@
+{
+  "name": "beauty-clinic-astro-theme",
+  "type": "module",
+  "version": "1.1.0",
+  "description": "Premium Beauty Clinic Astro Theme - Modern, elegant, and fully responsive with authentication pages. Licensed by Kantong Aplikasi.",
+  "author": "Kantong Aplikasi <contact@kantongaplikasi.com> (https://kantongaplikasi.com)",
+  "license": "SEE LICENSE IN LICENSE",
+  "homepage": "https://kantongaplikasi.com",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/kantongaplikasi/beauty-clinic-theme"
+  },
+  "bugs": {
+    "url": "https://kantongaplikasi.com/support",
+    "email": "support@kantongaplikasi.com"
+  },
+  "keywords": [
+    "astro",
+    "theme",
+    "beauty-clinic",
+    "medical-spa",
+    "healthcare",
+    "dark-mode",
+    "responsive",
+    "premium",
+    "commercial"
+  ],
+  "scripts": {
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro check && astro build",
+    "preview": "astro preview",
+    "astro": "astro"
+  },
+  "dependencies": {
+    "@astrojs/mdx": "^5.0.0",
+    "@astrojs/sitemap": "^3.7.1",
+    "astro": "^6.0.4"
+  },
+  "devDependencies": {
+    "@astrojs/check": "^0.9.7",
+    "typescript": "^5.9.3"
+  }
+}

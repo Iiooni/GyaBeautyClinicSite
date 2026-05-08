@@ -1,0 +1,928 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Header from '@/components/Header.astro';
+import Footer from '@/components/Footer.astro';
+
+const lastUpdated = 'March 1, 2026';
+
+const sections = [
+  {
+    id: 'acceptance',
+    title: 'Acceptance of Terms',
+    content: `By accessing and using Beauty Clinic's website and services, you accept and agree to be bound by the terms and provision of this agreement. If you do not agree to abide by the above, please do not use this service.`
+  },
+  {
+    id: 'services',
+    title: 'Description of Services',
+    content: `Beauty Clinic provides aesthetic and cosmetic treatment services, including but not limited to:`,
+    subsections: [
+      {
+        title: 'Our Services Include',
+        items: [
+          'Facial treatments and skincare procedures',
+          'Body contouring and wellness treatments',
+          'Laser therapy and hair removal',
+          'Anti-aging treatments and injectables',
+          'Consultation and personalized treatment plans',
+          'Post-treatment care and follow-up services'
+        ]
+      }
+    ]
+  },
+  {
+    id: 'appointments',
+    title: 'Appointments and Bookings',
+    content: `When booking appointments with Beauty Clinic, the following terms apply:`,
+    subsections: [
+      {
+        title: 'Booking Policy',
+        items: [
+          'Appointments must be booked in advance through our website, phone, or in person',
+          'A valid contact number and email address are required for booking confirmation',
+          'Appointment confirmations will be sent via email or SMS',
+          'We reserve the right to refuse service to anyone for any reason',
+          'Late arrivals may result in shortened treatment time or rescheduling',
+          'Clients must arrive 10 minutes before their scheduled appointment'
+        ]
+      }
+    ]
+  },
+  {
+    id: 'cancellation',
+    title: 'Cancellation and Refund Policy',
+    content: `We understand that schedules change. Please review our cancellation policy:`,
+    subsections: [
+      {
+        title: 'Cancellation Terms',
+        items: [
+          'Cancellations must be made at least 24 hours in advance',
+          'Late cancellations (less than 24 hours) may incur a 50% cancellation fee',
+          'No-shows will be charged the full treatment cost',
+          'Refunds are processed within 7-10 business days',
+          'Package treatments have specific cancellation terms',
+          'Emergency cancellations will be reviewed on a case-by-case basis'
+        ]
+      }
+    ]
+  },
+  {
+    id: 'payment',
+    title: 'Payment Terms',
+    content: `Payment for services is required at the time of treatment unless otherwise arranged:`,
+    subsections: [
+      {
+        title: 'Payment Methods',
+        items: [
+          'We accept cash, credit cards, debit cards, and digital payments',
+          'Payment plans are available for certain treatment packages',
+          'Prices are subject to change without prior notice',
+          'All prices are in USD unless otherwise stated',
+          'Gift certificates and promotional codes have specific terms and expiration dates',
+          'Outstanding balances must be settled before booking future appointments'
+        ]
+      }
+    ]
+  },
+  {
+    id: 'medical',
+    title: 'Medical Information and Consent',
+    content: `Your health and safety are our top priorities. By using our services, you agree to:`,
+    subsections: [
+      {
+        title: 'Medical Disclosure',
+        items: [
+          'Provide accurate and complete medical history information',
+          'Disclose all medications, allergies, and medical conditions',
+          'Inform us of pregnancy, nursing, or plans to become pregnant',
+          'Follow all pre-treatment and post-treatment instructions',
+          'Understand that results may vary based on individual factors',
+          'Acknowledge potential risks and side effects of treatments',
+          'Sign informed consent forms before receiving treatments'
+        ]
+      }
+    ]
+  },
+  {
+    id: 'liability',
+    title: 'Limitation of Liability',
+    content: `Beauty Clinic and its staff shall not be liable for:`,
+    subsections: [
+      {
+        title: 'Liability Limitations',
+        items: [
+          'Adverse reactions due to undisclosed medical conditions or allergies',
+          'Results that do not meet client expectations despite proper treatment',
+          'Complications arising from failure to follow aftercare instructions',
+          'Loss or damage to personal belongings on our premises',
+          'Indirect, incidental, or consequential damages',
+          'Treatment outcomes affected by lifestyle factors or non-compliance'
+        ]
+      }
+    ]
+  },
+  {
+    id: 'intellectual-property',
+    title: 'Intellectual Property',
+    content: `All content on this website, including text, graphics, logos, images, and software, is the property of Beauty Clinic and protected by copyright and trademark laws. You may not reproduce, distribute, or create derivative works without our express written permission.`
+  },
+  {
+    id: 'privacy',
+    title: 'Privacy and Data Protection',
+    content: `Your privacy is important to us. Our collection and use of personal information is governed by our Privacy Policy. By using our services, you consent to the collection and use of your information as described in our Privacy Policy.`
+  },
+  {
+    id: 'conduct',
+    title: 'User Conduct',
+    content: `When using our services or visiting our premises, you agree to:`,
+    subsections: [
+      {
+        title: 'Expected Conduct',
+        items: [
+          'Treat staff and other clients with respect and courtesy',
+          'Maintain appropriate behavior and language',
+          'Follow all facility rules and safety guidelines',
+          'Not engage in any illegal or harmful activities',
+          'Not harass, threaten, or intimidate staff or other clients',
+          'Respect the privacy of other clients'
+        ]
+      }
+    ]
+  },
+  {
+    id: 'modifications',
+    title: 'Modifications to Terms',
+    content: `Beauty Clinic reserves the right to modify these terms at any time. Changes will be effective immediately upon posting to the website. Your continued use of our services after changes are posted constitutes acceptance of the modified terms. We encourage you to review these terms periodically.`
+  },
+  {
+    id: 'termination',
+    title: 'Termination of Service',
+    content: `We reserve the right to refuse service or terminate your access to our services at any time, with or without cause, and with or without notice. Reasons for termination may include violation of these terms, abusive behavior, or non-payment.`
+  },
+  {
+    id: 'governing-law',
+    title: 'Governing Law',
+    content: `These terms shall be governed by and construed in accordance with the laws of the jurisdiction in which Beauty Clinic operates, without regard to its conflict of law provisions. Any disputes arising from these terms shall be resolved in the courts of that jurisdiction.`
+  },
+  {
+    id: 'contact',
+    title: 'Contact Information',
+    content: `If you have any questions about these Terms of Service, please contact us:`,
+    contact: {
+      email: 'legal@beautyclinic.com',
+      phone: '+1 (234) 567-8900',
+      address: '123 Beauty Street, City, State 12345, United States'
+    }
+  }
+];
+---
+
+<BaseLayout 
+  title="Terms of Service - Beauty Clinic"
+  description="Read Beauty Clinic's terms of service, including appointment policies, cancellation terms, and user agreements."
+>
+  <Header />
+  
+  <main>
+    <!-- Hero Section -->
+    <section class="terms-hero">
+      <div class="container">
+        <div class="hero-content">
+          <div class="hero-badge">Legal</div>
+          <h1 class="hero-title">Terms of Service</h1>
+          <p class="hero-description">
+            Please read these terms carefully before using our services.
+          </p>
+          <div class="last-updated">
+            Last Updated: <strong>{lastUpdated}</strong>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Table of Contents -->
+    <section class="toc-section">
+      <div class="container">
+        <div class="toc-card card">
+          <h2 class="toc-title">Table of Contents</h2>
+          <nav class="toc-nav">
+            {sections.map((section, index) => (
+              <a href={`#${section.id}`} class="toc-link">
+                <span class="toc-number">{index + 1}.</span>
+                <span>{section.title}</span>
+              </a>
+            ))}
+          </nav>
+        </div>
+      </div>
+    </section>
+
+    <!-- Terms Content Section -->
+    <section class="terms-content-section">
+      <div class="container">
+        <div class="content-wrapper">
+          {sections.map((section) => (
+            <article id={section.id} class="content-section card">
+              <h2 class="section-title">{section.title}</h2>
+              <p class="section-content">{section.content}</p>
+              
+              {section.subsections && section.subsections.map((subsection) => (
+                <div class="subsection">
+                  <h3 class="subsection-title">{subsection.title}</h3>
+                  <ul class="content-list">
+                    {subsection.items.map((item) => (
+                      <li class="list-item">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                          <polyline points="20 6 9 17 4 12"></polyline>
+                        </svg>
+                        <span>{item}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              ))}
+              
+              {section.contact && (
+                <div class="contact-info">
+                  <div class="contact-item">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                      <polyline points="22,6 12,13 2,6"></polyline>
+                    </svg>
+                    <a href={`mailto:${section.contact.email}`}>{section.contact.email}</a>
+                  </div>
+                  <div class="contact-item">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+                    </svg>
+                    <a href={`tel:${section.contact.phone}`}>{section.contact.phone}</a>
+                  </div>
+                  <div class="contact-item">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                      <circle cx="12" cy="10" r="3"></circle>
+                    </svg>
+                    <span>{section.contact.address}</span>
+                  </div>
+                </div>
+              )}
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="terms-cta-section">
+      <div class="container">
+        <div class="cta-content">
+          <h2 class="cta-title">Questions About Our Terms?</h2>
+          <p class="cta-description">
+            Our team is available to clarify any questions you may have about our terms of service.
+          </p>
+          <a href="/contact" class="btn btn-primary btn-large">
+            Contact Us
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+              <polyline points="12 5 19 12 12 19"></polyline>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+  
+  <Footer />
+</BaseLayout>
+
+
+<style>
+  /* ===== HERO SECTION - ENHANCED READABILITY ===== */
+  .terms-hero {
+    padding: calc(80px + 6rem) 0 5rem;
+    background: 
+      linear-gradient(to bottom, 
+        transparent 0%,
+        transparent 70%,
+        rgba(0, 0, 0, 0.03) 100%
+      ),
+      linear-gradient(135deg, 
+        rgba(168, 85, 247, 0.15) 0%,
+        rgba(219, 39, 119, 0.15) 50%,
+        rgba(249, 115, 22, 0.12) 100%
+      );
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .terms-hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: 
+      radial-gradient(ellipse at 50% 20%, rgba(236, 72, 153, 0.12) 0%, transparent 40%),
+      radial-gradient(ellipse at 50% 100%, rgba(236, 72, 153, 0.08) 0%, transparent 50%),
+      radial-gradient(circle at 50% 50%, rgba(236, 72, 153, 0.15) 0%, transparent 70%),
+      url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ec4899' fill-opacity='0.015'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    pointer-events: none;
+    animation: pulse 4s ease-in-out infinite;
+  }
+  
+  @keyframes pulse {
+    0%, 100% { opacity: 0.5; }
+    50% { opacity: 1; }
+  }
+  
+  .terms-hero::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 80px;
+    background: linear-gradient(to bottom,
+      transparent 0%,
+      rgba(0, 0, 0, 0.02) 50%,
+      rgba(0, 0, 0, 0.03) 100%
+    );
+    pointer-events: none;
+  }
+  
+  [data-theme="dark"] .terms-hero {
+    background: 
+      linear-gradient(to bottom, 
+        transparent 0%,
+        transparent 70%,
+        rgba(0, 0, 0, 0.2) 100%
+      ),
+      linear-gradient(135deg, 
+        rgba(88, 28, 135, 0.4) 0%,
+        rgba(136, 19, 55, 0.4) 50%,
+        rgba(154, 52, 18, 0.3) 100%
+      );
+  }
+
+  [data-theme="dark"] .terms-hero::before {
+    background: 
+      radial-gradient(ellipse at 50% 20%, rgba(236, 72, 153, 0.18) 0%, transparent 40%),
+      radial-gradient(ellipse at 50% 100%, rgba(236, 72, 153, 0.12) 0%, transparent 50%),
+      radial-gradient(circle at 50% 50%, rgba(236, 72, 153, 0.2) 0%, transparent 70%),
+      url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ec4899' fill-opacity='0.02'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  }
+  
+  [data-theme="dark"] .terms-hero::after {
+    background: linear-gradient(to bottom,
+      transparent 0%,
+      rgba(0, 0, 0, 0.1) 50%,
+      rgba(0, 0, 0, 0.15) 100%
+    );
+  }
+  
+  .hero-content {
+    max-width: 900px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+  }
+  
+  .hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.625rem 1.25rem;
+    background: linear-gradient(135deg, rgba(236, 72, 153, 0.15), rgba(219, 39, 119, 0.15));
+    border: 1.5px solid rgba(236, 72, 153, 0.3);
+    border-radius: 999px;
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--color-primary-600);
+    margin-bottom: 2rem;
+    box-shadow: 0 4px 12px rgba(236, 72, 153, 0.2);
+  }
+  
+  [data-theme="dark"] .hero-badge {
+    background: linear-gradient(135deg, rgba(236, 72, 153, 0.25), rgba(219, 39, 119, 0.25));
+    border-color: rgba(236, 72, 153, 0.4);
+    color: rgba(236, 72, 153, 0.95);
+  }
+  
+  .hero-title {
+    font-size: clamp(2.5rem, 5vw, 4.5rem);
+    margin-bottom: 2rem;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    line-height: 1.1;
+    color: var(--text-primary);
+  }
+  
+  .hero-description {
+    font-size: clamp(1.125rem, 2vw, 1.375rem);
+    color: var(--text-primary);
+    opacity: 0.85;
+    max-width: 700px;
+    margin: 0 auto 2rem;
+    line-height: 1.7;
+  }
+  
+  [data-theme="dark"] .hero-description {
+    opacity: 0.9;
+  }
+  
+  .last-updated {
+    font-size: 1rem;
+    color: var(--text-secondary);
+    opacity: 0.85;
+  }
+  
+  .last-updated strong {
+    color: var(--color-primary-600);
+    font-weight: 600;
+  }
+
+  /* ===== TABLE OF CONTENTS - ENHANCED STRUCTURE ===== */
+  .toc-section {
+    background: var(--bg-primary);
+    padding: 4rem 0;
+    position: relative;
+  }
+  
+  .toc-card {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 2.5rem 2rem;
+    background: var(--bg-secondary);
+    border-radius: var(--radius-xl);
+    border: 1.5px solid rgba(236, 72, 153, 0.18);
+    box-shadow: 
+      var(--shadow-md),
+      0 0 30px rgba(236, 72, 153, 0.08);
+    transition: all 0.3s ease;
+  }
+  
+  .toc-card:hover {
+    box-shadow: 
+      var(--shadow-lg),
+      0 0 40px rgba(236, 72, 153, 0.12);
+    border-color: rgba(236, 72, 153, 0.25);
+  }
+  
+  [data-theme="dark"] .toc-card {
+    background: rgba(18, 18, 26, 0.8);
+    backdrop-filter: blur(8px);
+    border-color: rgba(236, 72, 153, 0.25);
+    box-shadow: 
+      var(--shadow-md),
+      0 0 30px rgba(236, 72, 153, 0.12);
+  }
+  
+  .toc-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 2rem;
+    color: var(--text-primary);
+    padding-bottom: 1rem;
+    border-bottom: 2px solid rgba(236, 72, 153, 0.15);
+    position: relative;
+  }
+  
+  .toc-title::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 60px;
+    height: 2px;
+    background: linear-gradient(90deg, 
+      var(--color-primary-500),
+      transparent
+    );
+  }
+  
+  .toc-nav {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0.5rem;
+  }
+  
+  .toc-link {
+    display: flex;
+    align-items: center;
+    gap: 0.875rem;
+    padding: 1rem 1.25rem;
+    border-radius: var(--radius-lg);
+    text-decoration: none;
+    color: var(--text-secondary);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    border: 1px solid transparent;
+    font-size: 0.9375rem;
+    position: relative;
+  }
+  
+  .toc-link::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 0;
+    height: 2px;
+    background: var(--color-primary-500);
+    transition: width 0.3s ease;
+  }
+  
+  .toc-link:hover {
+    background: rgba(236, 72, 153, 0.08);
+    color: var(--color-primary-600);
+    border-color: rgba(236, 72, 153, 0.2);
+    transform: translateX(8px);
+    padding-left: 1.5rem;
+  }
+  
+  .toc-link:hover::before {
+    width: 4px;
+  }
+  
+  [data-theme="dark"] .toc-link {
+    color: var(--text-primary);
+    opacity: 0.85;
+  }
+  
+  [data-theme="dark"] .toc-link:hover {
+    background: rgba(236, 72, 153, 0.12);
+    opacity: 1;
+    color: rgba(236, 72, 153, 0.95);
+  }
+  
+  .toc-number {
+    font-weight: 700;
+    color: var(--color-primary-500);
+    font-size: 0.875rem;
+    min-width: 24px;
+  }
+
+  /* ===== CONTENT SECTION - ENHANCED READABILITY ===== */
+  .terms-content-section {
+    background: var(--bg-primary);
+    padding: 4rem 0 8rem;
+    position: relative;
+  }
+  
+  .terms-content-section::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: 
+      radial-gradient(ellipse at 30% 50%, rgba(236, 72, 153, 0.03) 0%, transparent 50%),
+      radial-gradient(ellipse at 70% 50%, rgba(139, 92, 246, 0.03) 0%, transparent 50%),
+      url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ec4899' fill-opacity='0.015'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    pointer-events: none;
+  }
+  
+  [data-theme="dark"] .terms-content-section::before {
+    background: 
+      radial-gradient(ellipse at 30% 50%, rgba(236, 72, 153, 0.05) 0%, transparent 50%),
+      radial-gradient(ellipse at 70% 50%, rgba(139, 92, 246, 0.05) 0%, transparent 50%),
+      url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ec4899' fill-opacity='0.02'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  }
+  
+  .content-wrapper {
+    max-width: 800px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+    position: relative;
+    z-index: 1;
+  }
+  
+  .content-section {
+    padding: 3rem 2.5rem;
+    background: var(--bg-secondary);
+    border-radius: var(--radius-xl);
+    border: 1.5px solid rgba(236, 72, 153, 0.18);
+    box-shadow: 
+      var(--shadow-md),
+      0 0 30px rgba(236, 72, 153, 0.08);
+    scroll-margin-top: 120px;
+    transition: all 0.3s ease;
+  }
+  
+  .content-section:hover {
+    box-shadow: 
+      var(--shadow-lg),
+      0 0 40px rgba(236, 72, 153, 0.12);
+    border-color: rgba(236, 72, 153, 0.25);
+  }
+  
+  [data-theme="dark"] .content-section {
+    background: rgba(18, 18, 26, 0.8);
+    backdrop-filter: blur(8px);
+    border-color: rgba(236, 72, 153, 0.25);
+    box-shadow: 
+      var(--shadow-md),
+      0 0 30px rgba(236, 72, 153, 0.12);
+  }
+  
+  .section-title {
+    font-size: 1.875rem;
+    font-weight: 700;
+    margin-bottom: 2rem;
+    color: var(--text-primary);
+    padding-bottom: 1.25rem;
+    border-bottom: 2px solid rgba(236, 72, 153, 0.15);
+    position: relative;
+    letter-spacing: -0.01em;
+  }
+  
+  .section-title::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 60px;
+    height: 2px;
+    background: linear-gradient(90deg, 
+      var(--color-primary-500),
+      transparent
+    );
+  }
+  
+  .section-content {
+    font-size: 1rem;
+    color: var(--text-primary);
+    opacity: 0.85;
+    line-height: 1.9;
+    margin-bottom: 2rem;
+  }
+  
+  [data-theme="dark"] .section-content {
+    opacity: 0.9;
+  }
+
+  .subsection {
+    margin-top: 2.5rem;
+  }
+  
+  .subsection-title {
+    font-size: 1.125rem;
+    font-weight: 600;
+    margin-bottom: 1.25rem;
+    color: var(--text-primary);
+  }
+  
+  .content-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 1.125rem;
+  }
+  
+  .list-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    color: var(--text-primary);
+    opacity: 0.85;
+    font-size: 0.9375rem;
+    line-height: 1.8;
+    padding-left: 0.25rem;
+  }
+  
+  [data-theme="dark"] .list-item {
+    opacity: 0.9;
+  }
+  
+  .list-item svg {
+    flex-shrink: 0;
+    color: var(--color-primary-500);
+    margin-top: 0.25rem;
+    filter: drop-shadow(0 2px 6px rgba(236, 72, 153, 0.35));
+  }
+  
+  .contact-info {
+    margin-top: 2.5rem;
+    padding-top: 2.5rem;
+    border-top: 1px solid rgba(236, 72, 153, 0.15);
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+  }
+  
+  .contact-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    color: var(--text-primary);
+    opacity: 0.85;
+    font-size: 0.9375rem;
+    padding: 0.75rem;
+    border-radius: var(--radius-lg);
+    transition: all 0.3s ease;
+  }
+  
+  .contact-item:hover {
+    background: rgba(236, 72, 153, 0.06);
+    transform: translateX(4px);
+  }
+  
+  [data-theme="dark"] .contact-item {
+    opacity: 0.9;
+  }
+  
+  [data-theme="dark"] .contact-item:hover {
+    background: rgba(236, 72, 153, 0.1);
+  }
+  
+  .contact-item svg {
+    flex-shrink: 0;
+    color: var(--color-primary-500);
+  }
+  
+  .contact-item a {
+    color: var(--color-primary-600);
+    text-decoration: none;
+    transition: all 0.3s ease;
+    font-weight: 500;
+  }
+  
+  .contact-item a:hover {
+    color: var(--color-primary-500);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+  
+  /* ===== CTA SECTION - ENHANCED ===== */
+  .terms-cta-section {
+    background: linear-gradient(135deg, 
+      rgba(236, 72, 153, 0.08),
+      rgba(139, 92, 246, 0.08)
+    );
+    padding: 7rem 0;
+    position: relative;
+    overflow: hidden;
+    margin-top: 2rem;
+  }
+  
+  .terms-cta-section::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: 
+      radial-gradient(circle at 50% 50%, rgba(236, 72, 153, 0.1) 0%, transparent 70%),
+      url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ec4899' fill-opacity='0.02'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    pointer-events: none;
+  }
+  
+  [data-theme="dark"] .terms-cta-section {
+    background: linear-gradient(135deg, 
+      rgba(236, 72, 153, 0.12),
+      rgba(139, 92, 246, 0.12)
+    );
+  }
+  
+  .cta-content {
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+  }
+  
+  .cta-title {
+    font-size: clamp(2rem, 4vw, 3rem);
+    margin-bottom: 1.5rem;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+  }
+  
+  .cta-description {
+    font-size: 1.125rem;
+    color: var(--text-primary);
+    opacity: 0.85;
+    margin-bottom: 3rem;
+    line-height: 1.8;
+  }
+  
+  [data-theme="dark"] .cta-description {
+    opacity: 0.9;
+  }
+  
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+    padding: 1rem 2rem;
+    border-radius: var(--radius-lg);
+    font-weight: 600;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    cursor: pointer;
+    text-decoration: none;
+    border: none;
+    font-family: var(--font-primary);
+  }
+  
+  .btn-primary {
+    background: linear-gradient(135deg, 
+      rgba(236, 72, 153, 0.95),
+      rgba(219, 39, 119, 0.95)
+    );
+    color: white;
+    box-shadow: 
+      0 4px 16px rgba(236, 72, 153, 0.4),
+      0 0 30px rgba(236, 72, 153, 0.25);
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .btn-primary::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, 
+      rgba(255, 255, 255, 0.15),
+      transparent
+    );
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+  
+  .btn-primary:hover {
+    transform: translateY(-4px);
+    box-shadow: 
+      0 6px 24px rgba(236, 72, 153, 0.5),
+      0 0 40px rgba(236, 72, 153, 0.35);
+  }
+  
+  .btn-primary:hover::before {
+    opacity: 1;
+  }
+  
+  .btn-primary:active {
+    transform: translateY(-2px);
+  }
+  
+  .btn-large {
+    padding: 1.125rem 2.5rem;
+    font-size: 1.0625rem;
+  }
+  
+  .btn svg {
+    transition: transform 0.3s ease;
+  }
+  
+  .btn:hover svg {
+    transform: translateX(4px);
+  }
+  
+  /* Responsive */
+  @media (max-width: 768px) {
+    .terms-hero {
+      padding: calc(80px + 4rem) 0 3rem;
+    }
+    
+    .toc-section,
+    .terms-content-section {
+      padding: 2rem 0 4rem;
+    }
+    
+    .terms-cta-section {
+      padding: 4rem 0;
+    }
+    
+    .toc-card,
+    .content-section {
+      padding: 2rem 1.5rem;
+    }
+    
+    .toc-nav {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
+
+<script>
+  // Smooth scroll for TOC links
+  document.addEventListener('DOMContentLoaded', () => {
+    const tocLinks = document.querySelectorAll<HTMLAnchorElement>('.toc-link');
+    
+    tocLinks.forEach(link => {
+      link.addEventListener('click', (e) => {
+        e.preventDefault();
+        const targetId = link.getAttribute('href');
+        if (targetId) {
+          const targetElement = document.querySelector(targetId);
+          
+          if (targetElement) {
+            targetElement.scrollIntoView({
+              behavior: 'smooth',
+              block: 'start'
+            });
+          }
+        }
+      });
+    });
+  });
+</script>

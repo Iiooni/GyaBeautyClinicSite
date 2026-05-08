@@ -1,0 +1,235 @@
+---
+interface Props {
+  type?: 'laptop' | 'tablet' | 'phone';
+  className?: string;
+}
+
+const { type = 'laptop', className = '' } = Astro.props;
+---
+
+<div class={`device-mockup device-${type} ${className}`}>
+  {type === 'laptop' && (
+    <div class="laptop-frame">
+      <div class="laptop-screen">
+        <div class="mockup-content">
+          <slot />
+        </div>
+      </div>
+      
+      
+    
+    </div>
+  )}
+  
+  {type === 'tablet' && (
+    <div class="tablet-frame">
+      <div class="tablet-camera"></div>
+      <div class="tablet-screen">
+        <div class="mockup-content">
+          <slot />
+        </div>
+      </div>
+      <div class="tablet-button"></div>
+    </div>
+  )}
+  
+  {type === 'phone' && (
+    <div class="phone-frame">
+      <div class="phone-notch"></div>
+      <div class="phone-screen">
+        <div class="mockup-content">
+          <slot />
+        </div>
+      </div>
+    </div>
+  )}
+</div>
+
+<style>
+  .device-mockup {
+    position: relative;
+    display: inline-block;
+  }
+  
+  /* Laptop Mockup */
+  .laptop-frame {
+    position: relative;
+    width: 100%;
+    max-width: 800px;
+  }
+  
+  .laptop-screen {
+    background: #f8f0de;
+    border-radius: 12px 12px 0 0;
+    padding: 20px;
+    border: 0px solid #2a2a3e;
+    border-bottom: none;
+    box-shadow: 
+      0 0 0 2px rgba(255, 255, 255, 0.1),
+      0 20px 40px rgba(0, 0, 0, 0.5);
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .laptop-screen::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(
+      135deg,
+      rgba(255, 255, 255, 0.05) 0%,
+      transparent 50%,
+      rgba(0, 0, 0, 0.1) 100%
+    );
+    pointer-events: none;
+  }
+  
+  .laptop-base {
+    height: 20px;
+    background: linear-gradient(to bottom, #f8f0de, #f8f0de);
+    border-radius: 0 0 12px 12px;
+    position: relative;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+  }
+  
+  .laptop-base::before {
+    content: '';
+    position: absolute;
+    bottom: -8px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 120%;
+    height: 8px;
+    background: linear-gradient(to bottom, #1a1a2e, transparent);
+    border-radius: 50%;
+  }
+  
+  .laptop-notch {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 60px;
+    height: 4px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 2px;
+  }
+  
+  /* Tablet Mockup */
+  .tablet-frame {
+    position: relative;
+    width: 100%;
+    max-width: 600px;
+    background: #2a2a3e;
+    border-radius: 24px;
+    padding: 40px 20px;
+    box-shadow: 
+      0 0 0 8px #1a1a2e,
+      0 0 0 10px rgba(255, 255, 255, 0.1),
+      0 30px 60px rgba(0, 0, 0, 0.5);
+  }
+  
+  .tablet-camera {
+    position: absolute;
+    top: 15px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 8px;
+    height: 8px;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    box-shadow: 0 0 4px rgba(255, 255, 255, 0.3);
+  }
+  
+  .tablet-screen {
+    background: #0a0a0f;
+    border-radius: 12px;
+    overflow: hidden;
+    position: relative;
+  }
+  
+  .tablet-button {
+    position: absolute;
+    bottom: 15px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 40px;
+    height: 4px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 2px;
+  }
+  
+  /* Phone Mockup */
+  .phone-frame {
+    position: relative;
+    width: 100%;
+    max-width: 320px;
+    background: #2a2a3e;
+    border-radius: 32px;
+    padding: 12px;
+    box-shadow: 
+      0 0 0 4px #1a1a2e,
+      0 0 0 6px rgba(255, 255, 255, 0.1),
+      0 20px 40px rgba(0, 0, 0, 0.5);
+  }
+  
+  .phone-notch {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 120px;
+    height: 24px;
+    background: #2a2a3e;
+    border-radius: 0 0 16px 16px;
+    z-index: 10;
+  }
+  
+  .phone-notch::before {
+    content: '';
+    position: absolute;
+    top: 8px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 4px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 2px;
+  }
+  
+  .phone-screen {
+    background: #0a0a0f;
+    border-radius: 24px;
+    overflow: hidden;
+    position: relative;
+    aspect-ratio: 9 / 19.5;
+  }
+  
+  /* Mockup Content */
+  .mockup-content {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  /* Responsive */
+  @media (max-width: 768px) {
+    .laptop-frame {
+      max-width: 100%;
+    }
+    
+    .laptop-screen {
+      padding: 12px;
+      border-width: 6px;
+    }
+    
+    .tablet-frame {
+      max-width: 100%;
+      padding: 30px 15px;
+    }
+  }
+</style>

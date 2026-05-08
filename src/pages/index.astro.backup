@@ -1,0 +1,670 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Header from '@/components/Header.astro';
+import Hero from '@/components/Hero.astro';
+import Footer from '@/components/Footer.astro';
+
+const services = [
+  {
+    icon: '✨',
+    title: 'Advanced Facial Treatments',
+    description: 'Rejuvenate your skin with our cutting-edge facial treatments using medical-grade technology and premium skincare products.',
+    link: '/services/facial',
+    price: 'From $180',
+    popular: true,
+    features: ['Deep Cleansing', 'Anti-Aging', 'Hydration Boost']
+  },
+  {
+    icon: '💆',
+    title: 'Luxury Body Treatments',
+    description: 'Experience full-body transformation with our exclusive body contouring and wellness therapies designed for lasting results.',
+    link: '/services/body',
+    price: 'From $220',
+    popular: false,
+    features: ['Body Sculpting', 'Detox Therapy', 'Skin Tightening']
+  },
+  {
+    icon: '🔬',
+    title: 'Medical Laser Therapy',
+    description: 'State-of-the-art FDA-approved laser treatments for permanent hair removal, skin resurfacing, and pigmentation correction.',
+    link: '/services/laser',
+    price: 'From $250',
+    popular: false,
+    features: ['Hair Removal', 'Skin Resurfacing', 'Scar Treatment']
+  },
+  {
+    icon: '💉',
+    title: 'Premium Anti-Aging',
+    description: 'Turn back time with our comprehensive anti-aging solutions including Botox, dermal fillers, and advanced skin rejuvenation.',
+    link: '/services/anti-aging',
+    price: 'From $350',
+    popular: true,
+    features: ['Botox & Fillers', 'Thread Lift', 'PRP Therapy']
+  },
+  {
+    icon: '💄',
+    title: 'Aesthetic Enhancements',
+    description: 'Enhance your natural beauty with our expert cosmetic procedures performed by board-certified specialists.',
+    link: '/services/cosmetic',
+    price: 'From $280',
+    popular: false,
+    features: ['Lip Enhancement', 'Facial Contouring', 'Permanent Makeup']
+  },
+  {
+    icon: '🌿',
+    title: 'Holistic Wellness Programs',
+    description: 'Comprehensive wellness programs combining nutrition, IV therapy, and lifestyle coaching for total body transformation.',
+    link: '/services/wellness',
+    price: 'From $200',
+    popular: false,
+    features: ['IV Therapy', 'Nutrition Plan', 'Wellness Coaching']
+  }
+];
+
+const testimonials = [
+  {
+    name: 'Sarah Mitchell',
+    role: 'Marketing Executive',
+    treatment: 'Anti-Aging Treatment',
+    image: '👩',
+    rating: 5,
+    verified: true,
+    text: 'Absolutely transformative experience! The anti-aging treatment exceeded all my expectations. My skin looks 10 years younger, and the staff made me feel like royalty throughout the entire process.'
+  },
+  {
+    name: 'Emily Rodriguez',
+    role: 'Fashion Designer',
+    treatment: 'Laser Skin Resurfacing',
+    image: '👱‍♀️',
+    rating: 5,
+    verified: true,
+    text: 'I\'ve been coming here for 3 years and the results speak for themselves. The laser treatments have completely transformed my skin texture. Professional, caring, and truly expert care.'
+  },
+  {
+    name: 'Michael Chen',
+    role: 'Business Owner',
+    treatment: 'Body Contouring',
+    image: '👨',
+    rating: 5,
+    verified: true,
+    text: 'Outstanding service and incredible results! The body contouring program helped me achieve the physique I\'ve always wanted. The team is knowledgeable, professional, and genuinely cares about results.'
+  }
+];
+
+const doctors = [
+  {
+    name: 'Dr. Sarah Mitchell',
+    specialty: 'Medical Director',
+    credentials: 'MD, Board Certified',
+    image: '👩‍⚕️',
+    experience: '18+ years'
+  },
+  {
+    name: 'Dr. James Chen',
+    specialty: 'Laser Specialist',
+    credentials: 'MD, Dermatology',
+    image: '👨‍⚕️',
+    experience: '15+ years'
+  },
+  {
+    name: 'Dr. Lisa Thompson',
+    specialty: 'Aesthetic Medicine',
+    credentials: 'MD, Cosmetic Surgery',
+    image: '👩‍⚕️',
+    experience: '12+ years'
+  }
+];
+
+const pricingPackages = [
+  {
+    name: 'Essential Glow',
+    price: '$299',
+    period: 'per session',
+    description: 'Perfect for first-time clients',
+    features: [
+      'Deep Cleansing Facial',
+      'Skin Analysis',
+      'Custom Skincare Plan',
+      'Follow-up Consultation'
+    ],
+    popular: false
+  },
+  {
+    name: 'Premium Radiance',
+    price: '$599',
+    period: 'per month',
+    description: 'Most popular choice',
+    features: [
+      '2 Advanced Facial Treatments',
+      'Laser Hair Removal Session',
+      'Body Contouring Treatment',
+      'Priority Booking',
+      '15% Product Discount'
+    ],
+    popular: true
+  },
+  {
+    name: 'Ultimate Transformation',
+    price: '$1,299',
+    period: 'per month',
+    description: 'Complete beauty solution',
+    features: [
+      'Unlimited Facial Treatments',
+      'All Laser Treatments',
+      'Anti-Aging Procedures',
+      'Personal Beauty Consultant',
+      '25% Product Discount',
+      'VIP Lounge Access'
+    ],
+    popular: false
+  }
+];
+
+const faqs = [
+  {
+    question: 'Are your treatments safe and FDA-approved?',
+    answer: 'Yes, all our treatments use FDA-approved equipment and medical-grade products. Our procedures are performed by licensed medical professionals with extensive training and certification.'
+  },
+  {
+    question: 'How long do results typically last?',
+    answer: 'Results vary by treatment type. Facial treatments show immediate results lasting 4-6 weeks. Laser treatments offer permanent results after completing the recommended sessions. Anti-aging treatments like Botox last 3-6 months.'
+  },
+  {
+    question: 'Is there any downtime after treatments?',
+    answer: 'Most treatments have minimal to no downtime. Facial treatments allow immediate return to normal activities. Laser treatments may require 24-48 hours. Our specialists will provide detailed aftercare instructions.'
+  },
+  {
+    question: 'Do you offer payment plans?',
+    answer: 'Yes, we offer flexible payment plans and financing options for treatments over $500. We also accept all major credit cards and offer package discounts for multiple sessions.'
+  },
+  {
+    question: 'What should I expect during my first visit?',
+    answer: 'Your first visit includes a comprehensive consultation, skin analysis, and personalized treatment plan. We\'ll discuss your goals, medical history, and recommend the best treatments for your needs.'
+  }
+];
+
+const awards = [
+  { icon: '🏆', title: 'Best Beauty Clinic 2025', org: 'Beauty Excellence Awards' },
+  { icon: '⭐', title: 'Top Rated Aesthetic Center', org: 'Medical Spa Association' },
+  { icon: '🎖️', title: 'ISO 9001 Certified', org: 'International Standards' },
+  { icon: '✨', title: 'Customer Choice Award', org: 'Beauty Industry Awards' }
+];
+---
+
+<BaseLayout 
+  title="Beauty Clinic - Premium Beauty & Wellness Treatments | Transform Your Natural Beauty"
+  description="Experience world-class beauty treatments with our expert team. FDA-approved procedures, 18+ years experience, 12,500+ satisfied clients. Book your free consultation today."
+>
+  <style>
+    @import '../styles/homepage.css';
+  </style>
+  
+  <Header />
+  
+  <main>
+    <Hero 
+      title="Transform Your Beauty, Elevate Your Confidence"
+      subtitle="Experience world-class aesthetic treatments with cutting-edge technology and personalized care. Our board-certified specialists deliver natural-looking results that enhance your unique beauty."
+    />
+    
+    <!-- Services Section - Premium Enhanced -->
+    <section class="services-section">
+      <div class="container">
+        <div class="section-header reveal">
+          <span class="section-badge">Our Expertise</span>
+          <h2 class="section-title">Premium Treatment Services</h2>
+          <p class="section-subtitle">
+            Discover our comprehensive range of advanced beauty treatments, each designed with precision and delivered with care by our expert medical team.
+          </p>
+        </div>
+        
+        <div class="services-grid">
+          {services.map((service, index) => (
+            <div class={`service-card card hover-lift reveal stagger-${(index % 6) + 1}`}>
+              {service.popular && (
+                <div class="popular-badge">
+                  <span class="badge-icon">⭐</span>
+                  <span>Most Popular</span>
+                </div>
+              )}
+              
+              <div class="service-icon-wrapper">
+                <div class="service-icon">{service.icon}</div>
+              </div>
+              
+              <h3 class="service-title">{service.title}</h3>
+              <p class="service-description">{service.description}</p>
+              
+              <div class="service-features">
+                {service.features.map(feature => (
+                  <span class="feature-tag">{feature}</span>
+                ))}
+              </div>
+              
+              <div class="service-footer">
+                <div class="service-price">
+                  <span class="price-label">Starting at</span>
+                  <span class="price-value">{service.price}</span>
+                </div>
+                <a href={service.link} class="service-link">
+                  <span>Learn More</span>
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                    <polyline points="12 5 19 12 12 19"></polyline>
+                  </svg>
+                </a>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+    
+    <!-- Why Choose Us Section - Premium Enhanced -->
+    <section class="why-choose-section">
+      <div class="container">
+        <div class="why-choose-grid">
+          <div class="why-choose-content reveal-left">
+            <span class="section-badge">Why Choose Us</span>
+            <h2 class="section-title">Excellence in Every Detail</h2>
+            <p class="section-text">
+              With over 18 years of expertise in aesthetic medicine, we've established ourselves as the premier destination for transformative beauty treatments. Our commitment to excellence, combined with cutting-edge technology and personalized care, ensures exceptional results every time.
+            </p>
+            
+            <div class="why-features">
+              <div class="why-feature-item">
+                <div class="feature-icon">🏆</div>
+                <div class="feature-content">
+                  <h4>Award-Winning Excellence</h4>
+                  <p>Recognized nationally for outstanding patient care and treatment results. Multiple industry awards for innovation and service quality.</p>
+                </div>
+              </div>
+              
+              <div class="why-feature-item">
+                <div class="feature-icon">👨‍⚕️</div>
+                <div class="feature-content">
+                  <h4>Board-Certified Specialists</h4>
+                  <p>Our team consists of highly trained, board-certified physicians with extensive experience in aesthetic medicine and dermatology.</p>
+                </div>
+              </div>
+              
+              <div class="why-feature-item">
+                <div class="feature-icon">🔬</div>
+                <div class="feature-content">
+                  <h4>FDA-Approved Technology</h4>
+                  <p>We invest in the latest FDA-approved equipment and medical-grade products to ensure safe, effective, and lasting results.</p>
+                </div>
+              </div>
+              
+              <div class="why-feature-item">
+                <div class="feature-icon">💝</div>
+                <div class="feature-content">
+                  <h4>Personalized Treatment Plans</h4>
+                  <p>Every client receives a customized treatment plan tailored to their unique needs, goals, and skin type for optimal results.</p>
+                </div>
+              </div>
+            </div>
+            
+            <div class="why-stats">
+              <div class="why-stat">
+                <div class="stat-number">98%</div>
+                <div class="stat-label">Client Satisfaction</div>
+              </div>
+              <div class="why-stat">
+                <div class="stat-number">12,500+</div>
+                <div class="stat-label">Successful Treatments</div>
+              </div>
+              <div class="why-stat">
+                <div class="stat-number">18+</div>
+                <div class="stat-label">Years Experience</div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="why-choose-visual reveal-right">
+            <div class="visual-card card">
+              <svg viewBox="0 0 400 500" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                  <linearGradient id="whyGradient" x1="0" y1="0" x2="400" y2="500">
+                    <stop offset="0%" stop-color="var(--color-secondary-400)" stop-opacity="0.4"/>
+                    <stop offset="100%" stop-color="var(--color-primary-400)" stop-opacity="0.4"/>
+                  </linearGradient>
+                </defs>
+                <rect width="400" height="500" rx="20" fill="url(#whyGradient)"/>
+              </svg>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Before & After Section -->
+    <section class="before-after-section">
+      <div class="container">
+        <div class="section-header reveal">
+          <span class="section-badge">Real Results</span>
+          <h2 class="section-title">Transformations That Speak for Themselves</h2>
+          <p class="section-subtitle">
+            See the remarkable results our clients have achieved with our advanced treatments and expert care.
+          </p>
+        </div>
+        
+        <div class="before-after-slider reveal-scale">
+          <div class="slider-container">
+            <div class="comparison-card card">
+              <div class="comparison-header">
+                <h3>Facial Rejuvenation Treatment</h3>
+                <span class="treatment-badge">8 Weeks Progress</span>
+              </div>
+              <div class="comparison-images">
+                <div class="image-side">
+                  <div class="image-label">Before</div>
+                  <div class="image-placeholder">
+                    <svg viewBox="0 0 300 300" fill="none">
+                      <rect width="300" height="300" fill="var(--bg-tertiary)"/>
+                      <text x="150" y="150" text-anchor="middle" fill="var(--text-secondary)" font-size="14">Before Image</text>
+                    </svg>
+                  </div>
+                </div>
+                <div class="divider-line"></div>
+                <div class="image-side">
+                  <div class="image-label after">After</div>
+                  <div class="image-placeholder">
+                    <svg viewBox="0 0 300 300" fill="none">
+                      <defs>
+                        <linearGradient id="afterGrad" x1="0" y1="0" x2="300" y2="300">
+                          <stop offset="0%" stop-color="var(--color-primary-400)" stop-opacity="0.3"/>
+                          <stop offset="100%" stop-color="var(--color-secondary-400)" stop-opacity="0.3"/>
+                        </linearGradient>
+                      </defs>
+                      <rect width="300" height="300" fill="url(#afterGrad)"/>
+                      <text x="150" y="150" text-anchor="middle" fill="var(--text-secondary)" font-size="14">After Image</text>
+                    </svg>
+                  </div>
+                </div>
+              </div>
+              <div class="comparison-footer">
+                <p>Advanced facial treatment combining laser therapy and medical-grade skincare for visible anti-aging results.</p>
+              </div>
+            </div>
+          </div>
+          
+          <div class="before-after-cta">
+            <a href="/gallery" class="btn btn-primary hover-lift">
+              <span>View Full Gallery</span>
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <line x1="5" y1="12" x2="19" y2="12"></line>
+                <polyline points="12 5 19 12 12 19"></polyline>
+              </svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Meet Our Doctors Section -->
+    <section class="doctors-preview-section">
+      <div class="container">
+        <div class="section-header reveal">
+          <span class="section-badge">Expert Team</span>
+          <h2 class="section-title">Meet Our Board-Certified Specialists</h2>
+          <p class="section-subtitle">
+            Our team of highly qualified medical professionals brings decades of combined experience in aesthetic medicine.
+          </p>
+        </div>
+        
+        <div class="doctors-preview-grid">
+          {doctors.map((doctor, index) => (
+            <div class={`doctor-preview-card card hover-lift reveal stagger-${index + 1}`}>
+              <div class="doctor-avatar-large">{doctor.image}</div>
+              <div class="doctor-badge">{doctor.experience}</div>
+              <h3 class="doctor-name">{doctor.name}</h3>
+              <div class="doctor-specialty">{doctor.specialty}</div>
+              <div class="doctor-credentials">{doctor.credentials}</div>
+            </div>
+          ))}
+        </div>
+        
+        <div class="doctors-cta reveal">
+          <a href="/doctors" class="btn btn-secondary hover-lift">
+            <span>Meet Full Team</span>
+          </a>
+        </div>
+      </div>
+    </section>
+    
+    <!-- Testimonials Section - Premium Enhanced -->
+    <section class="testimonials-section">
+      <div class="container">
+        <div class="section-header reveal">
+          <span class="section-badge">Client Stories</span>
+          <h2 class="section-title">Trusted by Thousands of Happy Clients</h2>
+          <p class="section-subtitle">
+            Don't just take our word for it - hear from our satisfied clients about their transformative experiences.
+          </p>
+        </div>
+        
+        <div class="testimonials-grid">
+          {testimonials.map((testimonial, index) => (
+            <div class={`testimonial-card card hover-lift reveal stagger-${index + 1}`}>
+              <div class="testimonial-header">
+                <div class="testimonial-rating">
+                  {Array.from({ length: testimonial.rating }).map(() => (
+                    <span class="star">⭐</span>
+                  ))}
+                </div>
+                {testimonial.verified && (
+                  <div class="verified-badge">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <polyline points="20 6 9 17 4 12"></polyline>
+                    </svg>
+                    <span>Verified</span>
+                  </div>
+                )}
+              </div>
+              
+              <p class="testimonial-text">"{testimonial.text}"</p>
+              
+              <div class="testimonial-author">
+                <div class="author-avatar">{testimonial.image}</div>
+                <div class="author-info">
+                  <div class="author-name">{testimonial.name}</div>
+                  <div class="author-role">{testimonial.role}</div>
+                  <div class="author-treatment">{testimonial.treatment}</div>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Pricing Packages Section -->
+    <section class="pricing-section">
+      <div class="container">
+        <div class="section-header reveal">
+          <span class="section-badge">Investment in Beauty</span>
+          <h2 class="section-title">Flexible Treatment Packages</h2>
+          <p class="section-subtitle">
+            Choose the perfect package for your beauty journey. All packages include personalized consultation and aftercare support.
+          </p>
+        </div>
+        
+        <div class="pricing-grid">
+          {pricingPackages.map((pkg, index) => (
+            <div class={`pricing-card card hover-lift reveal stagger-${index + 1} ${pkg.popular ? 'popular' : ''}`}>
+              {pkg.popular && (
+                <div class="popular-ribbon">
+                  <span>Most Popular</span>
+                </div>
+              )}
+              
+              <div class="pricing-header">
+                <h3 class="package-name">{pkg.name}</h3>
+                <p class="package-description">{pkg.description}</p>
+              </div>
+              
+              <div class="pricing-price">
+                <span class="price-amount">{pkg.price}</span>
+                <span class="price-period">{pkg.period}</span>
+              </div>
+              
+              <ul class="pricing-features">
+                {pkg.features.map(feature => (
+                  <li class="pricing-feature">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <polyline points="20 6 9 17 4 12"></polyline>
+                    </svg>
+                    <span>{feature}</span>
+                  </li>
+                ))}
+              </ul>
+              
+              <a href="/booking" class={`btn ${pkg.popular ? 'btn-primary' : 'btn-secondary'} hover-lift`}>
+                <span>Get Started</span>
+              </a>
+            </div>
+          ))}
+        </div>
+        
+        <div class="pricing-note reveal">
+          <p>All packages include free consultation • Flexible payment plans available • 30-day satisfaction guarantee</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq-section">
+      <div class="container">
+        <div class="section-header reveal">
+          <span class="section-badge">Questions & Answers</span>
+          <h2 class="section-title">Frequently Asked Questions</h2>
+          <p class="section-subtitle">
+            Find answers to common questions about our treatments, procedures, and what to expect.
+          </p>
+        </div>
+        
+        <div class="faq-container">
+          {faqs.map((faq, index) => (
+            <div class={`faq-item card reveal stagger-${index + 1}`}>
+              <button class="faq-question">
+                <span>{faq.question}</span>
+                <svg class="faq-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <polyline points="6 9 12 15 18 9"></polyline>
+                </svg>
+              </button>
+              <div class="faq-answer">
+                <p>{faq.answer}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+        
+        <div class="faq-cta reveal">
+          <p>Still have questions?</p>
+          <a href="/contact" class="btn btn-secondary hover-lift">
+            <span>Contact Us</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Awards & Certifications Section -->
+    <section class="awards-section">
+      <div class="container">
+        <div class="section-header reveal">
+          <span class="section-badge">Recognition</span>
+          <h2 class="section-title">Awards & Certifications</h2>
+          <p class="section-subtitle">
+            Recognized for excellence in aesthetic medicine and patient care.
+          </p>
+        </div>
+        
+        <div class="awards-grid">
+          {awards.map((award, index) => (
+            <div class={`award-card card reveal stagger-${index + 1}`}>
+              <div class="award-icon">{award.icon}</div>
+              <h4 class="award-title">{award.title}</h4>
+              <p class="award-org">{award.org}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+    
+    <!-- Final CTA Section -->
+    <section class="cta-section">
+      <div class="container">
+        <div class="cta-content reveal-scale">
+          <h2 class="cta-title">Ready to Begin Your Transformation?</h2>
+          <p class="cta-text">
+            Book your complimentary consultation today and discover how we can help you achieve your beauty goals with personalized treatment plans and expert care.
+          </p>
+          <div class="cta-buttons">
+            <a href="/booking" class="btn btn-primary btn-large hover-lift">
+              <span>Book Free Consultation</span>
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <line x1="5" y1="12" x2="19" y2="12"></line>
+                <polyline points="12 5 19 12 12 19"></polyline>
+              </svg>
+            </a>
+            <a href="/contact" class="btn btn-secondary btn-large hover-lift">
+              <span>Contact Us</span>
+            </a>
+          </div>
+          <div class="cta-trust">
+            <div class="trust-item">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="20 6 9 17 4 12"></polyline>
+              </svg>
+              <span>No Obligation</span>
+            </div>
+            <div class="trust-item">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="20 6 9 17 4 12"></polyline>
+              </svg>
+              <span>Free Consultation</span>
+            </div>
+            <div class="trust-item">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="20 6 9 17 4 12"></polyline>
+              </svg>
+              <span>Expert Advice</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+  
+  <Footer />
+</BaseLayout>
+
+
+
+<style>
+@import '../styles/homepage.css';
+</style>
+
+<script>
+  // FAQ Accordion
+  document.addEventListener('DOMContentLoaded', () => {
+    const faqItems = document.querySelectorAll('.faq-item');
+    
+    faqItems.forEach(item => {
+      const question = item.querySelector('.faq-question');
+      
+      question?.addEventListener('click', () => {
+        const isActive = item.classList.contains('active');
+        
+        // Close all items
+        faqItems.forEach(i => i.classList.remove('active'));
+        
+        // Open clicked item if it wasn't active
+        if (!isActive) {
+          item.classList.add('active');
+        }
+      });
+    });
+  });
+</script>

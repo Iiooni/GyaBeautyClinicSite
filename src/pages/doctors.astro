@@ -1,0 +1,850 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Header from '@/components/Header.astro';
+import Footer from '@/components/Footer.astro';
+
+const doctors = [
+  {
+    name: 'Dr. Sarah Mitchell',
+    role: 'Medical Director',
+    specialty: 'Aesthetic Medicine & Dermatology',
+    image: 'https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=400&h=400&fit=crop&crop=faces',
+    experience: '15+ years',
+    education: [
+      'MD, Harvard Medical School',
+      'Board Certified Dermatologist',
+      'Fellowship in Aesthetic Medicine'
+    ],
+    specialties: [
+      'Anti-Aging Treatments',
+      'Laser Therapy',
+      'Skin Rejuvenation',
+      'Cosmetic Procedures'
+    ],
+    bio: 'Dr. Mitchell is a renowned expert in aesthetic medicine with over 15 years of experience. She has helped thousands of clients achieve their beauty goals with personalized treatment plans.'
+  },
+  {
+    name: 'Dr. James Chen',
+    role: 'Senior Dermatologist',
+    specialty: 'Laser Therapy & Skin Care',
+    image: 'https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?w=400&h=400&fit=crop&crop=faces',
+    experience: '12+ years',
+    education: [
+      'MD, Stanford University',
+      'Dermatology Residency',
+      'Advanced Laser Certification'
+    ],
+    specialties: [
+      'Laser Hair Removal',
+      'Pigmentation Treatment',
+      'Acne Treatment',
+      'Scar Reduction'
+    ],
+    bio: 'Dr. Chen specializes in advanced laser treatments and has pioneered several innovative techniques in skin rejuvenation and hair removal.'
+  },
+  {
+    name: 'Emma Rodriguez',
+    role: 'Lead Aesthetician',
+    specialty: 'Facial Treatments & Skincare',
+    image: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=400&h=400&fit=crop&crop=faces',
+    experience: '10+ years',
+    education: [
+      'Licensed Aesthetician',
+      'Advanced Skincare Certification',
+      'Chemical Peel Specialist'
+    ],
+    specialties: [
+      'Facial Treatments',
+      'Chemical Peels',
+      'Microdermabrasion',
+      'Skincare Consultation'
+    ],
+    bio: 'Emma is passionate about helping clients achieve healthy, glowing skin through customized facial treatments and expert skincare advice.'
+  },
+  {
+    name: 'Dr. Michael Park',
+    role: 'Cosmetic Surgeon',
+    specialty: 'Non-Invasive Procedures',
+    image: 'https://images.unsplash.com/photo-1622253692010-333f2da6031d?w=400&h=400&fit=crop&crop=faces',
+    experience: '18+ years',
+    education: [
+      'MD, Johns Hopkins University',
+      'Board Certified Plastic Surgeon',
+      'Cosmetic Surgery Fellowship'
+    ],
+    specialties: [
+      'Botox & Fillers',
+      'Thread Lift',
+      'Body Contouring',
+      'Facial Sculpting'
+    ],
+    bio: 'Dr. Park is a board-certified surgeon specializing in non-invasive cosmetic procedures that deliver natural-looking results.'
+  },
+  {
+    name: 'Dr. Lisa Thompson',
+    role: 'Wellness Specialist',
+    specialty: 'Holistic Beauty & Wellness',
+    image: 'https://images.unsplash.com/photo-1594824476967-48c8b964273f?w=400&h=400&fit=crop&crop=faces',
+    experience: '8+ years',
+    education: [
+      'MD, Yale School of Medicine',
+      'Integrative Medicine Certification',
+      'Nutrition Specialist'
+    ],
+    specialties: [
+      'Wellness Programs',
+      'Nutrition Counseling',
+      'IV Therapy',
+      'Stress Management'
+    ],
+    bio: 'Dr. Thompson takes a holistic approach to beauty, focusing on overall wellness and helping clients achieve balance from the inside out.'
+  },
+  {
+    name: 'David Kim',
+    role: 'Senior Therapist',
+    specialty: 'Body Treatments & Massage',
+    image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop&crop=faces',
+    experience: '9+ years',
+    education: [
+      'Licensed Massage Therapist',
+      'Body Contouring Specialist',
+      'Lymphatic Drainage Certification'
+    ],
+    specialties: [
+      'Body Massage',
+      'Lymphatic Drainage',
+      'Body Wraps',
+      'Cellulite Treatment'
+    ],
+    bio: 'David specializes in therapeutic body treatments that promote relaxation, detoxification, and body contouring.'
+  }
+];
+---
+
+<BaseLayout 
+  title="Our Expert Team - Beauty Clinic"
+  description="Meet our team of certified professionals dedicated to helping you achieve your beauty and wellness goals with expert care and personalized treatments."
+>
+  <Header />
+  
+  <main>
+    <!-- Page Header -->
+    <section class="page-header">
+      <div class="container">
+        <h1 class="page-title animate-fade-in-up">Meet Our Expert Team</h1>
+        <p class="page-subtitle animate-fade-in-up stagger-1">
+          Certified professionals with years of experience and a passion for beauty
+        </p>
+      </div>
+    </section>
+    
+    <!-- Doctors Grid -->
+    <section class="doctors-section">
+      <div class="container">
+        <div class="doctors-grid">
+          {doctors.map((doctor, index) => (
+            <div class={`doctor-card card hover-lift reveal stagger-${(index % 6) + 1}`}>
+              <div class="doctor-header">
+                <div class="doctor-avatar">
+                  <img src={doctor.image} alt={doctor.name} loading="lazy" />
+                </div>
+                <div class="doctor-badge">{doctor.experience}</div>
+              </div>
+              
+              <div class="doctor-info">
+                <h3 class="doctor-name">{doctor.name}</h3>
+                <div class="doctor-role">{doctor.role}</div>
+                <div class="doctor-specialty">{doctor.specialty}</div>
+              </div>
+              
+              <p class="doctor-bio">{doctor.bio}</p>
+              
+              <div class="doctor-details">
+                <div class="detail-section">
+                  <h4 class="detail-title">Education</h4>
+                  <ul class="detail-list">
+                    {doctor.education.map(edu => (
+                      <li>{edu}</li>
+                    ))}
+                  </ul>
+                </div>
+                
+                <div class="detail-section">
+                  <h4 class="detail-title">Specialties</h4>
+                  <ul class="detail-list">
+                    {doctor.specialties.map(spec => (
+                      <li>{spec}</li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+              
+              <a href="/booking" class="btn btn-primary hover-lift">
+                Book Appointment
+              </a>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+    
+    <!-- Why Choose Us -->
+    <section class="why-section">
+      <div class="container">
+        <h2 class="section-title reveal">Why Choose Our Team?</h2>
+        <div class="why-grid">
+          <div class="why-card card reveal stagger-1">
+            <div class="why-icon">🎓</div>
+            <h3 class="why-title">Highly Qualified</h3>
+            <p class="why-text">All our professionals are certified and continuously trained in the latest techniques.</p>
+          </div>
+          
+          <div class="why-card card reveal stagger-2">
+            <div class="why-icon">💼</div>
+            <h3 class="why-title">Experienced</h3>
+            <p class="why-text">Combined decades of experience in aesthetic medicine and beauty care.</p>
+          </div>
+          
+          <div class="why-card card reveal stagger-3">
+            <div class="why-icon">❤️</div>
+            <h3 class="why-title">Passionate</h3>
+            <p class="why-text">Dedicated to helping you achieve your beauty goals with personalized care.</p>
+          </div>
+          
+          <div class="why-card card reveal stagger-4">
+            <div class="why-icon">🏆</div>
+            <h3 class="why-title">Award-Winning</h3>
+            <p class="why-text">Recognized for excellence in beauty and aesthetic medicine.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <!-- CTA Section -->
+    <section class="cta-section">
+      <div class="container">
+        <div class="cta-content reveal-scale">
+          <h2 class="cta-title">Ready to Meet Our Team?</h2>
+          <p class="cta-text">
+            Schedule a consultation with one of our experts and start your beauty journey today.
+          </p>
+          <a href="/booking" class="btn btn-secondary btn-large hover-lift">
+            Book Consultation
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+  
+  <Footer />
+</BaseLayout>
+
+<style>
+  /* Hero Section - Premium Enhancement */
+  .page-header {
+    padding: calc(80px + 6rem) 0 7rem;
+    background: linear-gradient(135deg, 
+      rgba(168, 85, 247, 0.15) 0%,
+      rgba(219, 39, 119, 0.15) 50%,
+      rgba(249, 115, 22, 0.12) 100%
+    );
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .page-header::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: 
+      radial-gradient(circle at 50% 50%, rgba(236, 72, 153, 0.08) 0%, transparent 70%),
+      radial-gradient(ellipse at top, rgba(0, 0, 0, 0.02) 0%, transparent 50%),
+      radial-gradient(ellipse at bottom, rgba(0, 0, 0, 0.03) 0%, transparent 50%);
+    pointer-events: none;
+  }
+  
+  [data-theme="dark"] .page-header {
+    background: linear-gradient(135deg, 
+      rgba(88, 28, 135, 0.4) 0%,
+      rgba(136, 19, 55, 0.4) 50%,
+      rgba(154, 52, 18, 0.3) 100%
+    );
+  }
+  
+  [data-theme="dark"] .page-header::before {
+    background: 
+      radial-gradient(circle at 50% 50%, rgba(236, 72, 153, 0.12) 0%, transparent 70%),
+      radial-gradient(ellipse at top, rgba(0, 0, 0, 0.3) 0%, transparent 50%),
+      radial-gradient(ellipse at bottom, rgba(0, 0, 0, 0.4) 0%, transparent 50%);
+  }
+  
+  .page-title {
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    margin-bottom: 1.5rem;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    line-height: 1.1;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    position: relative;
+    z-index: 1;
+  }
+  
+  [data-theme="dark"] .page-title {
+    text-shadow: 0 2px 12px rgba(0, 0, 0, 0.3);
+  }
+  
+  .page-subtitle {
+    font-size: clamp(1.125rem, 2vw, 1.5rem);
+    color: var(--text-secondary);
+    opacity: var(--text-opacity-secondary);
+    max-width: 700px;
+    margin: 0 auto;
+    line-height: 1.6;
+    font-weight: 400;
+    position: relative;
+    z-index: 1;
+  }
+  
+  /* Doctors Section - Premium Enhancement */
+  .doctors-section {
+    background: var(--bg-primary);
+    padding: 6.25rem 0; /* 100px consistent spacing */
+  }
+  
+  .doctors-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+    gap: 2rem; /* 32px consistent spacing */
+  }
+  
+  .doctor-card {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem; /* 16px consistent spacing */
+    padding: 2rem;
+    min-height: 720px;
+    background: var(--bg-secondary);
+    border-radius: var(--radius-xl);
+    box-shadow: var(--shadow-sm);
+    border: 1px solid rgba(236, 72, 153, 0.08);
+    transition: all var(--transition-base);
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .doctor-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, 
+      rgba(236, 72, 153, 0.02) 0%,
+      rgba(139, 92, 246, 0.02) 100%
+    );
+    opacity: 0;
+    transition: opacity var(--transition-base);
+  }
+  
+  .doctor-card:hover {
+    transform: translateY(-6px);
+    box-shadow: var(--shadow-md);
+    border-color: rgba(236, 72, 153, 0.2);
+  }
+  
+  .doctor-card:hover::before {
+    opacity: 1;
+  }
+  
+  [data-theme="dark"] .doctor-card {
+    background: var(--bg-secondary);
+    border-color: rgba(236, 72, 153, 0.12);
+  }
+  
+  [data-theme="dark"] .doctor-card:hover {
+    box-shadow: var(--shadow-md), 0 0 35px rgba(236, 72, 153, 0.15);
+    border-color: rgba(236, 72, 153, 0.3);
+  }
+  
+  .doctor-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: start;
+    margin-bottom: 0.5rem;
+    position: relative;
+    z-index: 1;
+  }
+  
+  .doctor-avatar {
+    width: 110px;
+    height: 110px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, 
+      rgba(236, 72, 153, 0.12),
+      rgba(139, 92, 246, 0.12)
+    );
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid rgba(236, 72, 153, 0.3);
+    box-shadow: 
+      0 4px 16px rgba(236, 72, 153, 0.2),
+      0 0 30px rgba(236, 72, 153, 0.12),
+      inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    transition: all var(--transition-base);
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .doctor-avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    border-radius: 50%;
+  }
+  
+  .doctor-avatar::before {
+    content: '';
+    position: absolute;
+    inset: -2px;
+    border-radius: 50%;
+    padding: 2px;
+    background: linear-gradient(135deg, 
+      rgba(236, 72, 153, 0.4),
+      rgba(139, 92, 246, 0.4)
+    );
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    opacity: 0;
+    transition: opacity var(--transition-base);
+  }
+  
+  .doctor-card:hover .doctor-avatar {
+    transform: scale(1.05);
+    border-color: rgba(236, 72, 153, 0.5);
+    box-shadow: 
+      0 6px 20px rgba(236, 72, 153, 0.3),
+      0 0 40px rgba(236, 72, 153, 0.18);
+  }
+  
+  .doctor-card:hover .doctor-avatar::before {
+    opacity: 1;
+  }
+  
+  [data-theme="dark"] .doctor-avatar {
+    background: linear-gradient(135deg, 
+      rgba(236, 72, 153, 0.15),
+      rgba(139, 92, 246, 0.15)
+    );
+    border-color: rgba(236, 72, 153, 0.4);
+  }
+  
+  .doctor-badge {
+    background: linear-gradient(135deg, 
+      rgba(236, 72, 153, 0.15),
+      rgba(139, 92, 246, 0.15)
+    );
+    backdrop-filter: blur(8px);
+    color: var(--color-primary-600);
+    padding: 0.625rem 1rem;
+    border-radius: 999px;
+    font-size: 0.8125rem;
+    font-weight: 700;
+    border: 1px solid rgba(236, 72, 153, 0.25);
+    box-shadow: 0 2px 8px rgba(236, 72, 153, 0.15);
+    letter-spacing: 0.02em;
+  }
+  
+  [data-theme="dark"] .doctor-badge {
+    background: linear-gradient(135deg, 
+      rgba(236, 72, 153, 0.2),
+      rgba(139, 92, 246, 0.2)
+    );
+    color: rgba(236, 72, 153, 0.95);
+    border-color: rgba(236, 72, 153, 0.35);
+  }
+  
+  .doctor-info {
+    text-align: left;
+    margin-bottom: 0.5rem;
+    position: relative;
+    z-index: 1;
+  }
+  
+  .doctor-name {
+    font-size: 1.625rem;
+    margin-bottom: 0.625rem;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    line-height: 1.2;
+  }
+  
+  .doctor-role {
+    font-weight: 700;
+    color: var(--color-primary-600);
+    margin-bottom: 0.5rem;
+    font-size: 1rem;
+    letter-spacing: 0.01em;
+  }
+  
+  [data-theme="dark"] .doctor-role {
+    color: rgba(236, 72, 153, 0.95);
+  }
+  
+  .doctor-specialty {
+    font-size: 0.9375rem;
+    color: var(--text-secondary);
+    opacity: 0.9;
+    font-weight: 500;
+    line-height: 1.4;
+  }
+  
+  .doctor-bio {
+    color: var(--text-secondary);
+    opacity: var(--text-opacity-secondary);
+    line-height: 1.7;
+    padding: 1rem 0;
+    border-top: 1px solid rgba(236, 72, 153, 0.1);
+    border-bottom: 1px solid rgba(236, 72, 153, 0.1);
+    font-size: 0.9375rem;
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    min-height: 6.5em;
+    position: relative;
+    z-index: 1;
+  }
+  
+  [data-theme="dark"] .doctor-bio {
+    border-color: rgba(236, 72, 153, 0.15);
+  }
+  
+  .doctor-details {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    flex: 1;
+    margin-top: 0.5rem;
+    position: relative;
+    z-index: 1;
+  }
+  
+  .detail-section {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+  
+  .detail-title {
+    font-size: 0.9375rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    letter-spacing: 0.01em;
+  }
+  
+  .detail-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.625rem;
+  }
+  
+  .detail-list li {
+    font-size: 0.875rem;
+    color: var(--text-secondary);
+    opacity: var(--text-opacity-secondary);
+    padding-left: 1.25rem;
+    position: relative;
+    line-height: 1.5;
+  }
+  
+  .detail-list li::before {
+    content: '•';
+    position: absolute;
+    left: 0;
+    color: var(--color-primary-500);
+    font-weight: bold;
+    font-size: 1.125rem;
+  }
+  
+  [data-theme="dark"] .detail-list li::before {
+    color: rgba(236, 72, 153, 0.8);
+  }
+  
+  /* Button Enhancement */
+  .doctor-card .btn {
+    width: 100%;
+    margin-top: auto;
+    padding: 1rem 2rem;
+    font-size: 1.0625rem;
+    font-weight: 700;
+    border-radius: var(--radius-xl);
+    transition: all var(--transition-base);
+    position: relative;
+    z-index: 1;
+    box-shadow: 0 4px 12px rgba(236, 72, 153, 0.2);
+  }
+  
+  .doctor-card .btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(236, 72, 153, 0.3);
+  }
+  
+  .doctor-card .btn:active {
+    transform: translateY(0) scale(0.98);
+  }
+  
+  [data-theme="dark"] .doctor-card .btn {
+    box-shadow: 0 4px 12px rgba(236, 72, 153, 0.3);
+  }
+  
+  [data-theme="dark"] .doctor-card .btn:hover {
+    box-shadow: 0 8px 20px rgba(236, 72, 153, 0.4), 0 0 30px rgba(236, 72, 153, 0.2);
+  }
+  
+  /* Why Section - Premium Enhancement */
+  .why-section {
+    background: var(--bg-secondary);
+    padding: 6.25rem 0; /* 100px consistent spacing */
+  }
+  
+  .section-title {
+    font-size: clamp(2rem, 4vw, 3rem);
+    text-align: center;
+    margin-bottom: 4rem;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    line-height: 1.2;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  }
+  
+  [data-theme="dark"] .section-title {
+    text-shadow: 0 2px 12px rgba(0, 0, 0, 0.3);
+  }
+  
+  .why-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem; /* 32px consistent spacing */
+  }
+  
+  .why-card {
+    text-align: center;
+    padding: 2.5rem 2rem;
+    min-height: 280px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    background: var(--bg-primary);
+    border-radius: var(--radius-xl);
+    box-shadow: var(--shadow-sm);
+    border: 1px solid rgba(236, 72, 153, 0.08);
+    transition: all var(--transition-base);
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .why-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, 
+      rgba(236, 72, 153, 0.02) 0%,
+      rgba(139, 92, 246, 0.02) 100%
+    );
+    opacity: 0;
+    transition: opacity var(--transition-base);
+  }
+  
+  .why-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-md);
+    border-color: rgba(236, 72, 153, 0.15);
+  }
+  
+  .why-card:hover::before {
+    opacity: 1;
+  }
+  
+  [data-theme="dark"] .why-card {
+    background: var(--bg-primary);
+    border-color: rgba(236, 72, 153, 0.12);
+  }
+  
+  [data-theme="dark"] .why-card:hover {
+    box-shadow: var(--shadow-md), 0 0 30px rgba(236, 72, 153, 0.15);
+    border-color: rgba(236, 72, 153, 0.25);
+  }
+  
+  .why-icon {
+    font-size: 4rem;
+    margin-bottom: 1.5rem;
+    filter: drop-shadow(0 4px 8px rgba(236, 72, 153, 0.2));
+    transition: transform var(--transition-base);
+    position: relative;
+    z-index: 1;
+  }
+  
+  .why-card:hover .why-icon {
+    transform: scale(1.1);
+  }
+  
+  .why-title {
+    font-size: 1.25rem;
+    margin-bottom: 0.875rem;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    position: relative;
+    z-index: 1;
+  }
+  
+  .why-text {
+    color: var(--text-secondary);
+    opacity: var(--text-opacity-secondary);
+    line-height: 1.7;
+    font-size: 0.9375rem;
+    position: relative;
+    z-index: 1;
+  }
+  
+  /* CTA Section - Premium Enhancement */
+  .cta-section {
+    background: linear-gradient(135deg, 
+      rgba(168, 85, 247, 0.90) 0%,
+      rgba(219, 39, 119, 0.90) 50%,
+      rgba(249, 115, 22, 0.86) 100%
+    );
+    color: white;
+    padding: 6.25rem 0;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .cta-section::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: 
+      radial-gradient(circle at 50% 30%, rgba(255, 255, 255, 0.04) 0%, transparent 50%),
+      radial-gradient(circle at 20% 70%, rgba(0, 0, 0, 0.1) 0%, transparent 40%),
+      linear-gradient(135deg, rgba(0, 0, 0, 0.28) 0%, rgba(0, 0, 0, 0.18) 100%);
+    z-index: 0;
+  }
+  
+  .cta-content {
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 2;
+  }
+  
+  .cta-title {
+    font-size: clamp(2rem, 4vw, 3.5rem);
+    margin-bottom: 1.5rem;
+    color: white;
+    font-weight: 800;
+    letter-spacing: -0.015em;
+    line-height: 1.15;
+    text-shadow: 
+      0 2px 4px rgba(0, 0, 0, 0.25),
+      0 4px 10px rgba(0, 0, 0, 0.18),
+      0 8px 20px rgba(0, 0, 0, 0.12);
+  }
+  
+  .cta-text {
+    font-size: 1.25rem;
+    margin-bottom: 2.5rem;
+    color: rgba(255, 255, 255, 0.98);
+    line-height: 1.85;
+    font-weight: 400;
+    text-shadow: 
+      0 1px 2px rgba(0, 0, 0, 0.22),
+      0 2px 6px rgba(0, 0, 0, 0.12);
+  }
+  
+  .cta-section .btn-secondary {
+    background: rgba(248, 248, 250, 0.98);
+    color: var(--color-primary-600);
+    border: 2px solid rgba(255, 255, 255, 0.95);
+    box-shadow: 
+      0 4px 12px rgba(0, 0, 0, 0.25),
+      0 2px 6px rgba(0, 0, 0, 0.15),
+      inset 0 1px 0 rgba(255, 255, 255, 0.7);
+    font-weight: 700;
+    padding: 1rem 2.5rem;
+    font-size: 1.0625rem;
+    transition: all var(--transition-base);
+  }
+  
+  .cta-section .btn-secondary:hover {
+    background: rgba(255, 255, 255, 1);
+    transform: translateY(-3px) scale(1.02);
+    box-shadow: 
+      0 8px 24px rgba(0, 0, 0, 0.3),
+      0 0 35px rgba(236, 72, 153, 0.25);
+  }
+  
+  .cta-section .btn-secondary:active {
+    transform: translateY(-1px) scale(0.98);
+  }
+  
+  /* Responsive - Enhanced */
+  @media (max-width: 768px) {
+    .doctors-grid {
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+    }
+    
+    .doctor-card {
+      min-height: auto;
+    }
+    
+    .doctor-avatar {
+      width: 90px;
+      height: 90px;
+    }
+    
+    .doctor-avatar img {
+      width: 100%;
+      height: 100%;
+    }
+    
+    .doctor-badge {
+      padding: 0.5rem 0.875rem;
+      font-size: 0.75rem;
+    }
+    
+    .why-grid {
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+    }
+    
+    .why-card {
+      min-height: auto;
+    }
+  }
+  
+  @media (min-width: 769px) and (max-width: 1023px) {
+    .doctors-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .why-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  
+  @media (min-width: 1024px) {
+    .doctors-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+    
+    .why-grid {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+</style>
