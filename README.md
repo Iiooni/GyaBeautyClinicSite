@@ -1,6 +1,6 @@
 # 🌸 Beauty Clinic - Premium Astro Theme
 
-A stunning, professional Beauty Clinic website theme built with Astro v6. Perfect for beauty clinics, medical spas, and aesthetic medicine centers.
+Beauty Clinic website built with Astro v6.
 
 ![Astro](https://img.shields.io/badge/Astro-6.0.4-FF5D01?style=flat-square&logo=astro)
 ![TypeScript](https://img.shields.io/badge/TypeScript-Ready-3178C6?style=flat-square&logo=typescript)
@@ -56,19 +56,25 @@ That's it! Your theme is running. 🎉
 ## 🎨 Customization
 
 ### Change Colors
+
 Edit `src/styles/design-tokens.css`:
+
 ```css
---color-primary-500: #ec4899;  /* Your brand color */
+--color-primary-500: #ec4899; /* Your brand color */
 ```
 
 ### Update Content
+
 Edit page files in `src/pages/`:
+
 - `index.astro` - Homepage
 - `about.astro` - About page
 - And so on...
 
 ### Add Images
+
 Place images in `public/images/` and reference:
+
 ```astro
 <img src="/images/your-image.jpg" alt="Description" />
 ```
@@ -84,6 +90,7 @@ npm run preview
 ```
 
 Deploy the `dist/` folder to:
+
 - Vercel (recommended)
 - Netlify
 - GitHub Pages
@@ -92,19 +99,13 @@ Deploy the `dist/` folder to:
 ## 📚 Documentation
 
 Comprehensive documentation included:
+
 - `INSTALLATION-GUIDE.md` - Complete setup guide
 - `DOCUMENTATION.md` - Full theme documentation
 - `AUTH-PAGES-DOCUMENTATION.md` - Authentication integration
 - `CHANGELOG.md` - Version history
 
-## 🎯 Perfect For
-
-- Beauty Clinics & Medical Spas
-- Dermatology Practices
-- Aesthetic Medicine Centers
-- Cosmetic Surgery Clinics
-- Wellness & Anti-Aging Centers
-- Laser Treatment Centers
+#
 
 ## 🔧 Technical Stack
 
@@ -122,9 +123,8 @@ Comprehensive documentation included:
 - SEO optimized
 - Accessibility: WCAG AA
 
-## 🌟 Premium Features
-
 ### Homepage Sections
+
 - Animated hero with statistics
 - Service cards with pricing
 - Why choose us features
@@ -137,6 +137,7 @@ Comprehensive documentation included:
 - Call-to-action sections
 
 ### Authentication Pages
+
 - Modern split-screen design
 - Password strength indicator
 - Social login ready
@@ -145,6 +146,7 @@ Comprehensive documentation included:
 - Dark mode optimized
 
 ### Design System
+
 - Comprehensive design tokens
 - Consistent typography
 - Unified spacing system
@@ -160,13 +162,12 @@ Comprehensive documentation included:
 
 ## 🎨 Color Schemes
 
-Choose from 4 pre-configured schemes:
+4 pre-configured schemes:
+
 - Rose (default)
 - Purple
 - Emerald
 - Blue
-
-Or create your own!
 
 ## ✅ What's Included
 
@@ -185,15 +186,13 @@ beauty-clinic-theme/
 
 ## 🆘 Support
 
-- Complete documentation included
+- Complete documentation
 - Astro community support
 - Regular updates
 
 ## 📜 License
 
 Commercial license included. See LICENSE file for details.
-
-## 🎉 Get Started Today!
 
 1. Extract the theme
 2. Run `npm install`
@@ -205,5 +204,3 @@ Commercial license included. See LICENSE file for details.
 **Version**: 1.1.0  
 **Last Updated**: March 24, 2026  
 **Astro Version**: 6.0.4
-
-**Thank you for your purchase! 🌸**
