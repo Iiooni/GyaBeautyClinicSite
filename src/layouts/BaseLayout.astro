@@ -80,8 +80,9 @@ const socialImage = new URL(image, Astro.site);
   
   <!-- Theme Toggle Script -->
   <script is:inline>
+    document.documentElement.setAttribute('data-theme', 'light');
     // Initialize theme - Default to Dark Mode
-    const theme = localStorage.getItem('theme') || 'dark';
+    /*const theme = localStorage.getItem('theme') || 'dark';
     document.documentElement.setAttribute('data-theme', theme);
     
     // Theme toggle function
@@ -90,7 +91,7 @@ const socialImage = new URL(image, Astro.site);
       const newTheme = currentTheme === 'light' ? 'dark' : 'light';
       document.documentElement.setAttribute('data-theme', newTheme);
       localStorage.setItem('theme', newTheme);
-    };
+    };*/
   </script>
   
   <!-- Scroll Reveal Script -->
