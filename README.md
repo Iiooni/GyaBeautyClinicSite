@@ -1,5 +1,3 @@
-# 🌸 Beauty Clinic - Premium Astro Theme
-
 Beauty Clinic website built with Astro v6.
 
 ![Astro](https://img.shields.io/badge/Astro-6.0.4-FF5D01?style=flat-square&logo=astro)
