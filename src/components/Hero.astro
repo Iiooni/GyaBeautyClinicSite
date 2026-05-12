@@ -5,6 +5,8 @@ import MockupContent from './MockupContent.astro';
 interface Props {
   title: string;
   subtitle: string;
+  subtitle2: string;
+  subtitle3: string;
   ctaText?: string;
   ctaLink?: string;
   secondaryCtaText?: string;
@@ -13,11 +15,13 @@ interface Props {
 
 const { 
   title, 
-  subtitle, 
+  subtitle,
+  subtitle2,
+  subtitle3,
   ctaText = "Book Free Consultation",
   ctaLink = "/booking",
   secondaryCtaText = "Explore Treatments",
-  secondaryCtaLink = "/services"
+  secondaryCtaLink = "#"
 } = Astro.props;
 ---
 
@@ -35,7 +39,7 @@ const {
     <div class="hero-content reveal">
       <div class="hero-badge animate-fade-in-up">
         <span class="badge-dot"></span>
-        <span class="badge-text">200+ treatments applied this year</span>
+        <span class="badge-text">Serving clients across Nottinghamshire for over 5 years</span>
       </div>
 
       <h1 class="hero-headline animate-fade-in-up stagger-1">
@@ -44,6 +48,14 @@ const {
       
       <p class="hero-description animate-fade-in-up stagger-2">
         {subtitle}
+      </p>
+
+      <p class="hero-description animate-fade-in-up stagger-2">
+        {subtitle2}
+      </p>
+
+      <p class="hero-description animate-fade-in-up stagger-2">
+        {subtitle3}
       </p>
       
       <div class="hero-actions animate-fade-in-up stagger-3">
@@ -324,7 +336,7 @@ const {
   }
   
   .hero-headline {
-    font-size: clamp(2rem, 6vw, 5rem);
+    font-size: clamp(1rem, 5vw, 4rem);
     line-height: 1.1;
     font-weight: 800;
     letter-spacing: -0.03em;
@@ -352,10 +364,10 @@ const {
   }
   
   .hero-description {
-    font-size: clamp(1.125rem, 2vw, 1.375rem);
+    font-size: clamp(1.125rem, 2vw, 1.2rem);
     line-height: 1.7;
     color: var(--text-secondary);
-    margin-bottom: 2.5rem;
+    margin-bottom: 1.5rem;
     max-width: 580px;
     opacity: 0.9;
   }

@@ -81,26 +81,26 @@ const testimonials = [
     name: 'Emily Rodriguez',
     role: 'Fashion Designer',
     treatment: 'Laser Skin Resurfacing',
-    avatar: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=400&h=400&fit=crop&crop=faces',
+    avatar: '../images/testimonials/review_1.png',
     rating: 5,
     verified: true,
-    text: 'I\'ve been coming here for 3 years and the results speak for themselves. The laser treatments have completely transformed my skin texture. Professional, caring, and truly expert care.'
+    text: 'I\'ve been coming to Gya here for 3 years and the results speak for themselves. The treatments have completely transformed my skin texture. Professional, caring, and truly expert care.'
   },
   {
-    name: 'Michael Chen',
+    name: 'Jim Chen',
     role: 'Business Owner',
     treatment: 'Body Contouring',
-    avatar: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=400&h=400&fit=crop&crop=faces',
+    avatar: '../images/testimonials/review_1.png',
     rating: 5,
     verified: true,
-    text: 'Outstanding service and incredible results! The body contouring program helped me achieve the physique I\'ve always wanted. The team is knowledgeable, professional, and genuinely cares about results.'
+    text: 'Outstanding service and incredible results! The body contouring program helped me achieve the physique I\'ve always wanted. Gya is knowledgeable, professional, and genuinely cares about results.'
   }
 ];
 
 const doctors = [
   {
     name: 'Gya',
-    specialty: 'Medical Director',
+    specialty: 'Nurse Director',
     credentials: 'Board Certified',
     avatar: '../images/gya/gya_profile.png',
     experience: '10+ years experience'
@@ -137,12 +137,12 @@ const pricingPackages = [
   },
   {
     name: 'Premium Radiance',
-    price: '$599',
-    period: 'per month',
+    price: '$399',
+    period: 'per session',
     description: 'Most popular choice',
     features: [
       '2 Advanced Facial Treatments',
-      'Laser Hair Removal Session',
+      'Anti-Aging Procedures',
       'Body Contouring Treatment',
       'Priority Booking',
       '15% Product Discount'
@@ -151,13 +151,13 @@ const pricingPackages = [
   },
   {
     name: 'Ultimate Transformation',
-    price: '$1,299',
+    price: '$899',
     period: 'per month',
     description: 'Complete beauty solution',
     features: [
       'Unlimited Facial Treatments',
-      'All Laser Treatments',
-      'Anti-Aging Procedures',
+      'All Anti-Aging Procedures',
+      'Deep Cleansing Facial',
       'Personal Beauty Consultant',
       '25% Product Discount',
       'VIP Lounge Access'
@@ -209,8 +209,10 @@ const awards = [
   
   <main>
     <Hero 
-      title="Nottinghamshire Aesthetic Clinic "
-      subtitle="For Precision Injectables & Signature Facial Enhancements... Personalized care. Certified specialist..."
+      title="Nottinghamshire Aesthetics Practitioner "
+      subtitle="Carefully placed filler treatments and PRP, tailored to you and the result you actually want."
+      subtitle2="Honest advice and treatments that make sense. Never rushed, never overdone."
+      subtitle3=""
     />
 
     
@@ -282,7 +284,10 @@ const awards = [
         <div class="why-choose-grid">
           <div class="why-choose-content reveal">
             <p class="section-text">
-              With over 7 years of experience in aesthetic medicine, our clinic combines cutting-edge technology with personalized care to deliver exceptional results. Our board-certified specialists are dedicated to enhancing your natural beauty while maintaining the highest standards of safety and professionalism.
+              We specialize in injectables that are placed at exactly the right depth, because that’s what creates the most natural, long-lasting results.
+              Led by Gya, an experienced aesthetic nurse with over a decade of hands-on expertise, at Gya Aesthetic Style, every treatment is done with expert precision and an artist’s eye.
+
+
             </p>
             
             <div class="why-features">
@@ -312,7 +317,7 @@ const awards = [
                 </div>
                 <div class="feature-content">
                   <h4>Expert Medical Team</h4>
-                  <p>Board-certified doctors and licensed specialists with extensive training and experience.</p>
+                  <p>Board-certified practicioner and licensed specialist with extensive training and experience.</p>
                 </div>
               </div>
               
@@ -599,7 +604,7 @@ const awards = [
         <div class="pricing-note reveal">
           <p>
             All packages include complimentary consultation and personalized treatment planning. 
-            Flexible payment plans available for packages over $500. Contact us for custom packages.
+            Flexible payment plans available for packages over $300. Contact us for custom packages.
           </p>
         </div>
       </div>
