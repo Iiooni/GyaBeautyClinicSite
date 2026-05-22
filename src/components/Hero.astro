@@ -51,7 +51,7 @@ const {
       </p>
 
       <p class="hero-description animate-fade-in-up stagger-2">
-        {subtitle2}
+        {subtitle2}<br />Never rushed, never overdone.
       </p>
 
       <p class="hero-description animate-fade-in-up stagger-2">
@@ -95,20 +95,20 @@ const {
     <div class="hero-visual reveal-right">
       <div class="visual-container">
         <div class="device-frame">
-          <DeviceMockup type="laptop" className="hero-device">
-              <div class="visual-card card" style="margin-top: 2rem;">
-              <div class="visual-image-wrapper">
+          <!-- <DeviceMockup type="laptop" className="hero-device">-->
+             <!-- <div class="visual-card card" style="margin-top: 2rem;"> -->
+              <!-- <div class="visual-image-wrapper">-->
                 <img 
                   src="../images/hero/gya_hero.png" 
                   alt="Professional beauty clinic consultation" 
                   class="visual-image"
                   loading="lazy"
                 />
-                <div class="visual-overlay"></div>
-              </div>
-            </div>
+                <!--<div class="visual-overlay"></div> -->
+              <!--</div> -->
+            <!-- </div> -->
             <!--<MockupContent />-->
-          </DeviceMockup>
+         <!-- </DeviceMockup> -->
         </div>
         
         <div class="info-card card-rating">
@@ -124,7 +124,7 @@ const {
           </div>
         </div>
         
-        <div class="info-card card-certified">
+        <!--<div class="info-card card-certified">
           <div class="card-icon-wrapper">
             <span class="card-icon">✓</span>
           </div>
@@ -132,7 +132,7 @@ const {
             <div class="card-title">Certified</div>
             <div class="card-label">Premium Care</div>
           </div>
-        </div>
+        </div> -->
 
         <div class="info-card card-guarantee">
           <div class="card-icon-wrapper">
@@ -143,6 +143,17 @@ const {
             <div class="card-label">Skin analysis</div>
           </div>
         </div>
+        <div class="hero-metrics location-hero-card">
+          <a href="https://maps.app.goo.gl/U24JME28ga7uLv9J7" class="location-hero-a">
+           <img src="../images/hero/location_logo2.png" 
+                  alt="Professional beauty clinic consultation" 
+                  class="visual-image"
+                  loading="lazy"
+                />
+          <p class="location-hero">Located inside Clinic Name, Saint Bartholomew’s Road.<br>View on map →</p>
+          </a>
+        </div>
+        
       </div>
     </div>
   </div>
@@ -272,7 +283,7 @@ const {
   }
   
   .hero-container {
-    max-width: 1400px;
+    max-width: 1600px;
     margin: 0 auto;
     padding: 0 2rem;
     display: grid;
@@ -457,6 +468,8 @@ const {
     transform: translateY(-2px);
     box-shadow: var(--shadow-sm);
   }
+
+ 
   
   .hero-metrics {
     display: inline-flex;
@@ -513,6 +526,30 @@ const {
     align-items: center;
   }
   
+ /*Eu, 19 May */
+  .location-hero-card{
+    margin: 1.25rem 0cqw;
+    padding: 0rem 0rem;
+    gap: 1rem;
+  }
+  .location-hero{
+     font-style: italic;
+  }
+  .location-hero-a{
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+
+    text-decoration: none;
+    color: inherit;
+
+    padding: .8rem 1rem;
+    border-radius: 12px;
+
+    transition: background .2s ease;
+  }
+  
+
   .visual-container {
     position: relative;
     width: 100%;
@@ -577,8 +614,8 @@ const {
   .card-rating {
     top: 4%;
     left: -11%;
-    width: 200px;
-    animation: float-card-1 7s ease-in-out infinite;
+    width: 200px; 
+    /*animation: float-card-1 7s ease-in-out infinite;*/
   }
   
   @keyframes float-card-1 {
@@ -631,7 +668,7 @@ const {
     display: flex;
     align-items: center;
     gap: 0.875rem;
-    animation: float-card-2 8s ease-in-out infinite;
+    /*animation: float-card-2 8s ease-in-out infinite;*/
   }
   
   @keyframes float-card-2 {
@@ -646,7 +683,7 @@ const {
     display: flex;
     align-items: center;
     gap: 0.875rem;
-    animation: float-card-3 9s ease-in-out infinite;
+    /*animation: float-card-3 9s ease-in-out infinite;*/
   }
   
   @keyframes float-card-3 {

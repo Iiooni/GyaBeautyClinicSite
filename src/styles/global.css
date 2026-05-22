@@ -1,6 +1,6 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@400;500;600;700;800&display=swap');
-@import './design-tokens.css';
-@import './animations.css';
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@400;500;600;700;800&display=swap");
+@import "./design-tokens.css";
+@import "./animations.css";
 
 /* Reset & Base Styles */
 *,
@@ -23,12 +23,19 @@ body {
   line-height: 1.6;
   color: var(--text-primary);
   background-color: var(--bg-primary);
-  transition: background-color var(--transition-base), color var(--transition-base);
+  transition:
+    background-color var(--transition-base),
+    color var(--transition-base);
   overflow-x: hidden;
 }
 
 /* Typography System - Enhanced Contrast */
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   font-family: var(--font-heading);
   font-weight: var(--font-bold);
   line-height: 1.1;
@@ -122,7 +129,7 @@ section {
 /* Section Title System - Consistent 32px spacing */
 .section-header {
   text-align: center;
-  max-width: 800px;
+  max-width: 900px;
   margin: 0 auto 3rem;
 }
 
@@ -135,7 +142,11 @@ section {
 .section-badge {
   display: inline-block;
   padding: 0.5rem 1.25rem;
-  background: linear-gradient(135deg, var(--color-primary-100), var(--color-secondary-100));
+  background: linear-gradient(
+    135deg,
+    var(--color-primary-100),
+    var(--color-secondary-100)
+  );
   color: var(--color-primary-700);
   border-radius: var(--radius-full);
   font-size: 0.875rem;
@@ -146,7 +157,11 @@ section {
 }
 
 [data-theme="dark"] .section-badge {
-  background: linear-gradient(135deg, var(--color-primary-900), var(--color-secondary-900));
+  background: linear-gradient(
+    135deg,
+    var(--color-primary-900),
+    var(--color-secondary-900)
+  );
   color: var(--color-primary-300);
 }
 
@@ -237,7 +252,11 @@ section {
 }
 
 .btn-primary {
-  background: linear-gradient(135deg, var(--color-primary-500), var(--color-primary-600));
+  background: linear-gradient(
+    135deg,
+    var(--color-primary-500),
+    var(--color-primary-600)
+  );
   color: white;
   box-shadow: var(--shadow-sm);
 }
@@ -294,7 +313,11 @@ section {
 }
 
 .text-gradient {
-  background: linear-gradient(135deg, var(--color-primary-500), var(--color-secondary-500));
+  background: linear-gradient(
+    135deg,
+    var(--color-primary-500),
+    var(--color-secondary-500)
+  );
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -342,7 +365,6 @@ section {
 ::-webkit-scrollbar-thumb:hover {
   background: var(--color-primary-600);
 }
-
 
 /* Glassmorphism Effects */
 .glass {
@@ -397,21 +419,34 @@ section {
 
 /* Gradient Text Enhanced */
 .text-gradient-primary {
-  background: linear-gradient(135deg, var(--color-primary-400), var(--color-primary-600));
+  background: linear-gradient(
+    135deg,
+    var(--color-primary-400),
+    var(--color-primary-600)
+  );
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
 
 .text-gradient-secondary {
-  background: linear-gradient(135deg, var(--color-secondary-400), var(--color-secondary-600));
+  background: linear-gradient(
+    135deg,
+    var(--color-secondary-400),
+    var(--color-secondary-600)
+  );
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
 
 .text-gradient-full {
-  background: linear-gradient(135deg, var(--color-primary-500), var(--color-secondary-500), var(--color-accent-500));
+  background: linear-gradient(
+    135deg,
+    var(--color-primary-500),
+    var(--color-secondary-500),
+    var(--color-accent-500)
+  );
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -441,8 +476,13 @@ section {
 }
 
 @keyframes gradient-shift {
-  0%, 100% { background-position: 0% center; }
-  50% { background-position: 100% center; }
+  0%,
+  100% {
+    background-position: 0% center;
+  }
+  50% {
+    background-position: 100% center;
+  }
 }
 
 /* Dark Mode Specific Enhancements */
@@ -467,7 +507,11 @@ section {
 .section-badge {
   display: inline-block;
   padding: 0.5rem 1rem;
-  background: linear-gradient(135deg, rgba(236, 72, 153, 0.1), rgba(139, 92, 246, 0.1));
+  background: linear-gradient(
+    135deg,
+    rgba(236, 72, 153, 0.1),
+    rgba(139, 92, 246, 0.1)
+  );
   border: 1px solid rgba(236, 72, 153, 0.3);
   border-radius: 999px;
   font-size: 0.875rem;
@@ -479,7 +523,11 @@ section {
 }
 
 [data-theme="dark"] .section-badge {
-  background: linear-gradient(135deg, rgba(236, 72, 153, 0.15), rgba(139, 92, 246, 0.15));
+  background: linear-gradient(
+    135deg,
+    rgba(236, 72, 153, 0.15),
+    rgba(139, 92, 246, 0.15)
+  );
   border-color: rgba(236, 72, 153, 0.4);
   color: var(--color-primary-400);
   box-shadow: 0 0 20px rgba(236, 72, 153, 0.2);
