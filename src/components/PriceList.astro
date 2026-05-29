@@ -1,0 +1,280 @@
+---
+const prices = [
+  {
+    name: "Signature Lip Treatment",
+    description: "Natural volume, hydration and shape tailored to your features.",
+    price: "From £150",
+  },
+  {
+    name: "Nasolabial Folds",
+    description: "Softening smile lines while keeping your natural expression.",
+    price: "From £160",
+  },
+  {
+    name: "Marionette Lines",
+    description: "A subtle approach to soften lower-face lines and restore balance.",
+    price: "From £160",
+  },
+  {
+    name: "Cheek Balance Treatment",
+    description: "Gentle support and contour without an overfilled look.",
+    price: "From £180",
+  },
+  {
+    name: "PRP Skin Treatment",
+    description: "Supporting skin quality, glow and texture over time.",
+    price: "From £120",
+  },
+  {
+    name: "PRP Hair Treatment",
+    description: "Designed to support hair strength and natural regrowth.",
+    price: "From £150",
+  },
+];
+---
+<section class="prices-section">
+  <div class="section-header">
+    <h2> Treatment Prices </h2>
+    <p class="price-list-subtitle">
+     Final treatment is planned around your features, skin, and desired result. <br />Always discussed clearly during consultation. 
+
+    </p>
+  </div>
+
+  <div class="prices-grid">
+    {prices.map((item) => (
+     /*<article class="price-card">
+        <div>
+          <h3>{item.name}</h3>
+          <p>{item.description}</p>
+        </div>
+
+        <strong>{item.price}</strong>
+      </article>*/
+
+
+      <ul class="category-list">
+        <li class="category-item">
+            <button class="category-link">
+            <div>
+                <h3>{item.name}</h3>
+                <p>{item.description}</p>
+            </div>
+            <span class="count">{item.price}</span>
+            </button>
+        </li>
+      </ul>
+
+
+
+
+    ))}
+  </div>
+</section>
+
+<style>
+h3{    
+    font-size: 2rem;
+    color: var(--text-secondary);
+}
+h2{
+    font-size: 2.2rem;
+    color: var(--text-secondary);
+}
+.price-list-subtitle{
+    font-size: clamp(1rem, 2vw, 1.25rem);
+    color: var(--text-secondary);
+    max-width: 700px;
+    margin: 0 auto;
+    line-height: 1.7;
+}
+.prices-section {
+  padding: 5rem 1.5rem;
+}
+
+.section-header {
+  max-width: 720px;
+  margin-bottom: 2.5rem;
+}
+
+.section-header h2 {
+  font-size: clamp(2rem, 4vw, 3.5rem);
+  margin-bottom: 1rem;
+}
+
+
+
+.prices-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+}
+
+.price-card {
+  display: flex;
+  justify-content: space-between;
+  gap: 2rem;
+  padding: 1.5rem;
+  border: 1px solid #e8e2dc;
+  border-radius: 1rem;
+  background: #fff;
+}
+
+.price-card h3 {
+  margin: 0 0 0.5rem;
+}
+
+.price-card p {
+  margin: 0;
+  line-height: 1.5;
+}
+
+.price-card strong {
+  white-space: nowrap;
+}
+
+.category-list,
+  .popular-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.625rem;
+        background: radial-gradient(circle at 20% 30%, rgba(236, 72, 153, 0.08) 0%, transparent 30%), radial-gradient(circle at 80% 70%, rgba(139, 92, 246, 0.08) 0%, transparent 30%), radial-gradient(circle at 50% 50%, rgba(249, 115, 22, 0.05) 0%, transparent 30%);
+  }
+  
+  .category-link {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 0.875rem 1.125rem;
+    background: transparent;
+    border: 1px solid rgba(236, 72, 153, 0.1);
+    border-radius: var(--radius-lg);
+    color: var(--text-secondary);
+    font-weight: 500;
+    cursor: pointer;
+    transition: all var(--transition-base);
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .category-link::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 3px;
+    background: linear-gradient(180deg, 
+      var(--color-primary-500),
+      var(--color-secondary-500)
+    );
+    transform: scaleY(0);
+    transition: transform var(--transition-base);
+  }
+  
+  .category-link:hover {
+    background: linear-gradient(135deg, 
+      rgba(236, 72, 153, 0.1),
+      rgba(139, 92, 246, 0.1)
+    );
+    border-color: rgba(236, 72, 153, 0.25);
+    transform: translateX(4px);
+    color: var(--text-primary);
+  }
+  
+  .category-link:hover::before {
+    transform: scaleY(1);
+  }
+  
+  .count {
+    background: linear-gradient(135deg, transparent 30%, rgba(236, 72, 153, 0.2), transparent 30%, rgba(139, 92, 246, 0.2), transparent 30%);
+    color: var(--color-primary-600);
+    padding: 0.8rem 1rem;
+    border-radius: 0.7rem;
+    font-size: 1rem;
+    font-weight: 700;
+    border: 1px solid rgba(236, 72, 153, 0.25);
+    transition: all var(--transition-base);
+  }
+  
+  .category-link:hover .count {
+    background: linear-gradient(135deg, 
+      rgba(236, 72, 153, 0.3),
+      rgba(139, 92, 246, 0.3)
+    );
+    transform: scale(1.05);
+  }
+  
+  .popular-link {
+    display: block;
+    padding: 1rem 0;
+    border-bottom: 1px solid rgba(236, 72, 153, 0.08);
+    text-decoration: none;
+    transition: all var(--transition-base);
+    position: relative;
+    padding-left: 0;
+  }
+  
+  .popular-link::before {
+    content: '';
+    position: absolute;
+    left: -0.5rem;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 4px;
+    height: 0;
+    background: linear-gradient(180deg, 
+      var(--color-primary-500),
+      var(--color-secondary-500)
+    );
+    border-radius: 2px;
+    transition: height var(--transition-base);
+  }
+  
+  .popular-link:hover {
+    padding-left: 0.75rem;
+  }
+  
+  .popular-link:hover::before {
+    height: 60%;
+  }
+  
+  .popular-item:last-child .popular-link {
+    border-bottom: none;
+  }
+  
+  .popular-link h4 {
+    font-size: 0.9375rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    color: var(--text-primary);
+    line-height: 1.4;
+    transition: color var(--transition-base);
+  }
+  
+  .popular-date {
+    font-size: 0.8125rem;
+    color: var(--text-tertiary);
+  }
+  
+  .popular-link:hover h4 {
+    color: var(--color-primary-600);
+  }
+  
+  [data-theme="dark"] .popular-link:hover h4 {
+    color: rgba(236, 72, 153, 0.95);
+  }
+
+@media (max-width: 768px) {
+  .prices-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .price-card {
+    flex-direction: column;
+    gap: 1rem;
+  }
+}
+</style>

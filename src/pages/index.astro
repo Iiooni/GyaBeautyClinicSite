@@ -4,6 +4,7 @@ import Header from '@/components/Header.astro';
 import Hero from '@/components/Hero.astro';
 import Footer from '@/components/Footer.astro';
 import BeforeAndAfter from '@/components/BeforeAndAfter.astro';
+import PriceList from '@/components/PriceList.astro';
 
 const services = [
   {
@@ -82,7 +83,7 @@ const testimonials = [
     name: 'Emily Rodriguez',
     role: 'Fashion Designer',
     treatment: 'Laser Skin Resurfacing',
-    avatar: '../images/testimonials/review_1.png',
+    avatar: '../images/testimonials/review_2.png',
     rating: 5,
     verified: true,
     text: 'I\'ve been coming to Gya here for 3 years and the results speak for themselves. The treatments have completely transformed my skin texture. Professional, caring, and truly expert care.'
@@ -91,7 +92,7 @@ const testimonials = [
     name: 'Jim Chen',
     role: 'Business Owner',
     treatment: 'Body Contouring',
-    avatar: '../images/testimonials/review_1.png',
+    avatar: '../images/testimonials/review_3.png',
     rating: 5,
     verified: true,
     text: 'Outstanding service and incredible results! The body contouring program helped me achieve the physique I\'ve always wanted. Gya is knowledgeable, professional, and genuinely cares about results.'
@@ -219,7 +220,24 @@ const awards = [
     <!-- Section Before And After Begin-->
      <BeforeAndAfter />
     <!-- Section Before And After End -->
+
+
+    <!-- Video Client And Gya Begin -->
+     <!-- 
+     <div class="video-client-gya">
+      <video width="300" height="400" muted="" autoplay=""  id="video" class="video-in-viewport w-full h-full object-cover "> 
+        <source src="../videos/profile_2_weefks_after.mp4" type="video/mp4">Sorry, your browser doesn't support embedded videos.
+      </video>
+     </div>
+     -->
+    <!-- Video Client And Gya End -->
+
+
+    <!-- Price List  -->
+     <PriceList />
+    <!--Price List -->
     
+
     <!-- Services Section -->
     <section class="services-section">
       <div class="container">

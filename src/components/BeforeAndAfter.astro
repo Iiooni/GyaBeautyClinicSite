@@ -2,19 +2,29 @@
 const beforeAndAfterCard = [
     {title: 'Foundation',
      image: '../images/before-after/glow-profile-balance.png',
+     video: false,
      imageTitle: '',
      description: 'Rebuilded the skin’s natural layer so the face supports the expressions. (lies around the nose and the mouth), cheeks, chin', 
      treatments: ['Forehead lines', 'Smile lines', 'Nasolabil Folds', 'Marionette Lines','Hydration', 'Skin Glow']
     },
     {title: "Smoker's Lines",
      image: '../images/before-after/smoker-lines.png',
+     video: false,
      imageTitle: 'Smoker Lines',
      description: 'Fine vertical lines around the lips smoothed out using a micro technique. Lips preserved their natural shape, movement and expression.',
      treatments: ['Fine lines', "Smoker's Lines", 'Hydration']
     },
-    {title: '2 Days Post Treatment',
-     image: '../images/before-after/after-2-days.png',
+    {title: 'Expressions Preserved',
+     image: '../images/before-after/after-transformation.png',
+     video: false,
      imageTitle: 'After 2 Days',
+     description: 'The filler has integrated naturally with the anatomy. She is laughing and speaking without any stiffness.',
+     treatments: ['Skin Glow', 'Profile Balance', 'Hydration', 'Skin Foundation']
+    }, 
+    {title:'Amaizing Transformation', 
+     image: '../videos/TreansformationSection.mp4',
+     video: true,
+     imageTitle: 'Transformation',
      description: 'The filler has integrated naturally with the anatomy. She is laughing and speaking without any stiffness.',
      treatments: ['Skin Glow', 'Profile Balance', 'Hydration', 'Skin Foundation']
     }
@@ -44,13 +54,23 @@ const beforeAndAfterCard = [
             
                 {beforeAndAfterCard.map(card => (
                     <article class="featured-post card before-and-after-card">
+                    {card.video && (
+                        <div class="video-client-gya">
+                            <video class="before-and-after-grid-video" width="300" height="400" muted="" loop="" autoplay=""  id="video" class="video-in-viewport w-full h-full object-cover "> 
+                            <source src={card.image}type="video/mp4">Sorry, your browser doesn't support embedded videos.
+                            </video>
+                        </div>
+                    )}
                 
-                    <img 
+                    {!card.video && ( 
+                        <img 
                         src={card.image} 
                         alt={card.imageTitle}
                         class="featured-cover-image"
                         loading="eager"
                     />
+                    )}
+                    
                     <span class="before-and-after-card-title price-value">{card.title}</span>
                     <p class="before-and-after-description">{card.description}</p>
                     <div class="service-features">
@@ -89,7 +109,7 @@ const beforeAndAfterCard = [
     }
     .before-and-after-grid{
         display: grid;
-        grid-template-columns: 0.33fr 0.33fr 0.33fr;
+        grid-template-columns: 0.25fr 0.25fr 0.25fr 0.25fr;
         gap:1rem;
     }
     .before-and-after-card{
@@ -104,6 +124,12 @@ const beforeAndAfterCard = [
     .before-and-after-padding{
         padding-top: 4rem;
     }
+    .before-and-after-grid-video{
+        max-width: 100%;
+        height: auto;
+        display: block;
+    }
+    
 
     /* Mobile */
     @media (max-width: 768px) {

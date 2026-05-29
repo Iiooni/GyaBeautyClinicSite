@@ -28,11 +28,11 @@ const {
 <section class="hero">
   <div class="hero-background">
     <div class="gradient-mesh"></div>
-    <div class="floating-shapes">
+    <!-- <div class="floating-shapes">
       <div class="shape shape-1"></div>
-      <div class="shape shape-2"></div>
+      <div class="shape shape-2"></div> 
       <div class="shape shape-3"></div>
-    </div>
+    </div> -->
   </div>
   
   <div class="hero-container">
@@ -299,12 +299,14 @@ const {
       grid-template-columns: 1.1fr 0.9fr;
       gap: 6rem;
       padding: 0 3rem;
+      padding-top: 2rem;
     }
   }
   
   @media (min-width: 1440px) {
     .hero-container {
       gap: 8rem;
+      padding-top: 3rem;
     }
   }
   
@@ -456,7 +458,7 @@ const {
   }
   
   .btn-hero-secondary {
-    background: transparent;
+    background: linear-gradient(135deg, rgba(236, 72, 153, 0.1), rgba(139, 92, 246, 0.1));
     color: var(--text-primary);
     border: 2px solid var(--border-medium);
   }
@@ -754,11 +756,12 @@ const {
   
   @media (max-width: 1023px) {
     .hero {
-      padding: 100px 0 60px;
+      padding: 100px 0 10px;
     }
     
     .hero-container {
       gap: 3rem;
+      padding-top: 3rem;
     }
     
     .hero-content {
