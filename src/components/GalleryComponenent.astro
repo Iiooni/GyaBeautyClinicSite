@@ -193,7 +193,7 @@ const galleryItems = [
     color: var(--text-secondary);
   }
   .gallery-section {
-    padding: 5rem 1.5rem;
+    /*padding: 5rem 1.5rem;*/
   }
 
   .gallery-container{
@@ -473,9 +473,13 @@ const galleryItems = [
     }
   }
 
-  @media (max-width: 640px) {
+  @media (max-width: 768px) {
     .gallery-grid {
       grid-template-columns: 1fr;
+    }
+    .container{
+              padding-left: 1.25rem;
+        padding-right: 1.25rem;
     }
   }
 </style>
