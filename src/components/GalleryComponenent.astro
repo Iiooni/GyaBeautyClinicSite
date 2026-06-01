@@ -1,0 +1,480 @@
+---
+const categories = ['All', 'Lips', 'Lines & Wrinkles', 'Rhinoplasty Filler', 'PRP', 'Transformation'];
+
+const galleryItems = [
+  {
+    id: 1,
+    category: 'Lines & Wrinkles',
+    title: 'Expression Lines and Deep Wrinkles',
+    description: 'Smoothed the lines without freezing the natural expressions. It stimulates collagen production for longer-lasting results. ',
+    duration: '30 min',
+    recovery: 'No downtime',
+    results: 'Lasts up to 6 months',
+    beforeAfter: true,
+    beforeImage: '../images/before-after/before_smile_lines.png',
+    afterImage: '../images/before-after/after_smile_lines.png',
+    timeline: '8 Weeks'
+  }, 
+   {
+    id: 2,
+    category: 'Transformation',
+    title: 'Chin balance',
+    description: 'Carefully placed for a soft oval and heart-shaped structure. The result is subtle but noticeably beneficial to her overall facial balance. The face looks thinner from every angle. Symmetric balance.',
+    duration: '30 min',
+    recovery: 'No downtime',
+    results: 'Lasts up to 12 months',
+    beforeAfter: true,
+    beforeImage: '../images/before-after/chin_before.png',
+    afterImage: '../images/before-after/chin_after.png',
+    timeline: '8 Weeks'
+  },
+  {
+    id: 3,
+    category: 'Lines & Wrinkles',
+    title: 'Forehead Strong Wrinkles and Fine Lines',
+    description: 'Normal movement in the face, but the majority of of the lines so not form anymore.',
+    duration: '30 min',
+    recovery: 'No downtime',
+    results: 'Lasts up to 12 months',
+    beforeAfter: true,
+    beforeImage: '../images/before-after/forehead_before_2.png',
+    afterImage: '../images/before-after/forehead_after_2.png',
+    timeline: '8 Weeks'
+  },
+  {
+    id: 4,
+    category: 'Lines & Wrinkles',
+    title: 'Smoker’s Lines',
+    description: 'Preserved the feeling in the lips, the natural shape, movement and expression.',
+    duration: '30 min',
+    recovery: 'No downtime',
+    results: 'Lasts up to 12 months',
+    beforeAfter: true,
+    beforeImage: '../images/before-after/smoker_lines_before.png',
+    afterImage: '../images/before-after/smoker_lines_after.png',
+    timeline: '8 Weeks'
+  },
+  {
+    id: 5,
+    category: 'Transformation',
+    title: 'Lies around the nose and the mouth. Forehead lines. Cheeks volume. Contoured chin. ',
+    description: 'The filler integrated naturally with the anatomy. She is laughing and speaking without any stiffness.',
+    duration: '30 min',
+    recovery: 'No downtime',
+    results: 'Lasts up to 12 months',
+    beforeAfter: true,
+    beforeImage: '../images/before-after/transformation_before_1.png',
+    afterImage: '../images/before-after/transformation_after_1.png',
+    timeline: '8 Weeks'
+  },
+  {
+    id: 6,
+    category: 'Lips',
+    title: 'Lip Volume and hydration',
+    description: 'Preserving the natural shape. Feels confortable and soft.',
+    duration: '30 min',
+    recovery: 'No downtime',
+    results: 'Lasts up to 12 months',
+    beforeAfter: true,
+    beforeImage: '../images/before-after/lips_before_1.png',
+    afterImage: '../images/before-after/lips_after_1.png',
+    timeline: '8 Weeks'
+  }
+  ];
+--- 
+<section class="gallery-section">
+  <div class="container gallery-container">
+  <div class="gallery-header section-header">
+    <span class="section-badge">Client Results</span>
+    <h2 class="section-title">Real results, carefully planned</h2>
+    <p>
+      Before and afters from treatments tailored to each client’s features,
+      skin and desired result.
+    </p>
+  </div>
+  
+
+  <div class="gallery-filters" aria-label="Before and after categories">
+    {categories.map((category) => (
+      <button
+        class={category === "All" ? "filter-btn active" : "filter-btn"}
+        data-filter={category}
+        type="button"
+      >
+        {category}
+      </button>
+    ))}
+  </div>
+
+  <div class="gallery-grid">
+    {galleryItems.map((item) => (
+      <article class="gallery-card" data-category={item.category}>
+        <div class="image-pair">
+          <figure>
+            <img src={item.beforeImage} alt={`${item.title} before`} />
+            <figcaption>Before</figcaption>
+          </figure>
+
+          <figure>
+            <img src={item.afterImage} alt={`${item.title} after`} />
+            <figcaption>After</figcaption>
+          </figure>
+        </div>
+
+        <div class="card-content gallery-content">
+          <span class="gallery-category">{item.category}</span>
+          <h3 class="gallery-title">{item.title}</h3>
+          <p class="gallery-description">{item.description}</p>
+          <div class="gallery-divider"></div>
+
+          <div class="gallery-meta">
+            <div class="meta-item">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="10"></circle>
+                <polyline points="12 6 12 12 16 14"></polyline>
+              </svg>
+              <span>{item.duration}</span>
+            </div>
+            <div class="meta-item">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                <polyline points="22 4 12 14.01 9 11.01"></polyline>
+              </svg>
+              <span>{item.recovery}</span>
+            </div>
+            <div class="meta-item">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline>
+              </svg>
+              <span>{item.results}</span>
+            </div>
+          </div>
+
+
+        </div>
+      </article>
+    ))}
+  </div>
+
+  <p class="gallery-note">
+    Results vary from person to person. A consultation is always recommended to
+    understand what is suitable for you.
+  </p>
+  </div>
+</section>
+
+<script>
+  const filterButtons = document.querySelectorAll<HTMLButtonElement>(".filter-btn");
+  const cards = document.querySelectorAll<HTMLElement>(".gallery-card");
+
+  filterButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+      const selectedCategory = button.dataset.filter;
+
+      filterButtons.forEach((btn) => btn.classList.remove("active"));
+      button.classList.add("active");
+
+      cards.forEach((card) => {
+        const cardCategory = card.dataset.category;
+
+        if (selectedCategory === "All" || selectedCategory === cardCategory) {
+          card.hidden = false;
+        } else {
+          card.hidden = true;
+        }
+      });
+    });
+  });
+</script>
+
+<style>
+  .gallery-section {
+    padding: 5rem 1.5rem;
+  }
+
+  .gallery-container{
+    max-width: 1600px;
+  }
+
+  .gallery-header {
+    max-width: 760px;
+    margin-bottom: 2rem;
+  }
+  h2{
+    font-size: 2.2rem;
+    color: var(--text-secondary);
+  }
+  .gallery-category {
+    display: inline-block;
+    padding: 0.375rem 0.875rem;
+    background: linear-gradient(135deg, 
+      rgba(236, 72, 153, 0.12),
+      rgba(139, 92, 246, 0.12)
+    );
+    color: var(--color-primary-600);
+    border-radius: 999px;
+    font-size: 0.8125rem;
+    font-weight: 700;
+    margin-bottom: 0;
+    border: 1px solid rgba(236, 72, 153, 0.2);
+    letter-spacing: 0.02em;
+    align-self: flex-start;
+  }
+
+  .gallery-content {
+    padding: 1.5rem;
+    position: relative;
+    z-index: 1;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 0.875rem;
+  }
+
+  .gallery-description {
+    color: var(--text-secondary);
+    opacity: var(--text-opacity-secondary);
+    font-size: 0.9375rem;
+    margin: 0;
+    line-height: 1.6;
+  }
+
+  .gallery-divider {
+       height: 2px;
+    background: linear-gradient(90deg, transparent 0%, rgba(236, 72, 153, .2) 50%, transparent 100%);
+    margin: .5rem 0;
+  }
+
+  .gallery-meta {
+    display: flex;
+    flex-direction: column;
+    gap: 0.625rem;
+  }
+  
+  .meta-item {
+    display: flex;
+    align-items: center;
+    gap: 0.625rem;
+    color: var(--text-secondary);
+    opacity: var(--text-opacity-secondary);
+    font-size: 0.875rem;
+  }
+  
+  .meta-item svg {
+    color: var(--color-primary-500);
+    flex-shrink: 0;
+  }
+  
+  [data-theme="dark"] .meta-item svg {
+    color: rgba(236, 72, 153, 0.8);
+  }
+
+
+  .section-label {
+    display: inline-block;
+    margin-bottom: 0.75rem;
+    font-size: 0.85rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .gallery-header h2 {
+    margin: 0 0 1rem;
+    font-size: clamp(2rem, 4vw, 3.5rem);
+    line-height: 1.05;
+  }
+
+  .gallery-header p {
+    margin: 0;
+    font-size: 1.05rem;
+    line-height: 1.7;
+    max-width: 680px;
+  }
+
+  .gallery-filters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    margin-bottom: 2rem;
+  }
+
+ .filter-btn {
+    padding: 0.75rem 1.75rem;
+    border: 1px solid rgba(236, 72, 153, 0.15);
+    border-radius: 999px;
+    background: linear-gradient(135deg, 
+      rgba(236, 72, 153, 0.04),
+      rgba(139, 92, 246, 0.04)
+    );
+    backdrop-filter: blur(8px);
+    color: var(--text-secondary);
+    font-weight: 600;
+    font-size: 0.9375rem;
+    cursor: pointer;
+    transition: all var(--transition-base);
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .filter-btn::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, 
+      rgba(236, 72, 153, 0.1),
+      rgba(139, 92, 246, 0.1)
+    );
+    opacity: 0;
+    transition: opacity var(--transition-base);
+  }
+  
+  .filter-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(236, 72, 153, 0.15);
+    border-color: rgba(236, 72, 153, 0.25);
+  }
+  
+  .filter-btn:hover::before {
+    opacity: 1;
+  }
+  
+  .filter-btn.active {
+    background: linear-gradient(135deg, 
+      rgba(236, 72, 153, 0.9),
+      rgba(219, 39, 119, 0.9)
+    );
+    border-color: rgba(236, 72, 153, 0.5);
+    color: white;
+    box-shadow: 
+      0 4px 12px rgba(236, 72, 153, 0.3),
+      0 0 20px rgba(236, 72, 153, 0.15);
+    transform: translateY(-2px);
+  }
+  
+  .filter-btn.active::before {
+    opacity: 0;
+  }
+  
+  [data-theme="dark"] .filter-btn {
+    background: linear-gradient(135deg, 
+      rgba(236, 72, 153, 0.08),
+      rgba(139, 92, 246, 0.08)
+    );
+    border-color: rgba(236, 72, 153, 0.2);
+  }
+  
+  [data-theme="dark"] .filter-btn:hover {
+    box-shadow: 0 4px 12px rgba(236, 72, 153, 0.2);
+    border-color: rgba(236, 72, 153, 0.35);
+  }
+  
+  [data-theme="dark"] .filter-btn.active {
+    background: linear-gradient(135deg, 
+      rgba(236, 72, 153, 0.95),
+      rgba(219, 39, 119, 0.95)
+    );
+    box-shadow: 
+      0 4px 12px rgba(236, 72, 153, 0.4),
+      0 0 25px rgba(236, 72, 153, 0.2);
+  }
+
+
+
+  .gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.25rem;
+  }
+
+  .gallery-card {
+    background: #fff;
+    border: 1px solid #eadfd8;
+    border-radius: 1.25rem;
+    overflow: hidden;
+    border-radius: var(--radius-xl);
+    box-shadow: var(--shadow-sm);
+    border: 1px solid rgba(236, 72, 153, .08);
+  }
+
+  .image-pair {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1px;
+    background: #eadfd8;
+  }
+
+  figure {
+    margin: 0;
+    position: relative;
+    background: #fff;
+  }
+
+  .image-pair img {
+    width: 100%;
+    aspect-ratio: 5 / 5;
+    object-fit: cover;
+    display: block;
+  }
+
+  figcaption {
+    position: absolute;
+    left: 0.75rem;
+    bottom: 12rem;
+    background: rgba(255, 255, 255, 0.55);
+    padding: 0.25rem 0.55rem;
+    border-radius: 999px;
+    font-size: 0.75rem;
+        color: var(--color-primary-600);
+    border-radius: 999px;
+    font-size: 0.8125rem;
+    font-weight: 700;
+    margin-bottom: 0;
+    border: 1px solid rgba(236, 72, 153, 0.2);
+    letter-spacing: 0.02em;
+    align-self: flex-start;
+  }
+
+  .card-content {
+    padding: 1.25rem;
+  }
+
+  .treatment-tag {
+    display: inline-block;
+    margin-bottom: 0.7rem;
+    font-size: 0.8rem;
+    color: #7a6257;
+  }
+
+  .card-content h3 {
+    margin: 0 0 0.6rem;
+    font-size: 1.15rem;
+  }
+
+  .card-content p {
+    margin: 0;
+    line-height: 1.55;
+  }
+
+  .gallery-note {
+    margin-top: 1.5rem;
+    font-size: 0.9rem;
+    color: #7a6257;
+  }
+
+  [hidden] {
+    display: none !important;
+  }
+
+  @media (max-width: 1000px) {
+    .gallery-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (max-width: 640px) {
+    .gallery-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
