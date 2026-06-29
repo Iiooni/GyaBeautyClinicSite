@@ -1,0 +1,127 @@
+---
+const data =[];
+---
+<style>
+    @import '../styles/homepage.css';
+</style>
+
+
+<section class="meet-gya-section">
+    <!-- <div class="container">
+        <div class="section-header reveal revealed active">
+            <h2>Meet Gya</h2>
+            <p class="gya-subtitle">Founder & Lead Injector</p>
+        </div>
+    </div> -->
+
+    <div class="meet-gya-grid">
+        <div class="meet-gya-title">
+            <h2>Meet Gya</h2>
+            <p class="gya-subtitle">Founder & Lead Injector</p>
+        </div>
+
+        <div class="meet-gya-image">
+             <img src="/images/gya/gya_profile.png" alt="British College Aesthetic Medicine">
+        </div>
+
+        <div class="meet-gya-card">
+            <div class="meet-gya-content ">
+                <p class="meet-gya-card-title">Expertise</p>
+                <p class="meet-gya-card-descr">Experienced aesthetic nurse with over a decade of hands-on expertise. She brings an honest approach to facial aesthetics.</p>
+                
+                <div class="meet-gya-divider"></div>
+                
+                <p class="meet-gya-card-title">With Precision</p>
+                <p class="meet-gya-card-descr"> Specializes in injectables that are placed at exactly the right depth, because that’s what creates the most natural, long-lasting results.</p>
+
+                <div class="meet-gya-divider"></div>
+
+                <p class="meet-gya-card-title">Trust That Lasts</p>
+                <p class="meet-gya-card-descr">She builds long-term client relationships through clear planning and high-touch care.</p>
+            </div>
+        </div>
+        
+    </div>
+
+    <!--<div class="meet-gya-decor">
+        <h2 class="featured-post card gya-decor-text"> Express every joy, every laugh, every emotion </h2>
+    </div> -->
+</section>
+
+
+<style>
+.meet-gya-section{
+    padding-top: 6rem;
+    padding-bottom:4rem;
+}
+h2{
+    color: var(--text-secondary);
+    font-size: clamp(2rem, 5vw, 3.2rem);
+    font-weight: var(--font-extrabold);
+    line-height: 1.1;
+    margin-bottom: 0.2rem;
+}
+.gya-subtitle{
+    font-size: clamp(1rem, 2vw, 1.25rem);
+    color: var(--text-secondary);
+    max-width: 700px;
+    margin: 0 auto;
+    line-height: 1.5;
+}
+.meet-gya-grid{
+    --animationDuration: 1s;
+    max-width: 1920px;
+    width: calc(100% - clamp(3.125rem, -22.9167rem + 34.7222vw, 18.75rem));
+    margin-inline: auto;
+    display: grid;
+    grid-template-columns: .88fr 1fr 1fr;
+    overflow: clip;
+    align-items: center;
+}
+.meet-gya-title{
+    text-align: center;
+}
+.meet-gya-content{
+    text-align: start;
+}
+.meet-gya-card{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    height: 100%;
+    transform-origin: center;
+    background: radial-gradient(circle at 20% 30%, rgba(236, 72, 153, 0.08) 0%, transparent 50%), radial-gradient(circle at 80% 70%, rgba(139, 92, 246, 0.08) 0%, transparent 50%), radial-gradient(circle at 50% 50%, rgba(249, 115, 22, 0.05) 0%, transparent 50%);
+    border-radius: 1rem;
+    padding: 3rem;
+    box-shadow: var(--shadow-sm);
+    border: 1px solid var(--border-color);
+    margin-left: 5rem;
+}
+.meet-gya-divider {
+    height: 2px;
+    background: linear-gradient(90deg, transparent 0%, rgba(236, 72, 153, .2) 50%, transparent 100%);
+    margin: 2.5rem 0;
+}
+.meet-gya-card-title{
+    font-size: 1.3rem;
+    font-weight: 600;
+    text-align: start;
+    color: black;
+}
+.meet-gya-card-descr{
+    text-align: start;
+}
+.meet-gya-decor{
+    max-width: 800px;
+    margin:0 auto;
+    margin-top:5rem;
+    font-size: 1rem;
+}
+.gya-decor-text{
+    font-size: 1.8rem;
+    color: var(--text-secondary);
+    text-align: center;
+}
+</style>

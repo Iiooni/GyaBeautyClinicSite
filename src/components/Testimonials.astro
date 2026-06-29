@@ -1,0 +1,90 @@
+---
+const testimonials = [
+  {
+    name: 'Lili',
+    role: '',
+    treatment: 'Anti-Aging Treatment',
+    avatar: '../images/testimonials/review_1.png',
+    rating: 5,
+    verified: true,
+    text: 'The anti-aging treatment exceeded all my expectations. My skin looks younger. Gya made me feel like royalty throughout the entire process.'
+  },
+  {
+    name: 'Emily Rodriguez',
+    role: 'Fashion Designer',
+    treatment: 'Laser Skin Resurfacing',
+    avatar: '../images/testimonials/review_2.png',
+    rating: 5,
+    verified: true,
+    text: 'I\'ve been coming to Gya here for 3 years and the results speak for themselves. The treatments have completely transformed my skin texture. Professional, caring, and truly expert care.'
+  },
+  {
+    name: 'Jim Chen',
+    role: 'Business Owner',
+    treatment: 'Body Contouring',
+    avatar: '../images/testimonials/review_3.png',
+    rating: 5,
+    verified: true,
+    text: 'Outstanding service and incredible results! The body contouring program helped me achieve the physique I\'ve always wanted. Gya is knowledgeable, professional, and genuinely cares about results.'
+  }
+];
+---
+
+<style>
+    @import '../styles/homepage.css';
+</style>
+
+<section class="testimonials-section gya-testimonials">
+    <div class="container">
+        <div class="section-header reveal">
+            <h2 class="section-title">Here's what clients experienced</h2>
+            <p class="section-subtitle">
+            Real experiences from real people who have transformed their lives with our treatments.
+            </p>
+        </div>
+
+        <div class="testimonials-grid">
+          {testimonials.map((testimonial, index) => (
+            <div class={`testimonial-card card hover-lift reveal stagger-${(index % 3) + 1}`}>
+              <div class="testimonial-header">
+                <div class="testimonial-rating">
+                  {Array.from({ length: testimonial.rating }).map(() => (
+                    <span class="star">⭐</span>
+                  ))}
+                </div>
+                {testimonial.verified && (
+                  <div class="verified-badge">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <polyline points="20 6 9 17 4 12"></polyline>
+                    </svg>
+                    <span>Verified</span>
+                  </div>
+                )}
+              </div>
+              
+              <p class="testimonial-text">{testimonial.text}</p>
+              
+              <div class="testimonial-author">
+                <div class="author-avatar">
+                  <img src={testimonial.avatar} alt={testimonial.name} loading="lazy" />
+                </div>
+                <div class="author-info">
+                  <div class="author-name">{testimonial.name}</div>
+                  <div class="author-role">{testimonial.role}</div>
+                  <div class="author-treatment">{testimonial.treatment}</div>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+
+
+    </div>
+</section>
+
+<style>
+
+.gya-testimonials {
+    background: linear-gradient(135deg, rgba(168, 85, 247, 0.12) 0%, rgba(219, 39, 119, 0.12) 50%, rgba(249, 115, 22, 0.08) 100%);
+}
+</style>

@@ -1,0 +1,65 @@
+---
+const faqs = [
+  {
+    question: 'Are your treatments safe and FDA-approved?',
+    answer: 'Yes, all our treatments use FDA-approved equipment and medical-grade products. Our procedures are performed by licensed medical professionals with extensive training and certification.'
+  },
+  {
+    question: 'How long do results typically last?',
+    answer: 'Results vary by treatment type. Facial treatments show immediate results lasting 4-6 weeks. Laser treatments offer permanent results after completing the recommended sessions. Anti-aging treatments like Botox last 3-6 months.'
+  },
+  {
+    question: 'Is there any downtime after treatments?',
+    answer: 'Most treatments have minimal to no downtime. Facial treatments allow immediate return to normal activities. Laser treatments may require 24-48 hours. Our specialists will provide detailed aftercare instructions.'
+  },
+  {
+    question: 'Do you offer payment plans?',
+    answer: 'Yes, we offer flexible payment plans and financing options for treatments over $500. We also accept all major credit cards and offer package discounts for multiple sessions.'
+  },
+  {
+    question: 'What should I expect during my first visit?',
+    answer: 'Your first visit includes a comprehensive consultation, skin analysis, and personalized treatment plan. We\'ll discuss your goals, medical history, and recommend the best treatments for your needs.'
+  }
+];
+---
+<style>
+    @import '../styles/homepage.css';
+</style>
+
+<section class="faq-section">
+    <div class="container">
+        <div class="section-header reveal">
+          <h2 class="section-title">Frequently Asked Questions</h2>
+          <p class="section-subtitle">
+            Find answers to common questions about our treatments, procedures, and services.
+          </p>
+        </div>
+
+        <div class="faq-container">
+          {faqs.map((faq, index) => (
+            <div class={`faq-item card reveal stagger-${(index % 5) + 1}`}>
+              <button class="faq-question">
+                <span>{faq.question}</span>
+                <svg class="faq-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <polyline points="6 9 12 15 18 9"></polyline>
+                </svg>
+              </button>
+              <div class="faq-answer">
+                <p>{faq.answer}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        <div class="faq-cta reveal">
+          <p>Still have questions? We're here to help!</p>
+          <a href="/contact" class="btn btn-primary btn-large hover-lift">
+            <span>Contact Us</span>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+              <polyline points="12 5 19 12 12 19"></polyline>
+            </svg>
+          </a>
+        </div>
+    </div>
+</section>
