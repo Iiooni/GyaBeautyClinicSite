@@ -1,0 +1,68 @@
+---
+---
+
+<style>
+    @import '../styles/homepage.css';
+</style>
+
+<section class="about-gya-section about-gya">
+    <div class="container-about-gya">
+        <div class="about-gya-left-column">
+            <h2 class="about-gya-title">Gya </br> Founder & Lead Injector</h2>
+            <h3 class="about-gya-subtitle">"Helping you understand your face before recommending any treatment."</h3>
+        </div>
+
+        <div class="about-gya-middle-column">
+            <img src="/images/landingPages/about-gya.png" 
+                alt="Professional beauty clinic consultation" 
+                class=""
+                loading="lazy"
+            />
+         </div>
+
+        <div class="about-gya-right-column">About Gya</div>
+           
+    </div>
+</section>
+
+<style>
+.about-gya{}
+
+.about-gya-section{
+    /*background: linear-gradient(135deg, rgba(168, 85, 247, 0.12) 0%, rgba(219, 39, 119, 0.12) 50%, rgba(249, 115, 22, 0.08) 100%);*/
+    background-color: white;
+}
+
+.container-about-gya{
+    max-width: 1920px;
+    width: calc(100% - clamp(3.125rem, -22.9167rem + 34.7222vw, 18.75rem));
+    margin-inline: auto;
+    display: grid;
+    grid-template-columns: .88fr 1fr .78fr;
+    overflow: clip;
+    gap:3rem;
+}
+
+.about-gya-title{
+    font-size: 2.25rem;
+    font-weight: 800;
+    margin: 4.5rem 0 2rem;
+    letter-spacing: -.02em;
+    color: var(--text-primary);
+    position: relative;
+    animation: fadeInUp .6s ease-out both;
+    text-align: center;
+}
+
+.about-gya-subtitle{
+    font-size: 1.8rem;
+    font-weight: 600;
+    font-style: italic;
+    margin: 4.5rem 0 2rem;
+    letter-spacing: -.02em;
+    color: var(--text-primary);
+    position: relative;
+    animation: fadeInUp .6s ease-out both;
+    text-align: center;
+}
+</style>

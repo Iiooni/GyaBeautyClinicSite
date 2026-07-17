@@ -11,11 +11,12 @@ import ConsultationSteps from '@/components/ConsultationSteps.astro';
 import BeforeAndAfter from '@/components/BeforeAndAfter.astro';
 import Testimonials from '@/components/Testimonials.astro';
 import Faqs from '@/components/Faqs.astro';
+import AboutGya from '@/components/AboutGya.astro';
 
-// Landing page data 
+// Blog posts data with realistic images
 const landingPageData = {
-  'transformation': {
-    title: 'Clear your doubts',
+  'skincare-routine-glowing-skin': {
+    title: 'Facial Balancing Treatment',
     titleSecondRow: 'So you can put your best foot forward',
     excerpt: 'Whether that’s at work, in relationships, or when you look in the mirror.',
     treatment: 'Facial Balancing Treatment',
@@ -23,21 +24,19 @@ const landingPageData = {
     category: 'Transformation',
     author: 'Gya',
     authorRole: 'Medical Director',
-    date: '2026-06-19',
+    date: '2026-02-28',
     readingTime: '8 min read',
-    tags: ['skincare', 'rejuvenation', 'lines', 'wrinkles'],
+    tags: ['skincare', 'routine', 'beginner'],
     cover: '/images/landingPages/transformation.png'
   }
 };
 
-
-
 // Generate static paths for all blog posts
-export function getStaticPaths(){
-  // Define landing pages data inside getStaticPathsLanding to ensure it's available during build
-  const landingPages = {
-    'transformation' : {
-      title: 'Clear your doubts',
+export function getStaticPaths() {
+  // Define blog posts data inside getStaticPaths to ensure it's available during build
+  const posts = {
+    'skincare-routine-glowing-skin': {
+      title: 'Facial Balancing Treatment',
       titleSecondRow: 'So you can put your best foot forward',
       excerpt: 'Whether that’s at work, in relationships, or when you look in the mirror.',
       treatment: 'Facial Balancing Treatment',
@@ -45,18 +44,20 @@ export function getStaticPaths(){
       category: 'Transformation',
       author: 'Gya',
       authorRole: 'Medical Director',
-      date: '2026-06-19',
+      date: '2026-02-28',
       readingTime: '8 min read',
       tags: ['skincare', 'rejuvenation', 'lines', 'wrinkles'],
       cover: '/images/landingPages/transformation.png'
     }
   };
 
-    return Object.keys(landingPages).map(slug => ({
+
+  
+  
+  return Object.keys(posts).map(slug => ({
     params: { slug }
   }));
 }
-
 
 const { slug } = Astro.params;
 const page = landingPageData[slug as keyof typeof landingPageData];
@@ -64,68 +65,88 @@ const page = landingPageData[slug as keyof typeof landingPageData];
 // Get related posts (exclude current article)
 const allSlugs = Object.keys(landingPageData).filter(s => s !== slug);
 const relatedSlugs = allSlugs.slice(0, 3);
-const relatedPage = relatedSlugs.map(relatedSlug => {
-  const lPage = landingPageData[relatedSlug as keyof typeof landingPageData];
+const relatedPosts = relatedSlugs.map(relatedSlug => {
+  const post = landingPageData[relatedSlug as keyof typeof landingPageData];
   return {
     slug: relatedSlug,
-    title: lPage.title,
-    category: lPage.category,
-    date: lPage.date,
-    cover: lPage.cover
+    title: post.title,
+    category: post.category,
+    date: post.date,
+    cover: post.cover
   };
 });
 ---
 
-
-
 <BaseLayout 
-  title={`Gya Beauty Clinic title`}
+ title={`Gya Beauty Clinic title`}
   description={'Gya Beauty Clinic description'}
 >
   <Header />
+  
   <main>
     <!-- Scroll Progress Indicator -->
     <div class="scroll-progress" id="scrollProgress"></div>
+     <article class="article-page">
+       <div class="article-header">
 
-    <!-- Article Header -->
-    <article class="article-page">
-      <div class="article-header">
-        
         <div class="top-container">
-         <div class="container-narrow">
-          <!-- <span class="article-category">{page.category}</span> -->
-          
-          
-          <h1 class="article-title headline animate-fade-in-up stagger-1">{page.title}</h1>
-          <h2>{page.titleSecondRow}</h2>
-          <h3 class="section-title"></h3>
-          <p class="subtitle">{page.excerpt}</p>
-          <a href="/booking" class="btn btn-primary btn-large hover-lift lp-btn-booking">
-            <span>Book A Free Consultation</span>
-          </a>
 
-          <div class="hero-metrics location-hero-card">
-            <a href="https://maps.app.goo.gl/U24JME28ga7uLv9J7" class="location-hero-a">
-              <img src="/images/hero/location_logo2.png" 
-                  alt="Professional beauty clinic consultation" 
-                  class=""
-                  loading="lazy"
-                />
-              <p class="location-hero">Inside Clinic Name, Saint Bartholomew’s Road. View on map →</p>
-            </a>
+          <div class="container-narrow">
+              <!-- <div class="hero-badge animate-fade-in-up">
+                  <span class="badge-dot"></span>
+                  <span class="badge-text">Serving clients across Nottinghamshire for over 5 years</span>
+              </div>-->
+              <h1 class="article-title headline animate-fade-in-up stagger-1">{page.title}</h1>
+              <h2 class="lp-second-title">{page.titleSecondRow}</h2>
+              <p class="lp-subtitle">{page.excerpt}</p>
+
+              <div class="hero-badge-transparent animate-fade-in-up">
+                  
+                  <span class="badge-text">Premium aesthetic practice serving Nottinghamshire for over 5 years </span>
+              </div>
+              
+
+              
+
+              <!-- <div class="lp-booking-hero">
+                <a href="/booking" class="btn btn-primary btn-large hover-lift lp-btn-booking">
+                  <span>Book A Free Consultation</span>
+                </a>
+              </div>  -->
+              
           </div>
 
+            <div class="hero-visual reveal-right">
+            
+            <div class="visual-container">
+               <!-- <h2 class="lp-treatment-name">{page.treatment}</h2> -->
+                <img 
+                  src="/images/LP-Transformeation/LP_gya_picture.png" 
+                  alt="Professional beauty clinic consultation" 
+                  class="visual-image"
+                  loading="lazy"
+                /> 
 
 
-         </div>
-         <div class="hero-image">
-          <h2 class="lp-treatment-name">{page.treatment}</h2>
-          <img src="/images/LP-Transformeation/LP_gya_picture.png" alt="Filler facial balance" class="visual-image-hero" loading="lazy" data-astro-cid-bbe6dxrz="">
-         </div>
-         </div>
-      </div>
+                <div class="hero-metrics location-hero-card">
+                  <a href="https://maps.app.goo.gl/U24JME28ga7uLv9J7" class="location-hero-a">
+                    <img src="/images/hero/location_logo2.png" 
+                         alt="Professional beauty clinic consultation" 
+                         class=""
+                         loading="lazy"
+                    />
+                    <p class="location-hero">Inside Clinic Name, Saint Bartholomew’s Road. <strong>View on map →</strong></p>
+                  </a>
+                </div>
+             </div>
+             
+              
+          </div>
 
-      <!-- Article Cover -->
+        </div>
+       </div>
+
+      <!-- Before And After Under Hero -->
       <div class="article-cover">
         <img 
           src={page.cover} 
@@ -135,22 +156,16 @@ const relatedPage = relatedSlugs.map(relatedSlug => {
         />
       </div>
 
-
-
-
-
-    </article>
-
-    <!-- BeforeAnd After description -->
-    <section class="before-after-section">
-      <div class="container before-after-container">
-         <div class="before-after section-header">
-           <h2>What you're seeing: </h2>
-           <p> The face looks refreshed, not done. <br />The skin looks visibly lifted and radiant.
+      <!--What You're Seeing Section -->
+      <div class="lp-container-narrow">
+        <div class="lp-content container">
+          <h2>What you're seeing:</h2>
+          <p> The face looks refreshed, not done. <br />The skin looks visibly lifted and radiant.
             <br />We didn't change the features. </p>
-         </div>
-         <div class="before-after-grid">
+        </div>
+      </div>
 
+      <div class="before-after-grid">
           <!-- COLUMN 1 -->
           <article class="before-after-card" >
             <div class="card-content gallery-content">
@@ -177,235 +192,254 @@ const relatedPage = relatedSlugs.map(relatedSlug => {
                <p class="gallery-description">When she smiles or expresses emotions, her forehead lines soften naturally. Movement is completley preserved.</p>
             </div>
           </article>
-          
          </div>
-      </div>
-    </section>
+         <!--What You're Seeing Section -->
 
-    <!-- The anti-overfilling guarantee -->
-    <section class="lp-guarantee-section">
-      <div class="container guarantee-container">
-        <h2>The Anti-Overfilled Guarantee  </h2>
 
-        <div class="why-choose-grid guarantee-grid">
-           <div class="why-choose-content reveal">
-            <h4 class="guarantee-gya-title">Gya's Philosophy</h4>
-             <p class="guarantee-text"> We believe in facial balancing, not facial changeing. <br /> Our micro-dose approach ensures results that look natural, that look like you. <br /> Rested, glowing hydrated skin, and ready to put your best foot forward.</p>
-           </div>
+        <!-- The anti-overfilling guarantee -->
+        <section class="lp-guarantee-section">
+          <div class="container guarantee-container">
+            <h2 class="lp-title">The Anti-Overfilled Guarantee </h2>
 
-           <div class="why-choose-visual reveal">
-            <div class="visual-card card" style="margin-top: 2rem;">
-              <div class="visual-image-wrapper">
-                <img 
-                  src="/images/before-after/guarantee.png" 
-                  alt="Professional beauty clinic consultation" 
-                  class="visual-image"
-                  loading="lazy"
-                />
-                <div class="visual-overlay"></div>
+            <div class="why-choose-grid guarantee-grid">
+              <div class="why-choose-content reveal">
+                <h4 class="guarantee-gya-title">Gya's Philosophy</h4>
+                 <p class="guarantee-text"> We believe in facial balancing, not facial changeing. <br /> Our micro-dose approach ensures results that look natural, that look like you. <br /> Rested, glowing hydrated skin, and ready to put your best foot forward.</p>
+              </div>
+
+              <div class="why-choose-visual reveal">
+                <div class="visual-card card" style="margin-top: 2rem;">
+                  <div class="visual-image-wrapper">
+                    <img 
+                      src="/images/before-after/guarantee.png" 
+                      alt="Professional beauty clinic consultation" 
+                      class="visual-image"
+                      loading="lazy"
+                    />
+                    <div class="visual-overlay"></div>
+                  </div>
+                </div>
               </div>
             </div>
-           </div>
+          </div>
+        </section>
+        <!-- The anti-overfilling guarantee -->
+
+        <!--Consultation Steps -->
+        <ConsultationSteps />
+
+
+        <!-- no pressure to make a decision on the day -->
+        <div class="lp-container-narrow">
+         <div class="lp-content container">
+          <p class="lp-no-preasure"> There is no pressure to make a decision on the day. <br /> The consultation is your opportunity to understand your options and choose what's right for you.</p>
+          </div>
         </div>
+        <!-- no pressure to make a decision on the day -->
 
-      </div>
-    </section>
+        <AboutGya />
 
-    <!--Consultation Steps -->
-    <ConsultationSteps />
 
-    <!-- Certifications Section -->
-    <Certifications />
-
-    <!-- Meet Gya Section -->
-    <MeetGya />
-
-    <!-- transformation Before And After -->
-    <BeforeAndAfter decor="Express every joy, every laugh, every emotion" decorClass="gya-decor-text"/>
-
-    <!-- Testimonials -->
-    <Testimonials />
-
-    <!-- FAQs -->
-    <Faqs />
+     </article>
     
+    <!-- Article Header -->
     
- 
-
-
-
-
-    <!-- Booking Form Section -->
-    <section class="booking-section"> 
-      <div class="container">
-        <div class="booking-grid">
-          <!-- Booking Form LEFT SIDE-->
-           <div class="booking-form-wrapper reveal-left">
-             <div class="form-card card">
-               <h2 class="form-title">Appointment Details</h2>
-
-               <form class="booking-form" id="bookingForm">
-                 <div class="form-section">
-                  <h3 class="section-title">Personal Information</h3>
-
-                  <div class="form-row">
-                    <div class="form-group">
-                      <label for="firstName">First Name *</label>
-                      <input 
-                        type="text" 
-                        id="firstName" 
-                        name="firstName" 
-                        required
-                        placeholder="John"
-                      />
-                    </div>
-                    
-                    <div class="form-group">
-                      <label for="lastName">Last Name *</label>
-                      <input 
-                        type="text" 
-                        id="lastName" 
-                        name="lastName" 
-                        required
-                        placeholder="Doe"
-                      />
-                    </div>
-                  </div>
-
-                  <div class="form-row">
-                    <div class="form-group">
-                      <label for="email">Email *</label>
-                      <input 
-                        type="email" 
-                        id="email" 
-                        name="email" 
-                        required
-                        placeholder="john@example.com"
-                      />
-                    </div>
-                    
-                    <div class="form-group">
-                      <label for="phone">Phone *</label>
-                      <input 
-                        type="tel" 
-                        id="phone" 
-                        name="phone"
-                        required
-                        placeholder="+1 (234) 567-8900"
-                      />
-                    </div>
-                  </div>
-
-                  <!-- Additional Information -->
-                <div class="form-section">
-                  <h3 class="section-title">Additional Information</h3>
-                  
-                  <div class="form-group">
-                    <label for="notes">Special Requests or Notes</label>
-                    <textarea 
-                      id="notes" 
-                      name="notes" 
-                      rows="4"
-                      placeholder="Any concerns, or special requests..."
-                    ></textarea>
-                  </div>
-                </div>
-
-
-                <button type="submit" class="btn btn-primary btn-large hover-lift">
-                  Confirm Booking
-                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <polyline points="20 6 9 17 4 12"></polyline>
-                  </svg>
-                </button>
-
-                 </div>
-               </form>
-
-             </div>
-           </div>
-
-            <!-- Booking Info Sidebar RIGHT SIDE-->
-            <div class="booking-info reveal-right">
-               <div class="info-card card">
-                 <h3 class="info-title">What to Expect</h3>
-
-                 <div class="info-steps">
-                  <div class="step">
-                  <div class="step-number">1</div>
-                  <div class="step-content">
-                    <h4>Confirmation</h4>
-                    <p>You'll receive a confirmation email within 24 hours</p>
-                  </div>
-                </div>
-                
-                <div class="step">
-                  <div class="step-number">2</div>
-                  <div class="step-content">
-                    <h4>Preparation</h4>
-                    <p>We'll send you preparation instructions if needed</p>
-                  </div>
-                </div>
-                
-                <div class="step">
-                  <div class="step-number">3</div>
-                  <div class="step-content">
-                    <h4>Your Visit</h4>
-                    <p>Arrive 10 minutes early for check-in</p>
-                  </div>
-                </div>
-                 </div>
-               </div>
-
-              <div class="info-card card">
-                <h3 class="info-title">Cancellation Policy</h3>
-                <p class="info-text">
-                 Please provide at least 24 hours notice for cancellations or rescheduling. 
-                  Late cancellations may incur a fee.
-                </p>
-              </div>
-            
-
-             <div class="info-card card">
-              <h3 class="info-title">Need Help?</h3>
-              <p class="info-text">
-                Have questions about booking? Contact us:
-              </p>
-              <div class="contact-info">
-                <div class="contact-item">
-                  <span class="contact-icon">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                      <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
-                    </svg>
-                  </span>
-                  <span>+1 (234) 567-8900</span>
-                </div>
-                <div class="contact-item">
-                  <span class="contact-icon">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                      <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
-                      <polyline points="22,6 12,13 2,6"></polyline>
-                    </svg>
-                  </span>
-                  <span>info@beautyclinic.com</span>
-                </div>
-              </div>
-            </div>
-            </div>
-        </div>
-        </div>
-      </section> 
-
-
   </main>
-
+  
   <Footer />
 </BaseLayout>
 
 
 
+
+
 <style>
   /*My Additions*/
+.hero-visual {
+    position: relative;
+    /*display: flex;*/
+    justify-content: center;
+    align-items: center;
+}
+
+  
+.reveal-right {
+  opacity: 0;
+  transform: translateX(30px);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.reveal-right.active {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.visual-container {
+    position: relative;
+    width: 100%;
+    max-width: 700px;
+}
+
+.visual-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+  transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  filter: brightness(1) saturate(1) contrast(1);
+}
+
+.hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.625rem;
+    padding: 0.625rem 1.25rem;
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-subtle);
+    border-radius: 100px;
+    margin-bottom: 2rem;
+    font-size: 0.8125rem;
+    font-weight: 500;
+    color: var(--text-secondary);
+    box-shadow: var(--shadow-sm);
+    transition: all 0.3s ease;
+  }
+  
+  .hero-badge:hover {
+    border-color: var(--color-primary-500);
+    box-shadow: var(--shadow-md);
+  }
+  
+  .badge-dot {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--color-primary-500), var(--color-secondary-500));
+    animation: pulse-dot 2s ease-in-out infinite;
+  }
+  
+  .hero-badge-transparent {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.625rem;
+    padding: 1rem 1rem;
+    background: rgb(255 255 255 / 10%);
+    border: 1px solid var(--border-subtle);
+    border-radius: 1rem;
+    margin-bottom: 2rem;
+    font-size: 1.2rem;
+    /* font-weight: 100; */
+    color: var(--text-secondary);
+    box-shadow: var(--shadow-sm);
+    transition: all 0.3s ease;
+    text-align: center;
+    margin-top: 2rem;
+}
+
+
+  .lp-underline{
+    content: "";
+    bottom: -2px;
+    left: 0;
+    height: 1.5px;
+    background: linear-gradient(90deg, var(--color-primary-500), transparent);
+  }
+
+  .lp-subtitle{
+    margin-bottom: 2rem;
+    font-size: 1.2rem;
+    line-height: 1.7rem;
+    margin-top: 1rem;
+  }
+
+  .lp-booking-hero{
+    display: flex;
+    justify-content: center;
+    margin: 2rem 0;
+  }
+
+  .lp-container-narrow{
+    max-width: 720px;
+    margin: 0 auto;
+  }
+
+  .lp-content{
+    margin-bottom: 2rem;
+  }
+
+  .lp-content h2{
+    font-size: 2.25rem;
+    font-weight: 800;
+    margin: 4.5rem 0 2rem;
+    letter-spacing: -.02em;
+    color: var(--text-primary);
+    position: relative;
+    padding-left: 1.5rem;
+    animation: fadeInUp .6s ease-out both;
+
+  }
+  .lp-content h2:before{
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 4px;
+    background: linear-gradient(180deg, var(--color-primary-500), var(--color-secondary-500));
+    border-radius: 2px;
+  }
+
+  .lp-title{
+    font-size: 2.25rem;
+    font-weight: 800;
+    margin: 1rem 0 2rem;
+    letter-spacing: -.02em;
+    color: var(--text-primary);
+    position: relative;
+    animation: fadeInUp .6s ease-out both;
+  }
+
+   .lp-no-preasure p:before{
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 4px;
+    background: linear-gradient(180deg, var(--color-primary-500), var(--color-secondary-500));
+    border-radius: 2px;
+  }
+
+  .lp-no-preasure{
+    display: inline-flex;
+    align-items: center;
+    gap: 0.625rem;
+    padding: 1rem 1rem;
+    background: rgb(255 255 255 / 30%);
+    border: 1px solid var(--border-subtle);
+    border-radius: 1rem;
+    margin-bottom: 2rem;
+    font-size: 1.2rem;
+    font-weight: 500;
+    color: var(--text-secondary);
+    box-shadow: var(--shadow-sm);
+    transition: all 0.3s ease;
+    text-align: center;
+    margin-top: 2rem;
+  }
+
+
+
+
+ 
+/* New additions END */
+
+
+
+
+
+
    .headline {
     font-size: clamp(1rem, 5vw, 4rem);
     line-height: 1.1;
@@ -429,12 +463,44 @@ const relatedPage = relatedSlugs.map(relatedSlug => {
     margin: 0 auto;
     padding: 0 2rem;
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 1rem;
+    grid-template-columns: 1fr;
+    gap: 4rem;
     align-items: center;
     position: relative;
     z-index: 1;
   }
+
+  @media (min-width: 1024px) {
+    .top-container {
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 6rem;
+      padding: 0 3rem;
+    }
+  }
+  
+  @media (min-width: 1440px) {
+    .top-container {
+      gap: 8rem;
+    }
+  }
+
+
+@media (max-width: 1023px) {
+
+.top-container {
+      gap: 3rem;
+      padding-top: 0rem;
+    }
+
+.hero-badge {
+      margin-left: auto;
+      margin-right: auto;
+    }
+}
+
+
+
+
   h2{
     font-size: 2.2rem;
     color: var(--text-secondary);
@@ -484,18 +550,17 @@ const relatedPage = relatedSlugs.map(relatedSlug => {
     font-size: 0.8125rem;
     font-weight: 500;
     color: var(--text-secondary);
-    box-shadow: var(--shadow-sm);
+    box-shadow: var(--shadow-sm); 
     transition: all 0.3s ease;
   }
   .lp-treatment-name{
     /*background: linear-gradient(135deg, rgba(168, 85, 247, 0.12) 0%, rgba(219, 39, 119, 0.12) 50%, rgba(249, 115, 22, 0.08) 100%);*/
     transition: all 0.3s ease;
     font-family: var(--font-heading);
-    font-size: 1.5rem;
     color: var(--text-secondary);
-    font-weight: var(--font-extrabold);
     margin-bottom: 1rem;
     line-height: 1.1;
+    margin-top: 4rem;
   }
   .lp-treatment-container{
    text-align: center;
@@ -516,7 +581,8 @@ const relatedPage = relatedSlugs.map(relatedSlug => {
     gap: 1rem;
   }
   .location-hero{
-     font-style: italic;
+    text-align: center;
+     
   }
   .location-hero-a{
     display: flex;
@@ -533,7 +599,7 @@ const relatedPage = relatedSlugs.map(relatedSlug => {
     padding-bottom:6rem;
   }
   .before-after-container{
-    max-width: 1600px;
+    
   }
  .before-after-header {
     max-width: 760px;
@@ -555,6 +621,9 @@ const relatedPage = relatedSlugs.map(relatedSlug => {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     gap: 1.25rem;
+    max-width: 1600px;
+    margin: 2rem auto;
+
   }
   .before-after-card {
     background: radial-gradient(circle at 20% 30%, rgba(236, 72, 153, 0.08) 0%, transparent 50%), radial-gradient(circle at 80% 70%, rgba(139, 92, 246, 0.08) 0%, transparent 50%), radial-gradient(circle at 50% 50%, rgba(249, 115, 22, 0.05) 0%, transparent 50%);
@@ -564,6 +633,7 @@ const relatedPage = relatedSlugs.map(relatedSlug => {
     border-radius: var(--radius-xl);
     box-shadow: var(--shadow-sm);
     border: 1px solid rgba(236, 72, 153, .08);
+    max-width: 1600px;
   }
   .card-content {
     padding: 1.25rem;
@@ -598,9 +668,9 @@ const relatedPage = relatedSlugs.map(relatedSlug => {
     color: #9f4859; 
    }
   .before-after-divider {
-       height: 2px;
+    height: 2px;
     background: linear-gradient(90deg, transparent 0%, rgba(236, 72, 153, .2) 50%, transparent 100%);
-    margin: .5rem 0;
+    margin: .3rem 0;
   }
 .lp-guarantee-section{
   padding: 4rem 0;
@@ -609,6 +679,7 @@ const relatedPage = relatedSlugs.map(relatedSlug => {
   .guarantee-container{
     margin:0 auto;
     text-align: center;
+    padding: 0 2rem;
   }
   .guarantee-text{
     text-align: left;
@@ -632,8 +703,6 @@ const relatedPage = relatedSlugs.map(relatedSlug => {
 .gya-decor-text{
       font-size: 1.8rem;
 }
-  
-  
   /* Scroll Progress Indicator */
   .scroll-progress {
     position: fixed;
@@ -650,15 +719,12 @@ const relatedPage = relatedSlugs.map(relatedSlug => {
     z-index: 9999;
     box-shadow: 0 0 10px rgba(236, 72, 153, 0.5);
   }
+  
   .container-narrow {
     max-width: 720px;
     margin: 0 auto;
-    padding: 0 2rem;
   }
-  .consultation-section{
-    padding-top: 6rem;
-  }
- 
+  
   /* Article Header */
   .article-header {
     padding: calc(80px + 5rem) 0 4rem;
@@ -749,7 +815,6 @@ const relatedPage = relatedSlugs.map(relatedSlug => {
     letter-spacing: 0.03em;
     margin-bottom: 2rem;
     animation: fadeInUp 0.6s ease-out;
-    margin-top: 1rem;
   }
   
   @keyframes fadeInUp {
@@ -767,24 +832,9 @@ const relatedPage = relatedSlugs.map(relatedSlug => {
     font-size: clamp(2rem, 5vw, 3rem);
     font-weight: 700;
     letter-spacing: -0.03em;
-    line-height: 1;
-    margin-bottom: 1rem;
-    animation: fadeInUp 0.6s ease-out 0.1s both;
-  }
-
-  .article-title-second{
-    font-size: clamp(2rem, 5vw, 3rem);
-    font-weight: 700;
-    letter-spacing: -0.03em;
-    line-height: 1;
-    margin-bottom: 1.5rem;
-    animation: fadeInUp 0.6s ease-out 0.1s both;
-  }
-
-  .subtitle{
+    line-height: 2;
     margin-bottom: 2rem;
-    font-size: 1.2rem;
-    line-height: 1.7rem;
+    animation: fadeInUp 0.6s ease-out 0.1s both;
   }
   
   .article-meta {
@@ -798,7 +848,7 @@ const relatedPage = relatedSlugs.map(relatedSlug => {
     animation: fadeInUp 0.6s ease-out 0.2s both;
   }
   
-  /*.article-meta::before {
+  .article-meta::before {
     content: '';
     position: absolute;
     top: -2px;
@@ -809,7 +859,7 @@ const relatedPage = relatedSlugs.map(relatedSlug => {
       var(--color-primary-500),
       var(--color-secondary-500)
     );
-  }*/
+  }
   
   .author-info {
     display: flex;
@@ -1329,7 +1379,10 @@ const relatedPage = relatedSlugs.map(relatedSlug => {
   /* Responsive */
   @media (max-width: 768px) {
     .container-narrow {
-      padding: 0 1.5rem;
+    }
+
+    .badge-dot {
+      height: 8px;
     }
     
     .article-header {
@@ -1337,8 +1390,10 @@ const relatedPage = relatedSlugs.map(relatedSlug => {
     }
     
     .article-title {
-      font-size: clamp(1.75rem, 8vw, 2.5rem);
-      margin-bottom: 2rem;
+      font-size: 3rem;
+      margin-bottom: 4rem;
+      text-align: center;
+      line-height: 1.2;
     }
     
     .article-meta {
@@ -1369,8 +1424,42 @@ const relatedPage = relatedSlugs.map(relatedSlug => {
     .related-grid {
       grid-template-columns: 1fr;
     }
+
+    .lp-second-title{
+      font-size: 1.5rem;
+      text-align: center;
+    }
+
+    .lp-subtitle{
+      font-size: 1rem;
   }
+
+  .before-after-grid{
+    grid-template-columns: 1fr;
+    padding: 0 2rem;
+  }
+  .lp-content h2{
+    font-size:1.8rem;
+  }
+  .lp-content p{
+    font-size: 1rem;
+  }
+
+  .before-after-title{
+    font-size: 1.3rem;
+  }
+
+  .gallery-description{
+    font-size: 0.9rem;
+  }
+
+  .lp-title{
+    font-size: 1.8rem;
+  }
+    
+}
 </style>
+
 
 <script>
   const form = document.getElementById('bookingForm') as HTMLFormElement;

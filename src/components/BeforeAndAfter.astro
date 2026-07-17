@@ -40,14 +40,14 @@ const {decor, decorClass} = Astro.props;
 <section class="before-and-after-section">
     <div class="container before-and-after-container">
         <div class="section-header reveal">
-            <h2 class="featured-post card section-title {decorClass}">{decor}</h2>
+           <h2 class={`featured-post card section-title ${decorClass} no-after`}>{decor}</h2>
             <!-- <p class="section-subtitle">While helping deeper lines become less noticeable. <br />-->
             <!--<p class="section-subtitle">Deeper lines less noticeable <br />
             No frozen expressions <br /> -->
             <!-- See how results settle naturally over time. -->
-
+           
             
-             <h2 class="section-title before-and-after-padding">One transformation</h2>
+             <h2 class="section-title before-and-after-padding no-after">One transformation</h2>
              <p class="section-subtitle">Tailored combination of precisely placed dermal fillers. <br />
              A foundation that settles naturally. </p>
           </p>
@@ -101,6 +101,9 @@ const {decor, decorClass} = Astro.props;
         font-size: 2.2rem;
             color: var(--text-secondary);
     }
+    .section-title.no-after::after {
+        display: none;
+    }
     .section-header{
         margin-bottom: 1rem;
     }
@@ -132,7 +135,9 @@ const {decor, decorClass} = Astro.props;
         height: auto;
         display: block;
     }
-    
+    .gya-decor-text{
+      font-size: 1.8rem;
+    }
 
     /* Mobile */
     @media (max-width: 768px) {

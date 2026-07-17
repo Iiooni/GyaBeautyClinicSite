@@ -33,7 +33,7 @@
             <!-- STEP 3 -->
             <article class="consultation-card">
                 <div class="card-content consultation-content">
-                    <h3 class="consultation-title">Get To Know You</h3>
+                    <h3 class="consultation-title">You look in the mirror while Gya points out your facial balance</h3>
                     <div class="consultation-divider"></div>
                     <p>Every consultation begins with a relaxed conversation. <br /><br /> To understand what you like about your appearance, the areas you'd like to improve, and the results you're hoping to achieve.<br />Gya will carefully assesses your skin structure, facial architecture and natural proportions..<br /><br />
                     As Gya explains her observations, you'll have a mirror so you can see exactly what she's seeing. Together, you'll explore different possibilities and understand why certain treatments may suit your face better than others.</p>
@@ -61,6 +61,7 @@
 }
 .consultation-container{
     max-width: 1800px;
+    padding: 0 2rem;
 }
 .consultation-header{
     max-width: 720px;
@@ -69,10 +70,14 @@
     text-align: center;
 }
 h2{
-    color: var(--text-secondary);
-    font-size: 2.2rem;
-    font-weight: var(--font-extrabold);
     line-height: 1.1;
+    font-size: 2.25rem;
+    font-weight: 800;
+    margin: 1rem 0 2rem;
+    letter-spacing: -.02em;
+    color: var(--text-primary);
+    position: relative;
+    animation: fadeInUp .6s ease-out both;
 }
 .consultation-subtitle{
     font-size: clamp(1rem, 2vw, 1.25rem);
@@ -107,13 +112,33 @@ h2{
     flex-direction: column;
     gap: 0.875rem;
   }
+
 .consultation-title{
     font-size: 1.8rem;
     color: #b15cbd; 
 }
 .consultation-divider {
-       height: 2px;
+    height: 2px;
     background: linear-gradient(90deg, transparent 0%, rgba(236, 72, 153, .2) 50%, transparent 100%);
-    margin: .5rem 0;
+    margin: .3rem 0;
 }
+
+ /* Responsive */
+  @media (max-width: 768px) { 
+    h2{
+        font-size: 1.8rem;
+    }
+
+    .container-grid{
+        grid-template-columns: 1fr;
+    }
+
+    .consultation-title{
+        font-size: 1.3rem;
+    }
+
+    .consultation-container p{
+        font-size: 0.9rem;
+    }
+  }
 </style>
